@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/bottomNavSchedule"
+        android:icon="@drawable/ic_viewschedule"
+        android:title="" />
+    <item
+        android:id="@+id/bottomNavFeedback"
+        android:icon="@drawable/ic_viewfeedback"
+        android:title="" />
+    <item
+        android:id="@+id/bottomNavReports"
+        android:icon="@drawable/ic_viewreports"
+        android:title="" />
+
+    </group>
+</menu>

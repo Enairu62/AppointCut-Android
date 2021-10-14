@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+    <item
+        android:id="@+id/bottomNavAR"
+        android:icon="@drawable/ic_cameraicon"
+        android:title="" />
+    <item
+        android:id="@+id/bottomNavHairStyle"
+        android:icon="@drawable/ic_hairstyleicon"
+        android:title="" />
+    <item
+        android:id="@+id/bottomNavHairTrends"
+        android:icon="@drawable/ic_hairtrendicon"
+        android:title="" />
+    <item
+        android:id="@+id/bottomNavMessage"
+        android:icon="@drawable/ic_messageicon"
+        android:title="" />
+    </group>
+</menu>
