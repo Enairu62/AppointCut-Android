@@ -58,8 +58,10 @@ public class CustomerHomePage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.bottomNavAR:
-                        openFragment(FragmentCameraAR.newInstance("",""));
-                        bottomNavCustomer.setVisibility(View.GONE);
+//                        openFragment(FragmentCameraAR.newInstance("",""));
+                        Intent intent = new Intent(CustomerHomePage.this,AugmentActivity.class);
+                        startActivity(intent);
+//                        bottomNavCustomer.setVisibility(View.GONE);
                         return true;
                     case R.id.bottomNavHairStyle:
                         openFragment(FragmentHairStyle.newInstance());

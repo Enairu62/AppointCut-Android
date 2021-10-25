@@ -8,3 +8,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "AppointCut"
 include ':app'
+include ':unityLibrary'
+project(':unityLibrary').projectDir=new File('..\\..\\AppointCut\\androidBuild\\unityLibrary')

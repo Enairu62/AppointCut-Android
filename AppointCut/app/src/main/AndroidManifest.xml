@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppointCut">
         <activity
+            android:name=".AugmentActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_augment"
+            android:theme="@style/Theme.AppointCut.Fullscreen" />
+        <activity
             android:name=".BarberHomePage"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -35,6 +41,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainUnityActivity"
+            android:theme="@style/UnityThemeSelector.Translucent">
+        </activity>
     </application>
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
 
 </manifest>

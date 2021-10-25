@@ -88,9 +88,12 @@
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/menu/home.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/mipmap-anydpi-v26/ic_launcher2.xml" value="0.10098684210526315" />
+        <entry key="app/src/main/res/layout/activity_augment.xml" value="0.22447916666666667" />
+        <entry key="app/src/main/res/layout/activity_augmented_reality.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/activity_barber_home_page.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/activity_customer_home_page.xml" value="0.21145833333333333" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.21145833333333333" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_unity.xml" value="0.1793478260869565" />
         <entry key="app/src/main/res/layout/barbershop_row_recycler.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/fragment_appointment.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/fragment_hair_style.xml" value="0.33" />
