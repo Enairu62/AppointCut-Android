@@ -54,11 +54,17 @@ class MainUnityActivity: UnityPlayerActivity() {
                 rotateCube(f.headEulerAngleX,f.headEulerAngleY,f.headEulerAngleZ)
                 Log.i("Face listener","Rotation: ${f.headEulerAngleX},${f.headEulerAngleY},${f.headEulerAngleZ}")
 
+                val z : Float = f.boundingBox.width().toFloat()
+
                 var points =  f.getContour(FaceContour.NOSE_BRIDGE)?.points
                 if(points != null) {
                     val coords = points[0]
-                    Log.i("Before Move Cube", "${coords.x}, ${coords.y}")
-                    moveCube(coords.x, coords.y)
+                    val xScaled:Float = ((coords.x*-1)+540/2)*scale
+                    val yScaled:Float = ((coords.y*-1)+960/2)*scale
+                    val zScaled:Float = z*scale/2
+
+                    Log.i("Before Move Cube", "${coords.x}, ${coords.y},$zScaled")
+                    moveCube(xScaled,yScaled,zScaled)
                 }
             }
         }
@@ -86,10 +92,8 @@ class MainUnityActivity: UnityPlayerActivity() {
     }
 
 
-    private fun moveCube(x:Float,y: Float){
-        val xScaled:Float = ((x*-1)+540/2)*scale
-        val yScaled:Float = ((y*-1)+960/2)*scale
-        val s = "$xScaled,$yScaled,0"
+    private fun moveCube(x:Float,y: Float, z: Float){
+        val s = "$x,$y,$z"
         UnityPlayer.UnitySendMessage("Cube","move",s)
     }
 
