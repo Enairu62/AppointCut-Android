@@ -74,13 +74,19 @@ public class Login extends AppCompatActivity {
         return false;
     }
 
-    private void loginCondition(){
+        //go straight to login
+        //this is for dev purposes
+        Toast.makeText(Login.this, "Successfully Login!", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(Login.this, CustomerHomePage.class);
+        startActivity(intent);
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 String userText = inputUsername.getText().toString();
                 String passText= inputPassword.getText().toString();
+
 
                 if(userText.trim().isEmpty() || passText.trim().isEmpty()){
                     Toast.makeText(Login.this, "Please insert all necessary details.", Toast.LENGTH_SHORT).show();
