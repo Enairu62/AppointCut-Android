@@ -22,16 +22,44 @@
     <style name="Theme.AppointCut.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.AppointCut.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <style name="Theme.AppointCut.Fullscreen" parent="Theme.AppointCut">
-        <item name="android:actionBarStyle">@style/Widget.Theme.AppointCut.ActionBar.Fullscreen
-        </item>
-        <item name="android:windowActionBarOverlay">true</item>
-        <item name="android:windowBackground">@null</item>
+    
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
     </style>
 
-    <style name="ThemeOverlay.AppointCut.FullscreenContainer" parent="">
-        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
-        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@color/white</item>
+    </style>
+
+    <style name="barberShopRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:minHeight">30dp</item>
+        <item name="android:maxHeight">40dp</item>
+        <item name="android:minWidth">40dp</item>
+        <item name="android:maxWidth">40dp</item>
+        <item name="android:scaleX">0.60</item>
+        <item name="android:scaleY">0.60</item>
+    </style>
+
+    <style name="Circular">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="feedbackRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:minHeight">30dp</item>
+        <item name="android:maxHeight">40dp</item>
+        <item name="android:minWidth">40dp</item>
+        <item name="android:maxWidth">40dp</item>
+        <item name="android:scaleX">0.70</item>
+        <item name="android:scaleY">0.70</item>
+    </style>
+
+    <style name="colorRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="colorControlActivated">@color/yellow</item>
+        <item name="colorControlNormal">@color/white</item>
+    </style>
+
+    <style name="colorRatingBar2" parent="Widget.AppCompat.RatingBar">
+        <item name="colorControlActivated">@color/yellow</item>
+        <item name="colorControlNormal">@android:color/darker_gray</item>
     </style>
 </resources>

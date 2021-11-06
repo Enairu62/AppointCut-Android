@@ -70,18 +70,18 @@
         app:layout_constraintTop_toBottomOf="@+id/lblHairTrends" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="80dp"
         app:backgroundTint="@color/yellow"
-        app:elevation="6dp"
+        app:elevation="10dp"
         app:fabSize="normal"
-        app:maxImageSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_search_icon"
-        android:id="@+id/floatSearch"/>
+        app:maxImageSize="40dp"
+        app:srcCompat="@drawable/ic_search_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

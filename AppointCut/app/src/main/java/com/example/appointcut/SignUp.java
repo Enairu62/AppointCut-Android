@@ -51,8 +51,15 @@ public class SignUp extends AppCompatActivity {
                 String contact = inputContact.getText().toString();
                 String email= inputEmailAdd.getText().toString();
 
-                if(first.isEmpty() || last.isEmpty() || user.isEmpty() || pass.isEmpty() || contact.isEmpty() || email.isEmpty()){
+                String fullName = first + " " + last;
+
+                if(first.trim().isEmpty() || last.trim().isEmpty() || user.trim().isEmpty() || pass.trim().isEmpty() || contact.trim().isEmpty() || email.trim().isEmpty()){
                     Toast.makeText(SignUp.this, "Please insert all necessary details.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Intent intent = new Intent(SignUp.this, HomePageCustomer.class);
+                    intent.putExtra("fullName", fullName);
+                    startActivity(intent);
                 }
             }
         });

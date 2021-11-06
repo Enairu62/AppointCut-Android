@@ -6,53 +6,197 @@
     tools:context="fragments.FragmentSchedule">
 
     <View
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLine"
         android:background="@color/black"
-        android:layout_marginTop ="75dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
         android:id ="@+id/horizontalLine"/>
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
         android:text="Date Range"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalLine" />
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLine2"
+        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLine3"
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine3"/>
 
+    <Button
+        android:id="@+id/btnDateRange"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/rounded_button"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="Octoboer 24, 2021 - October 30, 2021"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLine2"
+        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLine3"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine3"/>
 
 
     <devs.mulham.horizontalcalendar.HorizontalCalendarView
         android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="15dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineCalendar1"
+        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineCalendar2"
         app:selectedDateBackground="@color/black"
         app:selectorColor="@color/black"
         app:sizeMiddleText="25sp"
         app:sizeTopText="20sp" />
+
     <View
-        android:layout_width="match_parent"
+        android:id="@+id/horizontalLine2"
+        android:layout_width="0dp"
         android:layout_height="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView"
         android:background="@color/black"
-        android:layout_marginTop ="5dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp" />
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLine4" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Time"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLine5"
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine4"
+        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLine6"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Appointment"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine4"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLine5"
+        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLine6"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLine7"
+        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLine8"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideLine1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.035" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideLine2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.965" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.07" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLine2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.075" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLine3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.12" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideLine3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLineCalendar1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.13" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLineCalendar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.20" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLine4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.205" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLine5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2125" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLine6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.245" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideLine4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.29" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLine7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLine8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.905" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

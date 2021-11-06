@@ -73,28 +73,24 @@ public class FragmentTermsAndConditions extends Fragment {
         View view2 = getActivity().findViewById(R.id.constraintLayoutCustomer);
         BottomNavigationView bottomNavCustomer = (BottomNavigationView) view2.findViewById(R.id.bottomNavCustomer);
 
-        bottomNavCustomer.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+        /*bottomNavCustomer.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 bottomNavCustomer.getMenu().setGroupCheckable(0, true, true);
                 switch (item.getItemId()) {
                     case R.id.bottomNavAR:
                         openFragment(FragmentCameraAR.newInstance("",""));
-                        bottomNavCustomer.setVisibility(View.GONE);
                         return true;
-                    case R.id.bottomNavHairStyle:
-                        openFragment(FragmentHairStyle.newInstance());
-                        return true;
-                    case R.id.bottomNavHairTrends:
-                        openFragment(FragmentHairTrend.newInstance());
+                    case R.id.bottomNavFindBarberShop:
+                        openFragment(FragmentFindBarberShop.newInstance());
                         return true;
                     case R.id.bottomNavMessage:
-                        openFragment(FragmentMessage.newInstance("",""));
+                        openFragment(FragmentMessage.newInstance());
                         return true;
                 }
                 return false;
             }
-        });
+        });*/
 
         return view;
     }

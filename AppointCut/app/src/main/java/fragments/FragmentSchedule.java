@@ -3,16 +3,24 @@ package fragments;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
 
+import DataModels.DataModelSchedule;
+import MyAdapters.MyAdapterSchedule;
 import com.example.appointcut.R;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import devs.mulham.horizontalcalendar.HorizontalCalendar;
@@ -25,14 +33,7 @@ import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener;
  */
 public class FragmentSchedule extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private ArrayList<DataModelSchedule> list = new ArrayList<>();
 
     public FragmentSchedule() {
         // Required empty public constructor
@@ -41,28 +42,30 @@ public class FragmentSchedule extends Fragment {
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment FragmentSchedule.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentSchedule newInstance(String param1, String param2) {
+    public static FragmentSchedule newInstance() {
         FragmentSchedule fragment = new FragmentSchedule();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                DrawerLayout drawerLayoutBarber = getActivity().findViewById(R.id.drawerLayoutBarber);
+                if(drawerLayoutBarber.isDrawerOpen(GravityCompat.START)){
+                    drawerLayoutBarber.closeDrawer(GravityCompat.START);
+                }
+                else{
+                    getActivity().moveTaskToBack(true);
+                }
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
     @Override
@@ -70,6 +73,7 @@ public class FragmentSchedule extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_schedule, container, false);
+        Button btnDateRange = (Button) view.findViewById(R.id.btnDateRange);
 
         /* starts before 6 month from now */
         Calendar startDate = Calendar.getInstance();
@@ -109,6 +113,22 @@ public class FragmentSchedule extends Fragment {
             }
         });
 
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        MyAdapterSchedule adapter = new MyAdapterSchedule(list);
+        recyclerView.setAdapter(adapter);
+        buildListData();
         return view;
     }
+
+    private void buildListData(){
+        list.add(new DataModelSchedule("9:00 am - 10:00 am","Brent Jansen P. Bolima","Haircut",100.00));
+        list.add(new DataModelSchedule("10:00 am - 11:00 am","Arthur Allen Castillo","Haircut, Hair Color",200.00));
+        list.add(new DataModelSchedule("2:00 pm - 3:00 pm","Raymond Miguel Gonzalez","Hair Color",100.00 ));
+        list.add(new DataModelSchedule("3:30 pm - 4:00 pm","Leila Campos","Haircut",100.00));
+        list.add(new DataModelSchedule("4:00 pm - 4:30 pm","Carlex Rol Jalmasco","Haircut",100.00));
+        list.add(new DataModelSchedule("5:00 pm - 6:00 pm","Jay Rico","Haircut, Massage",300.00));
+    }
+
 }

@@ -1,96 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="fragments.FragmentFindBarberShop">
 
     <TextView
         android:id="@+id/lblFilters"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="73dp"
         android:text="Filters:"
         android:textColor="@color/black"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalGuideLineButton2"
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLineFilter"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineButton1" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="65dp"
+        android:id="@+id/btnFilterProximity"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/rounded_button"
         android:text="Proximity"
-        android:textSize="10sp"
-        android:backgroundTint="@color/black"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/lblFilters"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/btnFilterProximity"/>
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineButton2"
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLineButton2"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLineButton1"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineButton1" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="65dp"
-        android:text="Specialization"
-        android:textSize="10sp"
-        android:backgroundTint="@color/black"
-        android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/btnFilterProximity"
-        app:layout_constraintTop_toTopOf = "parent"
-        android:id="@+id/btnFilterSpecial"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="65dp"
+        android:id="@+id/btnFilterRating"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/rounded_button"
         android:text="Ratings"
-        android:textSize="10sp"
-        android:backgroundTint="@color/black"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/btnFilterSpecial"
-        app:layout_constraintTop_toTopOf = "parent"
-        android:id="@+id/btnFilterRating"/>
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineButton2"
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLineButton4"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLineButton3"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineButton1" />
 
     <View
-        android:layout_width="match_parent"
+        android:id="@+id/horizontalLine"
+        android:layout_width="0dp"
         android:layout_height="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblFilters"
+        android:layout_marginTop="5dp"
         android:background="@color/black"
-        android:layout_marginTop ="10dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:id ="@+id/horizontalLine"/>
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineButton2" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
         android:text="Barber Shops"
         android:textColor="@color/black"
+        android:textSize="23sp"
         android:textStyle="bold"
-        android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalLine" />
+        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineRecycler1"
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine"
+        app:layout_constraintTop_toTopOf="@+id/horizontalLine" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="640dp"
-        android:layout_marginBottom="80dp"
-        android:padding="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineRecycler2"
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineRecycler1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLineButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.07" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLineButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.11" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.035" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideLine2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.96" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideLineFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideLineButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.21" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideLineButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.42" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideLineButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.46" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideLineButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.67" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLineRecycler1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.16" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLineRecycler2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.90"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
