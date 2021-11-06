@@ -19,7 +19,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAjGYo7Z140QHOJuMHqh6YNYNChJZuofH8"/>
         <activity
-            android:name=".HomePageBarber"
             android:name=".AugmentActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
