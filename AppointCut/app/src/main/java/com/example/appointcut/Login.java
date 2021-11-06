@@ -36,42 +36,20 @@ public class Login extends AppCompatActivity {
         inputPassword = (EditText) findViewById(R.id.inputPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
 
+        loginCondition();
+        signUp();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+    }
+
+    private void signUp(){
         String signupText = "Not a member? Signup now";
         SpannableString ss = new SpannableString(signupText);
         ss.setSpan(new UnderlineSpan(),14,24, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         linkSignUp.setText(ss);
-
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                String userText = inputUsername.getText().toString();
-                String passText= inputPassword.getText().toString();
-
-                if(userText.isEmpty() || passText.isEmpty()){
-                    Toast.makeText(Login.this, "Please insert all necessary details.", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    isValidCus = validateCus(userText, passText);
-                    isValidBarber = validateBarber(userText, passText);
-
-                    if (isValidCus) {
-                        Toast.makeText(Login.this, "Successfully Login!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(Login.this, CustomerHomePage.class);
-                        startActivity(intent);
-                    }
-                    else if(isValidBarber){
-                        Toast.makeText(Login.this, "Successfully Login!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(Login.this, BarberHomePage.class);
-                        startActivity(intent);
-                    }
-                    else{
-                        Toast.makeText(Login.this, "Incorrect username and/or password!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-
-        });
 
         linkSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,11 +58,6 @@ public class Login extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        finishAffinity();
     }
 
     private boolean validateCus(String username, String password){
@@ -99,5 +72,40 @@ public class Login extends AppCompatActivity {
             return true;
         }
         return false;
-}
+    }
+
+    private void loginCondition(){
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String userText = inputUsername.getText().toString();
+                String passText= inputPassword.getText().toString();
+
+                if(userText.trim().isEmpty() || passText.trim().isEmpty()){
+                    Toast.makeText(Login.this, "Please insert all necessary details.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    isValidCus = validateCus(userText, passText);
+                    isValidBarber = validateBarber(userText, passText);
+
+                    if (isValidCus) {
+                        Toast.makeText(Login.this, "Successfully Login!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Login.this, HomePageCustomer.class);
+                        intent.putExtra("fullName", "Customer");
+                        startActivity(intent);
+                    }
+                    else if(isValidBarber){
+                        Toast.makeText(Login.this, "Successfully Login!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Login.this, HomePageBarber.class);
+                        startActivity(intent);
+                    }
+                    else{
+                        Toast.makeText(Login.this, "Incorrect username and/or password!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+        });
+    }
 }

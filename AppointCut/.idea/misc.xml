@@ -6,6 +6,10 @@
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/border_plaintext.xml" value="0.18885135135135134" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/bottom_nav_selector.xml" value="0.18388157894736842" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_apppointment_icon.xml" value="0.18388157894736842" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_arrow_back.xml" value="0.18388157894736842" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_arrow_down.xml" value="0.18388157894736842" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_arrow_up.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_baseline_camera_alt_24_ar.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_baseline_message_24.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_baseline_photo_camera_24.xml" value="0.18388157894736842" />
@@ -14,18 +18,34 @@
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_hairstyleicon.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_launcher_background.xml" value="0.18388157894736842" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_logout_.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_menu.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_menu_camera.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_notifications.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.18388157894736842" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_profile.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_search_icon.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_work.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_xclose.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/ic_xclose_white.xml" value="0.18388157894736842" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/rectangle_button.xml" value="0.18388157894736842" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/rounded_button.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/selector.xml" value="0.18388157894736842" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/drawable/side_nav_bar.xml" value="0.18388157894736842" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout-hdpi/activity_login.xml" value="0.2" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout-large/activity_login.xml" value="0.2328042328042328" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout-ldpi/activity_login.xml" value="0.8" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout-ldpi/activity_sign_up.xml" value="0.275" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout-mdpi/activity_login.xml" value="0.152" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout-normal/activity_login.xml" value="0.275" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout-small/activity_login.xml" value="0.275" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout-sw320dp/activity_login.xml" value="0.2" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout-xhdpi/activity_login.xml" value="0.2" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout-xxhdpi/activity_login.xml" value="0.275" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout-xxhdpi/recycler_row_selectservices.xml" value="0.264" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout-xxxhdpi/activity_login.xml" value="0.2" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/activity_appointments.xml" value="0.264" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/activity_arcamera.xml" value="0.1646174863387978" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/activity_barber_home_page.xml" value="0.176" />
@@ -34,24 +54,39 @@
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/activity_hair_trend.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/activity_hair_trends_home_page.xml" value="0.264" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/activity_home_page.xml" value="0.176" />
-        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/activity_login.xml" value="0.264" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/activity_home_page_customer.xml" value="0.2" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/activity_homepage_barber.xml" value="0.264" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/activity_login.xml" value="0.176" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/activity_main_toolbars.xml" value="0.1736842105263158" />
-        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/activity_sign_up.xml" value="0.176" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/activity_signup.xml" value="0.17247267759562843" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/app_bar_home.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/barber_toolbar.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/barbershop_row_recycler.xml" value="0.2" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/bottom_sheet_appointdetails.xml" value="0.2" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/bottom_sheet_barbers.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/bottom_sheet_schedule.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/bottom_sheet_services.xml" value="0.176" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/content_home.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/dialog_appointment_error.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/dialog_appointment_success.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/error_appointment_dialog.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_a_r.xml" value="0.2" />
-        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_appointment.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_appointment.xml" value="0.264" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_augmented_reality.xml" value="0.264" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_barber_shop_map.xml" value="0.176" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_blank.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_bookmark.xml" value="0.264" />
-        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_camera_a_r.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_bottom_sheet_appointment_details.xml" value="0.264" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_bottom_sheet_select_barber.xml" value="0.176" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_bottom_sheet_select_schedule.xml" value="0.2" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_bottom_sheet_select_services.xml" value="0.176" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_camera_a_r.xml" value="0.264" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_chat.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_contact_us.xml" value="0.1736842105263158" />
-        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_feedback.xml" value="0.264" />
-        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_find_barber_shop.xml" value="0.264" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_feedback.xml" value="0.2" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_find_barber_shop.xml" value="0.4" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_gallery.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_hair_complete_info.xml" value="0.2" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_hair_style.xml" value="0.264" />
@@ -59,25 +94,44 @@
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_hair_trend.xml" value="0.152" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_hair_trends.xml" value="0.2" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_home.xml" value="0.16290983606557377" />
-        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_message.xml" value="0.4" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_income.xml" value="0.264" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_message.xml" value="0.264" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_message_page.xml" value="0.16222677595628415" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_notifications.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_profile.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_profile_barber.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_profile_customer.xml" value="0.176" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_reports.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_schedule.xml" value="0.2" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_settings.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_slideshow.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/fragment_terms_and_conditions.xml" value="0.1736842105263158" />
-        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/hair_row_recycler.xml" value="0.1328551912568306" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/hair_row_recycler.xml" value="0.2" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/hair_row_recycler_view.xml" value="0.264" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/hair_trends_recycler_view.xml" value="0.4" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/main_toolbar.xml" value="0.2" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/main_toolbar_with_filter.xml" value="0.1736842105263158" />
-        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/message_row_recycler.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/message_row_recycler.xml" value="0.264" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/nav_drawer.xml" value="0.2" />
-        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/nav_drawer_barbers.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/nav_drawer_barbers.xml" value="0.264" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/nav_drawer_customers.xml" value="0.2" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/nav_drawer_header_barber.xml" value="0.264" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/nav_drawer_header_customers.xml" value="0.264" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/nav_header_home.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/recycler_row_appointment_list.xml" value="0.264" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/recycler_row_barbershop.xml" value="0.4" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/recycler_row_feedback.xml" value="0.264" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/recycler_row_hair.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/recycler_row_income.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/recycler_row_message.xml" value="0.4" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/recycler_row_reports.xml" value="0.2" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/recycler_row_schedule.xml" value="0.264" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/recycler_row_selectbarber.xml" value="0.264" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/recycler_row_selectservices.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/success_appointment_dialog.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/toolbar.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/toolbar_barber.xml" value="0.2" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/toolbar_customer.xml" value="0.264" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/layout/toolbar_with_filter.xml" value="0.2" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/menu/activity_main_drawer.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/menu/app_bottom_menu.xml" value="0.2" />
@@ -87,6 +141,8 @@
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/menu/bottom_nav_customer.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/menu/home.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/menu/nav_drawer_barber.xml" value="0.1736842105263158" />
+        <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/menu/nav_drawer_customer.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/mipmap-anydpi-v26/ic_launcher2.xml" value="0.10098684210526315" />
       </map>
     </option>
