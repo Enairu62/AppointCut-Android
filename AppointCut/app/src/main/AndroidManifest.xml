@@ -14,7 +14,7 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="false"
             android:label="@string/title_activity_augment"
-            android:theme="@style/Theme.AppointCut.Fullscreen" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".BarberHomePage"
             android:exported="true"

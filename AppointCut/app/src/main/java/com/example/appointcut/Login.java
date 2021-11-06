@@ -41,6 +41,12 @@ public class Login extends AppCompatActivity {
         ss.setSpan(new UnderlineSpan(),14,24, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         linkSignUp.setText(ss);
 
+        //go straight to login
+        //this is for dev purposes
+        Toast.makeText(Login.this, "Successfully Login!", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(Login.this, CustomerHomePage.class);
+        startActivity(intent);
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,27 +54,28 @@ public class Login extends AppCompatActivity {
                 String userText = inputUsername.getText().toString();
                 String passText= inputPassword.getText().toString();
 
-                if(userText.isEmpty() || passText.isEmpty()){
-                    Toast.makeText(Login.this, "Please insert all necessary details.", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    isValidCus = validateCus(userText, passText);
-                    isValidBarber = validateBarber(userText, passText);
-
-                    if (isValidCus) {
-                        Toast.makeText(Login.this, "Successfully Login!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(Login.this, CustomerHomePage.class);
-                        startActivity(intent);
-                    }
-                    else if(isValidBarber){
-                        Toast.makeText(Login.this, "Successfully Login!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(Login.this, BarberHomePage.class);
-                        startActivity(intent);
-                    }
-                    else{
-                        Toast.makeText(Login.this, "Incorrect username and/or password!", Toast.LENGTH_SHORT).show();
-                    }
-                }
+                //login logic
+//                if(userText.isEmpty() || passText.isEmpty()){
+//                    Toast.makeText(Login.this, "Please insert all necessary details.", Toast.LENGTH_SHORT).show();
+//                }
+//                else{
+//                    isValidCus = validateCus(userText, passText);
+//                    isValidBarber = validateBarber(userText, passText);
+//
+//                    if (isValidCus) {
+//                        Toast.makeText(Login.this, "Successfully Login!", Toast.LENGTH_SHORT).show();
+//                        Intent intent = new Intent(Login.this, CustomerHomePage.class);
+//                        startActivity(intent);
+//                    }
+//                    else if(isValidBarber){
+//                        Toast.makeText(Login.this, "Successfully Login!", Toast.LENGTH_SHORT).show();
+//                        Intent intent = new Intent(Login.this, BarberHomePage.class);
+//                        startActivity(intent);
+//                    }
+//                    else{
+//                        Toast.makeText(Login.this, "Incorrect username and/or password!", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
             }
 
         });
