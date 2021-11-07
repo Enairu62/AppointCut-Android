@@ -79,8 +79,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String userText = inputUsername.getText().toString();
-                String passText= inputPassword.getText().toString();
+                String userText = userCustomer; //inputUsername.getText().toString();
+                String passText= passCustomer; //inputPassword.getText().toString();
 
                 if(userText.trim().isEmpty() || passText.trim().isEmpty()){
                     Toast.makeText(Login.this, "Please insert all necessary details.", Toast.LENGTH_SHORT).show();

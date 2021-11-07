@@ -69,6 +69,7 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="16sp"
+
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineSignUp2"
         app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLine"
@@ -159,7 +160,6 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.79" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
