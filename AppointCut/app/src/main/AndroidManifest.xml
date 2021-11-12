@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.appointcut">
+    package="com.example.appointcut" >
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher2"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher2_round"
-        android:supportsRtl="true"
         android:screenOrientation="portrait"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAjGYo7Z140QHOJuMHqh6YNYNChJZuofH8"/>
+            android:value="AIzaSyAjGYo7Z140QHOJuMHqh6YNYNChJZuofH8" />
+
         <activity
             android:name=".AugmentActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
@@ -27,7 +33,7 @@
         <activity
             android:name=".HomePageBarber"
             android:exported="true"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".HomePageCustomer"
             android:exported="true"
@@ -42,21 +48,17 @@
             android:name=".Login"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan">
+            android:windowSoftInputMode="adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainUnityActivity"
-            android:theme="@style/UnityThemeSelector.Translucent">
+        <activity
+            android:name=".MainUnityActivity"
+            android:theme="@style/UnityThemeSelector.Translucent" >
         </activity>
     </application>
-
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature
-        android:name="android.hardware.camera.front"
-        android:required="false" />
 
 </manifest>

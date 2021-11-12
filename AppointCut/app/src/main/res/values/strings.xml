@@ -112,5 +112,6 @@
         This allows you to pull hair taut while blowdrying it, resulting in straight hair. Work from one side to the other until all hair is straightened.
         If it’s not straight enough for your liking, go over hair again with a flat iron. Last, lock it all in with a blast of cold air from the blow dryer and a once over with product for the final style.
     </string>
+    <string name="title_activity_test">TestActivity</string>
 
 </resources>

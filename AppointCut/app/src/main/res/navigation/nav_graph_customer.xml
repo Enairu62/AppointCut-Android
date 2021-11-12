@@ -26,15 +26,6 @@
             app:destination="@id/fragmentChat" />
     </fragment>
     <fragment
-        android:id="@+id/fragmentCameraAR"
-        android:name="fragments.FragmentCameraAR"
-        android:label="fragment_camera_a_r"
-        tools:layout="@layout/fragment_camera_a_r" >
-        <action
-            android:id="@+id/action_fragmentCameraAR_to_fragmentFindBarberShop"
-            app:destination="@id/fragmentFindBarberShop" />
-    </fragment>
-    <fragment
         android:id="@+id/fragmentNotifications"
         android:name="fragments.FragmentNotifications"
         android:label="fragment_notifications"
@@ -93,4 +84,9 @@
             android:id="@+id/action_fragmentChat_to_fragmentMessage"
             app:destination="@id/fragmentMessage" />
     </fragment>
+    <activity
+        android:id="@+id/augmentActivity"
+        android:name="com.example.appointcut.AugmentActivity"
+        android:label="activity_augment"
+        tools:layout="@layout/activity_augment" />
 </navigation>

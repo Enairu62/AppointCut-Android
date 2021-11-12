@@ -96,10 +96,6 @@ class MainUnityActivity : UnityPlayerActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
-    }
 
 
     private fun addUI() {

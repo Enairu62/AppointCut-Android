@@ -34,10 +34,9 @@ class AugmentActivity : AppCompatActivity() {
         startActivity(unityIntent)
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finishAffinity()
-    }
+//    override fun onBackPressed() {
+//        finish()
+//    }
 
     //MOAR camerax stuff
     private fun bindPreview(cameraProvider: ProcessCameraProvider) {
