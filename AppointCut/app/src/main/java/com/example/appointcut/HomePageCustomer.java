@@ -90,7 +90,7 @@ public class HomePageCustomer extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 homePage.finishAffinity();
-                Intent intent = new Intent(HomePageCustomer.this, Login.class);
+                Intent intent = new Intent(HomePageCustomer.this, LoginFragment.class);
                 startActivity(intent);
             }
         });

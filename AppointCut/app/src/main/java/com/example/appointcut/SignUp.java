@@ -1,7 +1,6 @@
 package com.example.appointcut;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,10 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import fragments.FragmentSchedule;
 
 public class SignUp extends AppCompatActivity {
 
@@ -67,7 +62,7 @@ public class SignUp extends AppCompatActivity {
         imageBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SignUp.this, Login.class);
+                Intent intent = new Intent(SignUp.this, LoginFragment.class);
                 startActivity(intent);
             }
         });

@@ -50,4 +50,9 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:$nav_version"
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'me.biubiubiu.justifytext:library:1.1'
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    //Moshi
+    implementation 'com.squareup.retrofit2:converter-moshi'
 }
