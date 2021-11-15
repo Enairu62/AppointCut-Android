@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.appointcut.file.UserFile;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -76,6 +77,8 @@ public class HomePageBarber extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 homePage.finishAffinity();
+                //delete saved user data
+                UserFile.INSTANCE.delete(HomePageBarber.this);
                 Intent intent = new Intent(HomePageBarber.this, LoginFragment.class);
                 startActivity(intent);
             }
