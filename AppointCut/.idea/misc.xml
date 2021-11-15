@@ -144,6 +144,10 @@
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/menu/nav_drawer_barber.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/menu/nav_drawer_customer.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/mipmap-anydpi-v26/ic_launcher2.xml" value="0.10098684210526315" />
+        <entry key="app/src/main/res/layout/nav_drawer_header_customers.xml" value="0.20208333333333334" />
+        <entry key="app/src/main/res/layout/toolbar_customer.xml" value="0.20208333333333334" />
+        <entry key="app/src/main/res/menu/nav_drawer_barber.xml" value="0.20208333333333334" />
+        <entry key="app/src/main/res/menu/nav_drawer_customer.xml" value="0.20208333333333334" />
       </map>
     </option>
   </component>

@@ -2,7 +2,6 @@ package com.example.appointcut;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-import android.net.Network;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -13,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.appointcut.file.UserFile;
 
 import DataModels.User;
 
@@ -36,6 +37,25 @@ public class LoginFragment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //see if there is a logged in user
+        Log.d("LoginFragment", "Reading file");
+        User user = UserFile.INSTANCE.read(this);
+        if (user != null){
+            Intent intent;
+            switch (user.getAuthStatus()){
+                case CUSTOMER:
+                    Toast.makeText(LoginFragment.this, "Welcome back "+ user.getFirstName(), Toast.LENGTH_SHORT).show();
+                    intent = new Intent(LoginFragment.this, HomePageCustomer.class);
+                    intent.putExtra("fullName", "Customer");
+                    startActivity(intent);
+                    break;
+                case BARBER:
+                    Toast.makeText(LoginFragment.this, "Logged in as barber!", Toast.LENGTH_SHORT).show();
+                    intent = new Intent(LoginFragment.this, HomePageBarber.class);
+                    startActivity(intent);
+            }
+        }
 
         linkSignUp = (TextView) findViewById(R.id.linkSignUp);
         inputUsername = (EditText) findViewById(R.id.inputUsername);
@@ -88,34 +108,62 @@ public class LoginFragment extends AppCompatActivity {
                 String userText = inputUsername.getText().toString();
                 String passText= inputPassword.getText().toString();
 
-                //get token from server
-                User token = NetworkJava.INSTANCE.getToken(userText,passText);
-                Log.d("LoginFragment", token.toString());
-
+                //no input
                 if(userText.trim().isEmpty() || passText.trim().isEmpty()){
-                    Toast.makeText(LoginFragment.this, "Please insert all necessary details.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginFragment.this,
+                            "Please insert all necessary details.",
+                            Toast.LENGTH_SHORT)
+                            .show();
+                    return;
                 }
-                else{
-                    isValidCus = validateCus(userText, passText);
-                    isValidBarber = validateBarber(userText, passText);
 
-                    if (isValidCus) {//Barber
+                //get user from server
+                User user = null;
+                try {
+                    user = NetworkJava.INSTANCE.getToken(userText,passText);
+                }catch (java.net.ConnectException e){
+                    Toast.makeText(LoginFragment.this,
+                            "Unable to connect to server",
+                            Toast.LENGTH_SHORT)
+                            .show();
+                    Log.e("LoginFragment", "server unreachable",e);
+                }catch (Exception e){
+                    Toast.makeText(LoginFragment.this,
+                            "An unexpected error has occurred!",
+                            Toast.LENGTH_SHORT)
+                            .show();
+                    Log.e("LoginFragment", "An error Happened",e);
+                }
+                if (user == null)return;
+                Log.d("LoginFragment", user.toString());
+
+                Intent intent;
+                //Authenticity
+                switch (user.getAuthStatus()){
+                    case CUSTOMER:
                         Toast.makeText(LoginFragment.this, "Successfully Login!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(LoginFragment.this, HomePageCustomer.class);
+                        intent = new Intent(LoginFragment.this, HomePageCustomer.class);
                         intent.putExtra("fullName", "Customer");
+                        //save token to file
+                        UserFile.INSTANCE.save(LoginFragment.this,user);
                         startActivity(intent);
-                    }
-                    else if(isValidBarber){//Customer
+                    break;
+                    case BARBER:
                         Toast.makeText(LoginFragment.this, "Successfully Login!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(LoginFragment.this, HomePageBarber.class);
+                        intent = new Intent(LoginFragment.this, HomePageBarber.class);
                         startActivity(intent);
-                    }
-                    else{
-                        Toast.makeText(LoginFragment.this, "Incorrect username and/or password!", Toast.LENGTH_SHORT).show();
-                    }
+                    break;
+                    case DESK:
+                        Toast.makeText(LoginFragment.this, "Desk User is not allowed", Toast.LENGTH_SHORT).show();
+                    break;
+                    case EMAIL:
+                        Toast.makeText(LoginFragment.this, "Email not found", Toast.LENGTH_SHORT).show();
+                    break;
+                    case PASSWORD:
+                        Toast.makeText(LoginFragment.this, "Incorrect password!", Toast.LENGTH_SHORT).show();
+                    break;
                 }
             }
-
         });
     }
 }
