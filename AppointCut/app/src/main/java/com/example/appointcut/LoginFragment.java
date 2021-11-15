@@ -144,13 +144,15 @@ public class LoginFragment extends AppCompatActivity {
                         Toast.makeText(LoginFragment.this, "Successfully Login!", Toast.LENGTH_SHORT).show();
                         intent = new Intent(LoginFragment.this, HomePageCustomer.class);
                         intent.putExtra("fullName", "Customer");
-                        //save token to file
+                        //save user data to file
                         UserFile.INSTANCE.save(LoginFragment.this,user);
                         startActivity(intent);
                     break;
                     case BARBER:
                         Toast.makeText(LoginFragment.this, "Successfully Login!", Toast.LENGTH_SHORT).show();
                         intent = new Intent(LoginFragment.this, HomePageBarber.class);
+                        //save user data to file
+                        UserFile.INSTANCE.save(LoginFragment.this,user);
                         startActivity(intent);
                     break;
                     case DESK:
