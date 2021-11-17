@@ -11,10 +11,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.textfield.TextInputEditText;
+
 public class Login extends AppCompatActivity {
 
     TextView linkSignUp;
-    private EditText inputUsername;
+    private TextInputEditText txtUsername;
     private EditText inputPassword;
     Button btnLogin;
 
@@ -32,7 +35,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         linkSignUp = (TextView) findViewById(R.id.linkSignUp);
-        inputUsername = (EditText) findViewById(R.id.inputUsername);
+        //txtUsername = (TextInputEditText) findViewById(R.id.txtUsernameXML);
         inputPassword = (EditText) findViewById(R.id.inputPassword);
         btnLogin = (Button) findViewById(R.id.btnLogin);
 
@@ -79,7 +82,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String userText = inputUsername.getText().toString();
+                String userText = txtUsername.getText().toString();
                 String passText= inputPassword.getText().toString();
 
                 if(userText.trim().isEmpty() || passText.trim().isEmpty()){

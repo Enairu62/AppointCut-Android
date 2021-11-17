@@ -1,15 +1,18 @@
 package DataModels;
 
+import java.util.Collection;
+
 public class DataModelAppointmentList {
 
     private int barbershopPic;
-    private String barbershopName, barbershopSchedule, barberShopService;
+    private String barbershopName, barbershopSchedule, barberShopService, status;
 
-    public DataModelAppointmentList(int barbershopPic, String barbershopName, String barberShopService, String barbershopSchedule) {
+    public DataModelAppointmentList(int barbershopPic, String barbershopName, String barberShopService, String barbershopSchedule, String status) {
         this.barbershopPic = barbershopPic;
         this.barbershopName = barbershopName;
         this.barberShopService = barberShopService;
         this.barbershopSchedule = barbershopSchedule;
+        this.status = status;
 
     }
     public int getBarbershopPic() {
@@ -42,6 +45,14 @@ public class DataModelAppointmentList {
 
     public void setBarbershopSchedule(String barbershopSchedule) {
         this.barbershopSchedule = barbershopSchedule;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
 

@@ -17,7 +17,25 @@
         app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineImage"
         app:srcCompat="@drawable/appointcutlogo" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_plaintext"
+        android:hint="Username"
+        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineUserName2"
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineUserName1"
+        app:endIconMode="clear_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtUsernameXML"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--<EditText
         android:id="@+id/inputUsername"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -30,7 +48,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineUserName2"
         app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLine"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineUserName1" />
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineUserName1" />-->
 
     <EditText
         android:id="@+id/inputPassword"
@@ -73,6 +91,8 @@
         app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLine"
         app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineSignUp1" />
+
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/verticalGuideLine"

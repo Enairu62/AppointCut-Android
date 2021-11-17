@@ -84,6 +84,7 @@ public class FragmentSchedule extends Fragment {
         endDate.add(Calendar.MONTH, 6);
 
 
+
         // on below line we are setting up our horizontal calendar view and passing id our calendar view to it.
         HorizontalCalendar horizontalCalendar = new HorizontalCalendar.Builder(view, R.id.calendarView)
                 // on below line we are adding a range
@@ -103,15 +104,6 @@ public class FragmentSchedule extends Fragment {
                 // to build our horizontal recycler view.
                 .build();
                 horizontalCalendar.refresh();
-
-        horizontalCalendar.setCalendarListener(new HorizontalCalendarListener() {
-            @Override
-            public void onDateSelected(Calendar date, int position) {
-                // on below line we are printing date
-                // in the logcat which is selected.
-                Log.e("TAG", "CURRENT DATE IS " + date);
-            }
-        });
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());

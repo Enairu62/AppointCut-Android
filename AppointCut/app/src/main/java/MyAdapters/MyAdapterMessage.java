@@ -3,6 +3,8 @@ package MyAdapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,17 +14,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appointcut.R;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import DataModels.DataModelMessages;
 
-public class MyAdapterMessage extends RecyclerView.Adapter<MyAdapterMessage.MyViewHolder>{
+public class MyAdapterMessage extends RecyclerView.Adapter<MyAdapterMessage.MyViewHolder> {
 
-    int profilePic[];
-    private List<DataModelMessages> list;
+    private ArrayList <DataModelMessages> list;
     private MyAdapterMessage.ItemClickListener clickListener;
 
-    public MyAdapterMessage(List<DataModelMessages> list, MyAdapterMessage.ItemClickListener clickListener){
+    public MyAdapterMessage(ArrayList <DataModelMessages> list, MyAdapterMessage.ItemClickListener clickListener){
         this.list = list;
         this.clickListener = clickListener;
     }
@@ -52,6 +55,12 @@ public class MyAdapterMessage extends RecyclerView.Adapter<MyAdapterMessage.MyVi
     public int getItemCount() {
         return list.size();
     }
+
+    public void filterList(ArrayList<DataModelMessages> filteredList) {
+        list = filteredList;
+        notifyDataSetChanged();
+    }
+
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 

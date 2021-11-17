@@ -12,6 +12,8 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +33,8 @@ import java.util.ArrayList;
 public class FragmentMessage extends Fragment implements MyAdapterMessage.ItemClickListener{
 
     private ArrayList<DataModelMessages> list = new ArrayList<>();
+    EditText search;
+    MyAdapterMessage adapter;
 
     public FragmentMessage() {
         // Required empty public constructor
@@ -71,13 +75,15 @@ public class FragmentMessage extends Fragment implements MyAdapterMessage.ItemCl
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_message, container, false);
+        search = (EditText) view.findViewById(R.id.inputSearch);
 
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        MyAdapterMessage adapter = new MyAdapterMessage(list,this);
+        adapter = new MyAdapterMessage(list,this);
         recyclerView.setAdapter(adapter);
         buildListData();
+        searchMessage();
         return view;
     }
 
@@ -102,5 +108,35 @@ public class FragmentMessage extends Fragment implements MyAdapterMessage.ItemCl
         NavController navController = (NavController) Navigation.findNavController(getActivity(),R.id.fragmentContainerView);
         navController.navigate(R.id.action_fragmentMessage_to_fragmentChat);
     }
+
+    private void searchMessage(){
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
+    }
+
+    private void filter(String text) {
+        ArrayList<DataModelMessages> filteredList = new ArrayList<>();
+        for (DataModelMessages item : list) {
+            if (item.getNamess().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+        adapter.filterList(filteredList);
+    }
+
 
 }

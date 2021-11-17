@@ -12,16 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appointcut.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import DataModels.DataModelAppointmentList;
+import DataModels.DataModelMessages;
 import DataModels.DataModelSelectBarber;
 
 public class MyAdapterAppointmentList extends RecyclerView.Adapter<MyAdapterAppointmentList.MyViewHolder>{
 
-    private List<DataModelAppointmentList> list;
+    private ArrayList<DataModelAppointmentList> list;
 
-    public MyAdapterAppointmentList(List<DataModelAppointmentList> list){
+    public MyAdapterAppointmentList(ArrayList<DataModelAppointmentList> list){
         this.list = list;
     }
 
@@ -43,6 +45,11 @@ public class MyAdapterAppointmentList extends RecyclerView.Adapter<MyAdapterAppo
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    public void filterList(ArrayList<DataModelAppointmentList> filteredList) {
+        list = filteredList;
+        notifyDataSetChanged();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{

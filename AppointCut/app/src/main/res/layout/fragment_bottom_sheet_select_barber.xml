@@ -22,32 +22,6 @@
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
         app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineLabel1" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Service Category:"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineButton2"
-        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLineButton1"
-        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineButton1" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/black"
-        android:text="Hair"
-        android:textColor="@color/white"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineButton2"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineButton1"
-        app:layout_constraintStart_toStartOf="@+id/verticalGuideLineButton1"
-        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLineButton2"/>
-
     <View
         android:id="@+id/horizontalLine"
         android:layout_width="0dp"
@@ -69,29 +43,33 @@
     <Button
         android:id="@+id/btnBack"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="@color/yellow"
+        android:layout_marginTop="25dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="17dp"
         android:text="Back"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLineButton3"
         app:layout_constraintEnd_toEndOf="@+id/verticalGuideLineButton4"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineButton4"
         app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineButton3"/>
 
     <Button
         android:id="@+id/btnNext"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:backgroundTint="@color/yellow"
-        android:text="Next"
+        android:text="Select Schedule"
+        android:layout_marginTop="25dp"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLineButton5"
         app:layout_constraintEnd_toEndOf="@+id/verticalGuideLineButton6"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineButton4"
         app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineButton3" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -123,46 +101,18 @@
         app:layout_constraintGuide_percent="0.12" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontalGuideLineButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontalGuideLineButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/verticalGuideLineButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.45" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/verticalGuideLineButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.65" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontalGuideLine1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.26" />
+        app:layout_constraintGuide_percent="0.13" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontalGuideLine2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.27" />
+        app:layout_constraintGuide_percent="0.15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontalGuideLine3"
@@ -176,42 +126,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.87" />
+        app:layout_constraintGuide_percent="0.83" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontalGuideLineButton4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/verticalGuideLineButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.12" />
+        app:layout_constraintGuide_percent="0.10" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/verticalGuideLineButton4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.43" />
+        app:layout_constraintGuide_percent="0.48" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/verticalGuideLineButton5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.57" />
+        app:layout_constraintGuide_percent="0.50" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/verticalGuideLineButton6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.88" />
+        app:layout_constraintGuide_percent="0.90" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

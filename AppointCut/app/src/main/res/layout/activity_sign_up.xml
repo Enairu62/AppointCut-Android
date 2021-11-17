@@ -57,12 +57,12 @@
         app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineFirstAndLast1" />
 
     <EditText
-        android:id="@+id/inputUserNameSignUp"
+        android:id="@+id/inputEmailSignUp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_plaintext"
         android:ems="10"
-        android:hint="Username"
+        android:hint="Email Address"
         android:inputType="textEmailAddress"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
@@ -70,6 +70,21 @@
         app:layout_constraintEnd_toEndOf="@id/verticalGuideLineImage2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLineImage"
         app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineUserName1" />
+
+    <EditText
+        android:id="@+id/inputContact"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border_plaintext"
+        android:ems="10"
+        android:hint="Contact"
+        android:inputType="number"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLinePass2"
+        app:layout_constraintEnd_toEndOf="@id/verticalGuideLineImage2"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLineImage"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLinePass1" />
 
     <EditText
         android:id="@+id/inputPasswordSignUp"
@@ -81,34 +96,20 @@
         android:inputType="textPassword"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLinePass2"
-        app:layout_constraintEnd_toEndOf="@id/verticalGuideLineImage2"
-        app:layout_constraintStart_toStartOf="@+id/verticalGuideLineImage"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLinePass1" />
-
-    <EditText
-        android:id="@+id/inputContact"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/border_plaintext"
-        android:ems="10"
-        android:hint="Contact Number"
-        android:inputType="number"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineContact2"
         app:layout_constraintEnd_toEndOf="@id/verticalGuideLineImage2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLineImage"
         app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineContact1" />
 
     <EditText
-        android:id="@+id/inputEmailAdd"
+        android:id="@+id/inputConfirmSignUp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_plaintext"
         android:ems="10"
-        android:hint="Email Address"
-        android:inputType="textEmailAddress"
+        android:enabled="false"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineEmail2"
@@ -148,10 +149,10 @@
         android:gravity="center"
         android:text="Terms and Conditions"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineTerms2"
+        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineText4"
         app:layout_constraintEnd_toEndOf="@id/verticalGuideLineImage2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLineImage"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineTerms1" />
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineText3" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/verticalGuideLineArrow"
@@ -321,27 +322,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.87" />
+        app:layout_constraintGuide_percent="0.86" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontalGuideLineText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.90" />
+        app:layout_constraintGuide_percent="0.89" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontalGuideLineTerms1"
+        android:id="@+id/horizontalGuideLineText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.91" />
+        app:layout_constraintGuide_percent="0.89" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontalGuideLineTerms2"
+        android:id="@+id/horizontalGuideLineText4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.93" />
+        app:layout_constraintGuide_percent="0.92" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

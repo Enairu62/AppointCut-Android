@@ -18,9 +18,13 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.appointcut.R;
+import com.example.appointcut.SignUp;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -31,14 +35,16 @@ import com.google.android.material.navigation.NavigationBarView;
  */
 public class FragmentProfileCustomer extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    Button editProfile, saveProfile, cancel;
+    EditText firstName, lastName, email, contact, pass, confirm;
+    TextView textViewConfirm;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String mParam3;
+    private String mParam4;
+    private String mParam5;
 
     public FragmentProfileCustomer() {
         // Required empty public constructor
@@ -48,17 +54,11 @@ public class FragmentProfileCustomer extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment FragmentProfile.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentProfileCustomer newInstance(String param1, String param2) {
+    public static FragmentProfileCustomer newInstance() {
         FragmentProfileCustomer fragment = new FragmentProfileCustomer();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -66,8 +66,7 @@ public class FragmentProfileCustomer extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
@@ -95,6 +94,87 @@ public class FragmentProfileCustomer extends Fragment {
         View view = inflater.inflate(R.layout.fragment_profile_customer, container, false);
         BottomNavigationView bottomNavCustomer = (BottomNavigationView) getActivity().findViewById(R.id.bottomNavCustomer);
         bottomNavCustomer.setVisibility(View.GONE);
+
+        firstName = (EditText) view.findViewById(R.id.editFirstName);
+        lastName = (EditText) view.findViewById(R.id.editLastName);
+        email = (EditText) view.findViewById(R.id.editEmail);
+        contact = (EditText) view.findViewById(R.id.editContact);
+        pass = (EditText) view.findViewById(R.id.editPass);
+        confirm = (EditText) view.findViewById(R.id.editConfirm);
+        textViewConfirm = (TextView) view.findViewById(R.id.textViewConfirm);
+
+        Bundle customerProfile = SignUp.passDataIntoProfile();
+        mParam1 = customerProfile.getString("profileFirstName");
+        mParam2 = customerProfile.getString("profileLastName");
+        mParam3 = customerProfile.getString("profileEmail");
+        mParam4 = customerProfile.getString("profileContact");
+        mParam5 = customerProfile.getString("profilePass");
+        firstName.setText(mParam1);
+        lastName.setText(mParam2);
+        email.setText(mParam3);
+        contact.setText(mParam4);
+        pass.setText(mParam5);
+
+        editProfile = (Button) view.findViewById(R.id.btnEditProfile);
+        saveProfile = (Button) view.findViewById(R.id.btnSaveProfile);
+        cancel = (Button) view.findViewById(R.id.btnCancel);
+
+        buttonMethods();
         return view;
+    }
+
+    private void buttonMethods(){
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firstName.setEnabled(true);
+                lastName.setEnabled(true);
+                email.setEnabled(true);
+                contact.setEnabled(true);
+                pass.setEnabled(true);
+                pass.setText("");
+                textViewConfirm.setVisibility(View.VISIBLE);
+                confirm.setVisibility(View.VISIBLE);
+                confirm.setEnabled(true);
+                saveProfile.setVisibility(View.VISIBLE);
+                cancel.setVisibility(View.VISIBLE);
+                editProfile.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        saveProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firstName.setEnabled(false);
+                lastName.setEnabled(false);
+                email.setEnabled(false);
+                contact.setEnabled(false);
+                pass.setEnabled(false);
+                confirm.setEnabled(false);
+                textViewConfirm.setVisibility(View.INVISIBLE);
+                confirm.setVisibility(View.INVISIBLE);
+                saveProfile.setVisibility(View.INVISIBLE);
+                cancel.setVisibility(View.INVISIBLE);
+                editProfile.setVisibility(View.VISIBLE);
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firstName.setEnabled(false);
+                lastName.setEnabled(false);
+                email.setEnabled(false);
+                contact.setEnabled(false);
+                pass.setEnabled(false);
+                confirm.setEnabled(false);
+                textViewConfirm.setVisibility(View.INVISIBLE);
+                confirm.setVisibility(View.INVISIBLE);
+                saveProfile.setVisibility(View.INVISIBLE);
+                cancel.setVisibility(View.INVISIBLE);
+                editProfile.setVisibility(View.VISIBLE);
+            }
+        });
+
     }
 }

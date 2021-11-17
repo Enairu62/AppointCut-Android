@@ -1,10 +1,15 @@
 package DataModels;
 
-public class DataModelSelectServices {
+
+import java.io.Serializable;
+
+public class DataModelSelectServices implements Serializable {
 
     private int servicePic;
     private String serviceName;
     private float servicePrice;
+
+    private boolean isChecked = false;
 
     public DataModelSelectServices(int servicePic, String serviceName, float servicePrice) {
         this.servicePic = servicePic;
@@ -36,5 +41,12 @@ public class DataModelSelectServices {
         this.servicePrice = servicePrice;
     }
 
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
 
 }

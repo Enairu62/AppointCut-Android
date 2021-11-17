@@ -11,18 +11,27 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.appointcut.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 import DataModels.DataModelAppointmentList;
+import DataModels.DataModelMessages;
 import MyAdapters.MyAdapterAppointmentList;
+import MyAdapters.MyAdapterMessage;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,12 +40,15 @@ import MyAdapters.MyAdapterAppointmentList;
  */
 public class FragmentAppointment extends Fragment {
 
-    private ArrayList<DataModelAppointmentList> listApproved = new ArrayList<>();
-    private ArrayList<DataModelAppointmentList> listPending = new ArrayList<>();
-    private ArrayList<DataModelAppointmentList> listCompleted = new ArrayList<>();
+    private ArrayList<DataModelAppointmentList> appointmentLists = new ArrayList<>();
+    private ArrayList<DataModelAppointmentList>  approvedLists = new ArrayList<>();
+    private ArrayList<DataModelAppointmentList> pendingLists = new ArrayList<>();
+    private ArrayList<DataModelAppointmentList> completedLists = new ArrayList<>();
     TextView emptyApproved, emptyPending, emptyCompleted;
-    RecyclerView recyclerView, recyclerView2, recyclerView3;
+    RecyclerView recyclerView1, recyclerView2, recyclerView3;
     View view;
+    EditText search;
+    MyAdapterAppointmentList adapter1, adapter2, adapter3, adapter4;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -102,18 +114,17 @@ public class FragmentAppointment extends Fragment {
         view = inflater.inflate(R.layout.fragment_appointment, container, false);
         declareViews();
         displayAppointmentMethod();
+        searchAppointment();
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        buildListDataApproved();
-        buildListDataPending();
-        buildListDataCompleted();
-        emptyApprovedLabel();
-        emptyPendingLabel();
-        emptyCompletedLabel();
+        approvedLists.clear();
+        completedLists.clear();
+        pendingLists.clear();
+       displayAppointmentMethod();
     }
 
     private void declareViews(){
@@ -124,84 +135,84 @@ public class FragmentAppointment extends Fragment {
         emptyPending = (TextView) view.findViewById(R.id.emptyPending);
         emptyCompleted = (TextView) view.findViewById(R.id.emptyCompleted);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView1 = (RecyclerView) view.findViewById(R.id.recyclerView);
         recyclerView2 = (RecyclerView) view.findViewById(R.id.recyclerView2);
         recyclerView3 = (RecyclerView) view.findViewById(R.id.recyclerView3);
+
+        search = (EditText) view.findViewById(R.id.inputSearch);
     }
 
-    private void buildListDataApproved(){
-        //example of empty list
+    private void buildListData(){
         int profilePic[] = {R.drawable.cavalry_barbershop};
-        listApproved.add(new DataModelAppointmentList(profilePic[0],"28 Cavalry", "Haircut","November 10, 2021 / 10:00 am - 11:00 am"));
+        appointmentLists.add(new DataModelAppointmentList(profilePic[0],"28 Cavalry", "Hair Color","November 16, 2021 / 12:00 pm - 01:00 pm","Pending"));
+        appointmentLists.add(new DataModelAppointmentList(profilePic[0],"BOSSMAN", "Haircut","November 10, 2021 / 10:00 am - 11:00 am","Approved"));
+        appointmentLists.add(new DataModelAppointmentList(profilePic[0],"Felipe & Sons", "Massage","November 7, 2021 / 03:00 pm - 04:00 pm","Completed"));
+        appointmentLists.add(new DataModelAppointmentList(profilePic[0],"The Refined", "Haircut","October 19, 2021 / 9:30 am - 10:30 am","Completed"));
     }
 
-    private void buildListDataPending(){
-        int profilePic[] = {R.drawable.cavalry_barbershop};
-        //listPending.add(new DataModelAppointmentList(profilePic[0],"28 Cavalry", "Hair Color","November 16, 2021 / 12:00 pm - 01:00 pm"));
-    }
-
-    private void buildListDataCompleted(){
-        int profilePic[] = {R.drawable.cavalry_barbershop};
-        listCompleted.add(new DataModelAppointmentList(profilePic[0],"28 Cavalry", "Massage","November 7, 2021 / 03:00 pm - 04:00 pm"));
-        listCompleted.add(new DataModelAppointmentList(profilePic[0],"28 Cavalry", "Haircut","October 19, 2021 / 9:30 am - 10:30 am"));
-    }
-
-    private void emptyApprovedLabel(){
-        if (listApproved.isEmpty()) {
-            recyclerView.setVisibility(View.GONE);
-            emptyApproved.setVisibility(View.VISIBLE);
-        }
-        else {
-            recyclerView.setVisibility(View.VISIBLE);
-            emptyApproved.setVisibility(View.INVISIBLE);
-        }
-    }
-
-    private void emptyPendingLabel(){
-        if (listPending.isEmpty()) {
-            recyclerView2.setVisibility(View.GONE);
-            emptyPending.setVisibility(View.VISIBLE);
-        }
-        else {
-            recyclerView2.setVisibility(View.VISIBLE);
-            emptyPending.setVisibility(View.INVISIBLE);
-        }
-    }
-
-    private void emptyCompletedLabel(){
-        if (listCompleted.isEmpty()) {
-            recyclerView3.setVisibility(View.GONE);
-            emptyCompleted.setVisibility(View.VISIBLE);
-        }
-        else {
-            recyclerView3.setVisibility(View.VISIBLE);
-            emptyCompleted.setVisibility(View.INVISIBLE);
-        }
-    }
 
     private void displayAppointmentMethod(){
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(getActivity());
         LinearLayoutManager layoutManager2 = new LinearLayoutManager(getActivity());
         LinearLayoutManager layoutManager3 = new LinearLayoutManager(getActivity());
 
-        recyclerView.setLayoutManager(layoutManager1);
+        recyclerView1.setLayoutManager(layoutManager1);
         recyclerView2.setLayoutManager(layoutManager2);
         recyclerView3.setLayoutManager(layoutManager3);
 
-        MyAdapterAppointmentList adapter1 = new MyAdapterAppointmentList(listApproved);
-        MyAdapterAppointmentList adapter2 = new MyAdapterAppointmentList(listPending);
-        MyAdapterAppointmentList adapter3 = new MyAdapterAppointmentList(listCompleted);
+        isListContainMethod(appointmentLists);
 
-        recyclerView.setAdapter(adapter1);
-        recyclerView2.setAdapter(adapter2);
-        recyclerView3.setAdapter(adapter3);
 
-        buildListDataApproved();
-        buildListDataPending();
-        buildListDataCompleted();
-        emptyApprovedLabel();
-        emptyPendingLabel();
-        emptyCompletedLabel();
+    }
 
+    public boolean isListContainMethod(ArrayList<DataModelAppointmentList> list) {
+        buildListData();
+        adapter2 = new MyAdapterAppointmentList(approvedLists);
+        adapter3 = new MyAdapterAppointmentList(pendingLists);
+        adapter4 = new MyAdapterAppointmentList(completedLists);
+        for (DataModelAppointmentList item : list) {
+            if (item.getStatus().contains("Approved")) {
+                approvedLists.add(item);
+                recyclerView1.setAdapter(adapter2);
+            }
+            else if (item.getStatus().contains("Pending")) {
+                pendingLists.add(item);
+                recyclerView2.setAdapter(adapter3);
+            }
+            else if (item.getStatus().contains("Completed")) {
+                completedLists.add(item);
+                recyclerView3.setAdapter(adapter4);
+            }
+        }
+        return true;
+    }
+
+    private void searchAppointment(){
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
+    }
+
+    private void filter(String text) {
+        ArrayList<DataModelAppointmentList> filteredList1 = new ArrayList<>();
+        for (DataModelAppointmentList item : appointmentLists) {
+            if (item.getBarbershopName().toLowerCase().contains(text.toLowerCase())) {
+                filteredList1.add(item);
+            }
+        }
+        adapter1.filterList(filteredList1);
     }
 }

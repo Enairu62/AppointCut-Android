@@ -31,7 +31,7 @@
         android:id="@+id/btnDateRange"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/rounded_button"
+        android:background="@drawable/rounded_button_black"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:text="Octoboer 24, 2021 - October 30, 2021"

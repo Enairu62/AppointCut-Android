@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import DataModels.DataModelSelectBarber;
 import MyAdapters.MyAdapterSelectBarber;
@@ -25,6 +26,8 @@ import java.util.ArrayList;
  */
 public class BottomSheetFragmentSelectBarber extends BottomSheetDialogFragment{
 
+
+    private static MyAdapterSelectBarber adapter;
     RecyclerView recyclerView;
     private ArrayList<DataModelSelectBarber> list = new ArrayList<>();
 
@@ -32,12 +35,8 @@ public class BottomSheetFragmentSelectBarber extends BottomSheetDialogFragment{
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     * @return A new instance of fragment BottomSheetFragmentSelectBarber.
-     */
     // TODO: Rename and change types and number of parameters
+
     public static BottomSheetFragmentSelectBarber newInstance() {
         BottomSheetFragmentSelectBarber fragment = new BottomSheetFragmentSelectBarber();
         return fragment;
@@ -46,8 +45,6 @@ public class BottomSheetFragmentSelectBarber extends BottomSheetDialogFragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
     }
 
     @Override
@@ -55,11 +52,21 @@ public class BottomSheetFragmentSelectBarber extends BottomSheetDialogFragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_bottom_sheet_select_barber, container, false);
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new MyAdapterSelectBarber(list);
+        recyclerView.setAdapter(adapter);
+        buildListData();
+
         Button btnBack = (Button) view.findViewById(R.id.btnBack);
         Button btnNext = (Button) view.findViewById(R.id.btnNext);
 
         BottomSheetDialogFragment  bottomSheetFragmentSelectServices = new BottomSheetFragmentSelectServices();
         BottomSheetDialogFragment  bottomSheetFragmentSelectSchedule = new BottomSheetFragmentSelectSchedule();
+        BottomSheetDialogFragment  bottomSheetFragmentAppointmentDetails = new BottomSheetFragmentAppointmentDetails();
+
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,19 +79,19 @@ public class BottomSheetFragmentSelectBarber extends BottomSheetDialogFragment{
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dismiss();
-                bottomSheetFragmentSelectSchedule.show(getActivity().getSupportFragmentManager(), bottomSheetFragmentSelectSchedule.getTag());
+                if (adapter.getSelected() != null) {
+                    dismiss();
+                    bottomSheetFragmentSelectSchedule.show(getActivity().getSupportFragmentManager(), bottomSheetFragmentSelectSchedule.getTag());
+                } else {
+                    showToast("Please choose your barber!");
+                }
             }
         });
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerView.setLayoutManager(layoutManager);
-        MyAdapterSelectBarber adapter = new MyAdapterSelectBarber(list);
-        recyclerView.setAdapter(adapter);
-        buildListData();
         return view;
     }
+
+
 
     private void buildListData(){
         int profilePic[] = {R.drawable.sampleprofilepic_bolima,R.drawable.sampleprofilepic_leila,R.drawable.sampleprofilepic_arthur,
@@ -96,11 +103,17 @@ public class BottomSheetFragmentSelectBarber extends BottomSheetDialogFragment{
         list.add(new DataModelSelectBarber(profilePic[3],"Raymond Miguel Gonzalez", "Haircut"));
         list.add(new DataModelSelectBarber(profilePic[4],"Carlex Rol Jalmasco" ,"Haircut, Massage"));
     }
-    public void onItemClick(DataModelSelectBarber dataModelSelectBarber) {
-        /*Fragment fragment =  FragmentHairCompleteInfo.newInstance(dataModelHair.getImage(), dataModelHair.getTitle(), dataModelHair.getDesc());
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.constraintLayoutCustomer, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();*/
+
+    public static Bundle passDataIntoAppointment(){
+        Bundle args = new Bundle();
+        args.putString("barberName", adapter.getSelected().getNamess());
+        args.putString("barberSpecialty", adapter.getSelected().getSpecialty());
+        args.putInt("barberPicture", adapter.getSelected().getProfilePic());
+        return args;
     }
+
+    private void showToast(String msg) {
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    }
+
 }

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.appointcut.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -30,6 +31,7 @@ import MyAdapters.MyAdapterSelectService;
 public class BottomSheetFragmentSelectServices extends BottomSheetDialogFragment {
 
     RecyclerView recyclerView;
+    private static MyAdapterSelectService adapter;
     private ArrayList<DataModelSelectServices> list = new ArrayList<>();
 
     public BottomSheetFragmentSelectServices() {
@@ -50,8 +52,6 @@ public class BottomSheetFragmentSelectServices extends BottomSheetDialogFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
     }
 
     @Override
@@ -62,6 +62,7 @@ public class BottomSheetFragmentSelectServices extends BottomSheetDialogFragment
         Button btnBack = (Button) view.findViewById(R.id.btnBack);
         Button btnNext = (Button) view.findViewById(R.id.btnNext);
         BottomSheetDialogFragment bottomSheetFragmentSelectBarber = new BottomSheetFragmentSelectBarber();
+        BottomSheetDialogFragment  bottomSheetFragmentAppointmentDetails = new BottomSheetFragmentAppointmentDetails();
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,23 +70,33 @@ public class BottomSheetFragmentSelectServices extends BottomSheetDialogFragment
                 dismiss();
             }
         });
-
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dismiss();
-                bottomSheetFragmentSelectBarber.show(getActivity().getSupportFragmentManager(), bottomSheetFragmentSelectBarber.getTag());
+                if (adapter.getSelected().size() > 0) {
+                    StringBuilder stringBuilder = new StringBuilder();
+                    for (int i = 0; i < adapter.getSelected().size(); i++) {
+                        stringBuilder.append(adapter.getSelected().get(i).getServiceName());
+                        stringBuilder.append("\n");
+                    }
+                    showToast(stringBuilder.toString().trim());
+                    dismiss();
+                    bottomSheetFragmentSelectBarber.show(getActivity().getSupportFragmentManager(), bottomSheetFragmentSelectBarber.getTag());
+                } else {
+                    showToast("Please select a service!");
+                }
             }
         });
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         GridLayoutManager gridLayoutManager= new GridLayoutManager(getActivity(),3, GridLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(gridLayoutManager);
-        MyAdapterSelectService adapter = new MyAdapterSelectService(list);
+        adapter = new MyAdapterSelectService(list);
         recyclerView.setAdapter(adapter);
         buildListData();
         return view;
     }
+
 
     private void buildListData(){
         int servicePic[] = {R.drawable.haircolor, R.drawable.haircut, R.drawable.hairtreatment,
@@ -96,5 +107,18 @@ public class BottomSheetFragmentSelectServices extends BottomSheetDialogFragment
         list.add(new DataModelSelectServices(servicePic[2],"Hair Treatment", 250.00f));
         list.add(new DataModelSelectServices(servicePic[3],"Rebond", 50.00f));
         list.add(new DataModelSelectServices(servicePic[1],"Haircut" ,50.00f));
+    }
+
+    public static Bundle passDataIntoAppointment(){
+        Bundle args = new Bundle();
+        for (int i = 0; i < adapter.getSelected().size(); i++) {
+            args.putString("serviceName", adapter.getSelected().get(i).getServiceName());
+            args.putFloat("servicePrice", adapter.getSelected().get(i).getServicePrice());
+        }
+        return args;
+    }
+
+    private void showToast(String msg) {
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
     }
 }

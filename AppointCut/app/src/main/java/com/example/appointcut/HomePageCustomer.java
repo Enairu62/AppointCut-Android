@@ -126,7 +126,11 @@ public class HomePageCustomer extends AppCompatActivity {
     }
 
     private void displayCustomerName(){
-        String fullName = getIntent().getStringExtra("fullName");
+        //String fullName = getIntent().getStringExtra("fullName");
+        Bundle customerProfile = SignUp.passDataIntoProfile();
+        String firstName = customerProfile.getString("profileFirstName");
+        String lastName = customerProfile.getString("profileLastName");
+        String fullName = firstName + " " + lastName;
         txtFullName.setText(fullName);
         navFullName.setText(fullName);
     }
