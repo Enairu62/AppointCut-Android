@@ -15,13 +15,14 @@ import com.example.appointcut.R;
 import java.util.List;
 
 import DataModels.DataModelBarberShop;
+import DataModels.Shop;
 
 public class MyAdapterBarberShop extends RecyclerView.Adapter<MyAdapterBarberShop.MyViewHolder>{
 
-    private List<DataModelBarberShop> list;
+    private List<Shop> list;
     private MyAdapterBarberShop.ItemClickListener clickListener;
 
-    public MyAdapterBarberShop(List<DataModelBarberShop> list, MyAdapterBarberShop.ItemClickListener clickListener){
+    public MyAdapterBarberShop(List<Shop> list, MyAdapterBarberShop.ItemClickListener clickListener){
         this.list = list;
         this.clickListener = clickListener;
     }
@@ -35,13 +36,13 @@ public class MyAdapterBarberShop extends RecyclerView.Adapter<MyAdapterBarberSho
 
     @Override
     public void onBindViewHolder(@NonNull MyAdapterBarberShop.MyViewHolder holder, int position) {
-        holder.barbershopName.setText(list.get(position).getBarberShopName());
-        holder.barbershopDesc.setText(list.get(position).getBarberShopDesc());
-        holder.myImages.setImageResource(list.get(position).getBarberShopImage());
+        holder.barbershopName.setText(list.get(position).getName());
+        holder.barbershopRating.setText(list.get(position).getRating()+"");
+        holder.myImages.setText(list.get(position).getImgSrcUrl());
         holder.barberShopRowLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickListener.onItemClick(list.get(holder.getAdapterPosition()));
+//                clickListener.onItemClick(list.get(holder.getAdapterPosition()));
             }
         });
     }
@@ -53,14 +54,14 @@ public class MyAdapterBarberShop extends RecyclerView.Adapter<MyAdapterBarberSho
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView barbershopName, barbershopDesc;
-        ImageView myImages;
+        TextView barbershopName, barbershopRating;
+        TextView myImages;
         ConstraintLayout barberShopRowLayout;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             barbershopName = itemView.findViewById(R.id.txtBarberShopName);
-            barbershopDesc = itemView.findViewById(R.id.txtBarberShopDesc);
+            barbershopRating = itemView.findViewById(R.id.txtBarberShopRating);
             myImages = itemView.findViewById(R.id.myImages);
             barberShopRowLayout = itemView.findViewById(R.id.barberShopRowLayout);
         }

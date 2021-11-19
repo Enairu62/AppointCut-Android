@@ -62,26 +62,20 @@
         android:name="fragments.FragmentBarberShopMap"
         android:label="fragment_barber_shop_map"
         tools:layout="@layout/fragment_barber_shop_map" >
-        <argument
-            android:name="barbershopName"
-            app:argType="string" />
         <action
             android:id="@+id/action_fragmentBarberShopMap_to_fragmentFindBarberShop"
             app:destination="@id/fragmentFindBarberShop" />
         <argument
-            android:name="barbershopAddress"
+            android:name="name"
             app:argType="string" />
         <argument
-            android:name="barbershopContact"
-            app:argType="long" />
-        <argument
-            android:name="barbershopSchedule"
+            android:name="address"
             app:argType="string" />
         <argument
-            android:name="barbershopRating"
-            app:argType="float" />
+            android:name="contact"
+            app:argType="string" />
         <argument
-            android:name="barbershopDistance"
+            android:name="rating"
             app:argType="float" />
     </fragment>
     <fragment

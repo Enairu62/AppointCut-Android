@@ -56,7 +56,6 @@ public class MyAdapterSelectService extends RecyclerView.Adapter<MyAdapterSelect
             serviceName = itemView.findViewById(R.id.serviceName);
             servicePic = itemView.findViewById(R.id.servicePic);
             selectServiceRowLayout = itemView.findViewById(R.id.selectServiceRowLayout);
-
         }
     }
 

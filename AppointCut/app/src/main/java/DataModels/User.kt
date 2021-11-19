@@ -11,11 +11,14 @@ data class User (
     val firstName: String?,
     val lastName: String?,
     val token: String?
-)
-
-/**
- * The type of user that logged in
- */
-enum class AuthStatus{
-    DESK,BARBER,CUSTOMER,EMAIL,PASSWORD
+){
+    companion object{
+        /**
+         * The type of user that logged in
+         */
+        enum class AuthStatus{
+            DESK,BARBER,CUSTOMER,EMAIL,PASSWORD
+        }
+    }
 }
+

@@ -10,15 +10,14 @@ public class DataModelBarberShop {
     private float barberRating;
     private float barberShopDistance;
 
-    public DataModelBarberShop(int barberShopImage, String barberShopName, String barberShopDesc, String barberAddress, long barberContact, String barberSchedule, float barberRating, float barberShopDistance) {
+    public DataModelBarberShop(int barberShopImage, String barberShopName, String barberAddress,
+                               long barberContact, String barberSchedule, float barberRating) {
         this.barberShopImage = barberShopImage;
         this.barberShopName = barberShopName;
-        this.barberShopDesc = barberShopDesc;
         this.barberAddress = barberAddress;
         this.barberContact = barberContact;
         this.barberSchedule = barberSchedule;
         this.barberRating = barberRating;
-        this.barberShopDistance = barberShopDistance;
 
     }
 
@@ -28,14 +27,6 @@ public class DataModelBarberShop {
 
     public void setBarberShopName(String barberShopName) {
         this.barberShopName = barberShopName;
-    }
-
-    public String getBarberShopDesc() {
-        return barberShopDesc;
-    }
-
-    public void setBarberShopDesc(String barberShopDesc) {
-        this.barberShopDesc = barberShopDesc;
     }
 
     public int getBarberShopImage() {
@@ -76,13 +67,5 @@ public class DataModelBarberShop {
 
     public void setBarberRating(float barberRating) {
         this.barberRating = barberRating;
-    }
-
-    public float getBarberShopDistance() {
-        return barberShopDistance;
-    }
-
-    public void setBarberShopDistance(float barberShopDistance) {
-        this.barberShopDistance = barberShopDistance;
     }
 }

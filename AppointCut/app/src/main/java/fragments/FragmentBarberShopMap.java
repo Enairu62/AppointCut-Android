@@ -1,8 +1,5 @@
 package fragments;
 
-import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -10,14 +7,12 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -29,7 +24,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 /**
@@ -41,10 +35,10 @@ public class FragmentBarberShopMap extends Fragment {
 
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-    private long mParam3;
-    private String mParam4;
+    private String shopName;
+    private String shopAddress;
+    private String shopContact;
+    private float shopRating;
     private float mParam5;
     private float mParam6;
 
@@ -68,12 +62,12 @@ public class FragmentBarberShopMap extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             FragmentBarberShopMapArgs args = FragmentBarberShopMapArgs.fromBundle(getArguments());
-            mParam1 = args.getBarbershopName();
-            mParam2 = args.getBarbershopAddress();
-            mParam3 = args.getBarbershopContact();
-            mParam4 = args.getBarbershopSchedule();
-            mParam5 = args.getBarbershopRating();
-            mParam6 = args.getBarbershopDistance();
+            shopName = args.getName();
+            shopAddress = args.getAddress();
+            shopContact = args.getContact();
+            shopRating = args.getRating();
+//            mParam5 = args.getBarbershopRating();
+//            mParam6 = args.getBarbershopDistance();
         }
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
@@ -105,6 +99,7 @@ public class FragmentBarberShopMap extends Fragment {
 
         displayMap();
 
+        //bind views
         TextView shopName = (TextView) view.findViewById(R.id.txtShopName);
         TextView shopAddress = (TextView) view.findViewById(R.id.txtShopAddress);
         TextView shopContact = (TextView) view.findViewById(R.id.txtShopContact);
@@ -112,13 +107,15 @@ public class FragmentBarberShopMap extends Fragment {
         RatingBar shopRating = (RatingBar) view.findViewById(R.id.shopRatingBar);
         TextView shopDistance = (TextView) view.findViewById(R.id.txtShopDistance);
 
-        shopName.setText(mParam1);
-        shopAddress.setText(mParam2);
-        shopContact.setText(String.valueOf(mParam3));
-        shopSched.setText(mParam4);
+        //set contents
+        shopName.setText(this.shopName);
+        shopAddress.setText(this.shopAddress);
+        shopContact.setText(String.valueOf(this.shopContact));
+        shopSched.setText(this.shopRating+"");
         shopRating.setRating(mParam5);
         shopDistance.setText(mParam6 + " km");
 
+        //set onclick to button
         Button btnSetAppointment = view.findViewById(R.id.btnSetAppointment);
         btnSetAppointment.setOnClickListener(new View.OnClickListener() {
             @Override

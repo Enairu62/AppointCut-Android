@@ -1,6 +1,6 @@
 package com.example.appointcut.file
 
-import DataModels.AuthStatus
+import DataModels.User.Companion.AuthStatus
 import DataModels.User
 import android.R
 import android.content.Context

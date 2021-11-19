@@ -1,5 +1,6 @@
 package com.example.appointcut.network
 
+import DataModels.Shop
 import DataModels.User
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -9,7 +10,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 
-private const val BASE_URL = "http://192.168.1.19:3000"
+const val BASE_URL = "http://192.168.1.19:3000"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -23,6 +24,9 @@ interface ApcServiceInterface {
     @GET("rest/token/{email}-{pw}")
     suspend fun getToken(@Path("email") email: String,
         @Path("pw") pw: String):User
+
+    @GET("rest/shops")
+    suspend fun getShops(): List<Shop>
 }
 
 object ApcService {

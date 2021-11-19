@@ -21,11 +21,11 @@
                 android:id="@+id/myImages"
                 android:layout_width="160dp"
                 android:layout_height="120dp"
-                android:scaleType="centerCrop"
                 android:layout_marginTop="5dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
@@ -63,7 +63,7 @@
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
             <TextView
-                android:id="@+id/txtBarberShopDesc"
+                android:id="@+id/txtBarberShopRating"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:maxLines="3"
