@@ -26,6 +26,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
+import fragments.kotlin.FragmentSelectService;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FragmentBarberShopMap#newInstance} factory method to
@@ -39,7 +41,7 @@ public class FragmentBarberShopMap extends Fragment {
     private String shopAddress;
     private String shopContact;
     private float shopRating;
-    private float mParam5;
+    private int shopId;
     private float mParam6;
 
 
@@ -66,7 +68,7 @@ public class FragmentBarberShopMap extends Fragment {
             shopAddress = args.getAddress();
             shopContact = args.getContact();
             shopRating = args.getRating();
-//            mParam5 = args.getBarbershopRating();
+            shopId = args.getId();
 //            mParam6 = args.getBarbershopDistance();
         }
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
@@ -112,7 +114,7 @@ public class FragmentBarberShopMap extends Fragment {
         shopAddress.setText(this.shopAddress);
         shopContact.setText(String.valueOf(this.shopContact));
         shopSched.setText(this.shopRating+"");
-        shopRating.setRating(mParam5);
+        shopRating.setRating(shopId);
         shopDistance.setText(mParam6 + " km");
 
         //set onclick to button
@@ -128,8 +130,9 @@ public class FragmentBarberShopMap extends Fragment {
     }
 
     private void buttonAppointmentMethod(){
-        BottomSheetDialogFragment bottomSheetFragmentSelectServices = new BottomSheetFragmentSelectServices();
-        bottomSheetFragmentSelectServices.show(getActivity().getSupportFragmentManager(), bottomSheetFragmentSelectServices.getTag());
+        BottomSheetDialogFragment bottomSheetFragmentSelectServices = new FragmentSelectService(shopId);
+        bottomSheetFragmentSelectServices.show(getActivity().getSupportFragmentManager(),
+                bottomSheetFragmentSelectServices.getTag());
     }
 
     private void displayMap(){

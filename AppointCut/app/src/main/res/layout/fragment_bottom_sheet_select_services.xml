@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bottomSheetServices"
     android:paddingBottom="15dp"
-    tools:context="fragments.BottomSheetFragmentSelectServices">
+    tools:context="fragments.kotlin.FragmentSelectService">
 
     <TextView
         android:id="@+id/textView"

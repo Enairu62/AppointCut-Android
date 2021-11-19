@@ -1,6 +1,7 @@
 package com.example.appointcut.network
 
 import DataModels.Shop
+import DataModels.ShopService
 import DataModels.User
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -27,6 +28,9 @@ interface ApcServiceInterface {
 
     @GET("rest/shops")
     suspend fun getShops(): List<Shop>
+
+    @GET("rest/shops/services/{id}")
+    suspend fun getShopServices(@Path("id") id: Int): List<ShopService>
 }
 
 object ApcService {

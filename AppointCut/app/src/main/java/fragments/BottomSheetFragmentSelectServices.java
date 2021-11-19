@@ -88,9 +88,14 @@ public class BottomSheetFragmentSelectServices extends BottomSheetDialogFragment
     }
 
     private void buildListData(){
+        //get the pics
         int servicePic[] = {R.drawable.haircolor, R.drawable.haircut, R.drawable.hairtreatment,
                 R.drawable.straight_hair};
 
+        //get the services from server
+
+
+        //add to the list
         list.add(new DataModelSelectServices(servicePic[0],"Hair Color", 150.00f));
         list.add(new DataModelSelectServices(servicePic[1],"Haircut", 50.00f));
         list.add(new DataModelSelectServices(servicePic[2],"Hair Treatment", 250.00f));

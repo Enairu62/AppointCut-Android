@@ -148,11 +148,12 @@
         <entry key="app/src/main/res/layout/activity_kotlin.xml" value="0.20208333333333334" />
         <entry key="app/src/main/res/layout/content_kotlin.xml" value="0.115625" />
         <entry key="app/src/main/res/layout/fragment_barber_shop_map.xml" value="0.19947916666666668" />
-        <entry key="app/src/main/res/layout/fragment_bottom_sheet_select_services.xml" value="0.19947916666666668" />
+        <entry key="app/src/main/res/layout/fragment_bottom_sheet_select_services.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_find_barber_shop.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.20208333333333334" />
         <entry key="app/src/main/res/layout/nav_drawer_header_customers.xml" value="0.20208333333333334" />
         <entry key="app/src/main/res/layout/recycler_row_barbershop.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/recycler_row_selectservices.xml" value="0.5" />
         <entry key="app/src/main/res/layout/toolbar_customer.xml" value="0.20208333333333334" />
         <entry key="app/src/main/res/menu/nav_drawer_barber.xml" value="0.20208333333333334" />
         <entry key="app/src/main/res/menu/nav_drawer_customer.xml" value="0.20208333333333334" />

@@ -77,6 +77,9 @@
         <argument
             android:name="rating"
             app:argType="float" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/fragmentChat"

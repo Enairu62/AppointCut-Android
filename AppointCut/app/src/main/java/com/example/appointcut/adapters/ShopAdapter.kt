@@ -48,13 +48,14 @@ class ShopAdapter(private val shops: List<Shop>,
         private fun onHolderClick(shop: Shop){
             Log.d("ShopHolder", "OnClick called with ID: ${shop.id}")
 
+            val id = shop.id
             val name = shop.name
             val address = shop.address
             val contact = shop.contact
             val rating = shop.rating
 
             val action: NavDirections = FragmentFindBarberShopDirections
-                .actionFragmentFindBarberShopToFragmentBarberShopMap(name, address, contact, rating)
+                .actionFragmentFindBarberShopToFragmentBarberShopMap(name, address, contact, rating, id)
             navController.navigate(action)
         }
 
@@ -66,7 +67,7 @@ class ShopAdapter(private val shops: List<Shop>,
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopHolder {
         Log.d("ShopAdapter","onCreateViewHolder")
         return ShopHolder(RecyclerRowBarbershopBinding
-            .inflate(LayoutInflater.from(parent.context)),navController)
+            .inflate(LayoutInflater.from(parent.context),parent,false),navController)
     }
 
     /**
