@@ -72,5 +72,6 @@ dependencies {
     implementation 'io.coil-kt:coil:1.4.0'
     //Lifecycle scope
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
-
+    //Week view
+    implementation 'com.github.alamkanak:android-week-view:1.2.6'
 }

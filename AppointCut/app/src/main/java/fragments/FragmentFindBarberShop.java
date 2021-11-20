@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.core.view.GravityCompat;
@@ -88,7 +89,7 @@ public class FragmentFindBarberShop extends Fragment implements MyAdapterBarberS
             ShopAdapter adapter = new ShopAdapter(list,navController);
             recyclerView.setAdapter(adapter);
         }catch (Exception e){
-            Log.e("FragmentFindBarberShop", "Network Failure", e);
+            Toast.makeText(getContext(), "Unable to load Barbershops", Toast.LENGTH_SHORT).show();
         }
         return view;
     }

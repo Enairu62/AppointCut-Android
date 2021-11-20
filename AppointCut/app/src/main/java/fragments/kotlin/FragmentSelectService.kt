@@ -11,6 +11,7 @@ import com.example.appointcut.R
 import fragments.BottomSheetFragmentSelectBarber
 import androidx.recyclerview.widget.GridLayoutManager
 import MyAdapters.MyAdapterSelectService
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.lifecycle.lifecycleScope
@@ -59,10 +60,21 @@ class FragmentSelectService(private val shopId: Int) : BottomSheetDialogFragment
         recyclerView.setLayoutManager(gridLayoutManager)
 
         viewLifecycleOwner.lifecycleScope.launch {
-            val adapter = ShopServiceAdapter(ApcService.retrofitService.getShopServices(shopId))
-            recyclerView.setAdapter(adapter)
+            val adapter = ShopServiceAdapter(ApcService.retrofitService.getShopServices(shopId),
+                this@FragmentSelectService::showSelectBarberFragment)
+            recyclerView.adapter = adapter
         }
         return binding.root
+    }
+
+    fun showSelectBarberFragment(name: String) {
+        Log.d("FragmentSelectService","select barber with $name service")
+        dismiss()
+        val bottomSheetFragmentSelectBarber = BottomSheetFragmentSelectBarber()
+        bottomSheetFragmentSelectBarber.show(
+            requireActivity().supportFragmentManager,
+            bottomSheetFragmentSelectBarber.tag
+        )
     }
 
     companion object {

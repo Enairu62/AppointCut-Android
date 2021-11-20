@@ -9,16 +9,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.appointcut.R
 import com.example.appointcut.databinding.RecyclerRowSelectservicesBinding
 
-class ShopServiceAdapter(private val services: List<ShopService>):
+class ShopServiceAdapter(private val services: List<ShopService>,
+                         private val cb: (String) -> Unit):
     RecyclerView.Adapter<ShopServiceAdapter.ShopServiceHolder>() {
 
     class ShopServiceHolder(
-        private val binding: RecyclerRowSelectservicesBinding
+        private val binding: RecyclerRowSelectservicesBinding,
+        private val cb: (String) -> Unit
     ):RecyclerView.ViewHolder(binding.root){
         fun bind(service: ShopService){
             binding.serviceName.text = service.name
             binding.servicePic.visibility = View.GONE
             binding.servicePrice.text = "Php ${service.price}"
+            binding.root.setOnClickListener { selectBarber(service.name) }
+        }
+
+        private fun selectBarber(name: String){
+            cb(name)
         }
     }
 
@@ -27,8 +34,8 @@ class ShopServiceAdapter(private val services: List<ShopService>):
         return ShopServiceHolder(
             RecyclerRowSelectservicesBinding.inflate(
                 LayoutInflater.from(parent.context),
-                parent, false
-            )
+                parent, false),
+            cb
         )
     }
 
