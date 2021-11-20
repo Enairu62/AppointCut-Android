@@ -18,9 +18,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import fragments.FragmentFindBarberShopDirections;
-import fragments.FragmentProfileCustomer;
-
 
 public class SignUp extends AppCompatActivity {
 
@@ -28,7 +25,7 @@ public class SignUp extends AppCompatActivity {
 
     ImageView imageBack;
 
-    EditText inputFirstName, inputLastName, inputEmailSignUp, inputPasswordSignUp, inputContact, inputConfirm;
+    EditText txtFirstName, txtLastName, txtEmailSignUp, txtPasswordSignUp, txtContact, txtConfirmPass;
 
     TextView linkTerms;
 
@@ -63,25 +60,25 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void declareViews(){
-        imageBack = (ImageView) findViewById(R.id.imageView);
+        imageBack = (ImageView) findViewById(R.id.imageViewBackXML);
 
-        inputFirstName = (EditText) findViewById(R.id.inputFirstName);
-        inputLastName = (EditText) findViewById(R.id.inputLastName);
-        inputEmailSignUp = (EditText) findViewById(R.id.inputEmailSignUp);
-        inputPasswordSignUp = (EditText) findViewById(R.id.inputPasswordSignUp);
-        inputContact = (EditText) findViewById(R.id.inputContact);
+        txtFirstName = (EditText) findViewById(R.id.txtFirstNameXML);
+        txtLastName = (EditText) findViewById(R.id.txtLastNameXML);
+        txtEmailSignUp = (EditText) findViewById(R.id.txtEmailSignUpXML);
+        txtPasswordSignUp = (EditText) findViewById(R.id.txtPasswordSignUpXML);
+        txtContact = (EditText) findViewById(R.id.txtContactXML);
         linkTerms = (TextView) findViewById(R.id.linkTerms);
-        inputConfirm  = (EditText) findViewById(R.id.inputConfirmSignUp);
+        txtConfirmPass = (EditText) findViewById(R.id.txtConfirmPassXML);
 
-        btnRegister = (Button) findViewById(R.id.btnRegister);
+        btnRegister = (Button) findViewById(R.id.btnRegisterXML);
 
     }
-
+    //letters only for firstname and lastname edittext
     private void textFilters(){
-        inputFirstName.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
-        inputLastName.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
+        txtFirstName.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
+        txtLastName.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_CAP_WORDS);
 
-        inputFirstName.setFilters(new InputFilter[] {
+        txtFirstName.setFilters(new InputFilter[] {
                 new InputFilter() {
                     @Override
                     public CharSequence filter(CharSequence cs, int start,
@@ -97,7 +94,7 @@ public class SignUp extends AppCompatActivity {
                     }
                 }
         });
-        inputLastName.setFilters(new InputFilter[] {
+        txtLastName.setFilters(new InputFilter[] {
                 new InputFilter() {
                     @Override
                     public CharSequence filter(CharSequence cs, int start,
@@ -113,10 +110,10 @@ public class SignUp extends AppCompatActivity {
                     }
                 }
         });
-
+        //11 digits only for contact edittext
         InputFilter[] filterArray = new InputFilter[1];
         filterArray[0] = new InputFilter.LengthFilter(11);
-        inputContact.setFilters(filterArray);
+        txtContact.setFilters(filterArray);
 
 
     }
@@ -125,12 +122,12 @@ public class SignUp extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                first = inputFirstName.getText().toString();
-                last= inputLastName.getText().toString();
-                email = inputEmailSignUp.getText().toString();
-                pass= inputPasswordSignUp.getText().toString();
-                contact = inputContact.getText().toString();
-                confirm = inputConfirm.getText().toString();
+                first = txtFirstName.getText().toString();
+                last= txtLastName.getText().toString();
+                email = txtEmailSignUp.getText().toString();
+                pass= txtPasswordSignUp.getText().toString();
+                contact = txtContact.getText().toString();
+                confirm = txtConfirmPass.getText().toString();
 
                 if(first.trim().isEmpty() || last.trim().isEmpty() || email.trim().isEmpty() || pass.trim().isEmpty() || contact.trim().isEmpty()){
                     Toast.makeText(SignUp.this, "Please insert all necessary details.", Toast.LENGTH_SHORT).show();
@@ -147,7 +144,8 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
-        inputPasswordSignUp.addTextChangedListener(new TextWatcher() {
+    //password eye will be visible if the password editText has a value. Otherwise, it will be hidden
+        txtPasswordSignUp.addTextChangedListener(new TextWatcher() {
 
             @Override
             public void afterTextChanged(Editable s) {}
@@ -160,16 +158,18 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if(s.length() != 0)
-                   inputConfirm.setEnabled(true);
+                if(s.length() != 0) {
+                    txtConfirmPass.setEnabled(true);
+                }
                 else{
-                    inputConfirm.setEnabled(false);
+                    txtConfirmPass.setEnabled(false);
                 }
             }
         });
 
     }
-
+    //since di ako nakaconnect sa db. Nagtesting lang ako magpass ng data as argument then un method na ito will be called in profileCustomer fragment
+    //i will fix pa un Ui ng profileCustomer fragment
     public static Bundle passDataIntoProfile(){
         Bundle args = new Bundle();
         args.putString("profileFirstName", first);

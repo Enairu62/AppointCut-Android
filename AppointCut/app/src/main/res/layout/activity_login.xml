@@ -8,7 +8,7 @@
     tools:context=".Login">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewBackXML"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineImage2"
@@ -17,56 +17,55 @@
         app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineImage"
         app:srcCompat="@drawable/appointcutlogo" />
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/border_plaintext"
-        android:hint="Username"
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineUserName2"
         app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLine"
         app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineUserName1"
-        app:endIconMode="clear_text">
+        app:endIconMode="clear_text"
+        app:hintEnabled="false">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtUsernameXML"
+        <EditText
+            android:id="@+id/txtEmailAddXML"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent"
+            android:background="@drawable/border_plaintext"
+            android:hint="Email Address"
+            android:paddingLeft="10dp"
+            android:inputType="textEmailAddress"
+            android:paddingRight="10dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <!--<EditText
-        android:id="@+id/inputUsername"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/border_plaintext"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="textEmailAddress"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineUserName2"
-        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
-        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineUserName1" />-->
 
-    <EditText
-        android:id="@+id/inputPassword"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutPassXML"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/border_plaintext"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        app:endIconMode="password_toggle"
+        app:hintEnabled="false"
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLinePass2"
         app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLine"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLinePass1" />
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLinePass1">
+
+        <EditText
+            android:id="@+id/txtPasswordXML"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border_plaintext"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnLoginXML"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/black"
@@ -80,7 +79,7 @@
         app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineLogin1" />
 
     <TextView
-        android:id="@+id/linkSignUp"
+        android:id="@+id/linkSignUpXML"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Not a member? Signup now"

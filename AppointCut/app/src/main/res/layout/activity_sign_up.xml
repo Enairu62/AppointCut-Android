@@ -7,7 +7,7 @@
     tools:context=".SignUp">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageViewBackXML"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineArrow2"
@@ -26,72 +26,100 @@
         app:layout_constraintTop_toTopOf="@id/horizontalGuideLineImage"
         app:srcCompat="@drawable/appointcutlogo" />
 
-    <EditText
-        android:id="@+id/inputFirstName"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/border_plaintext"
-        android:ems="10"
-        android:hint="First Name"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineFirstAndLast2"
         app:layout_constraintEnd_toEndOf="@+id/verticalGuideLineFirstName2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLineFirstName"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineFirstAndLast1" />
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineFirstAndLast1"
+        app:endIconMode="clear_text"
+        app:hintEnabled="false">
 
     <EditText
-        android:id="@+id/inputLastName"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/txtFirstNameXML"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@drawable/border_plaintext"
-        android:ems="10"
-        android:hint="Last Name"
+        android:hint="First Name"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:paddingRight="10dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineFirstAndLast2"
         app:layout_constraintEnd_toEndOf="@+id/verticalGuideLineLastName2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLineLastName1"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineFirstAndLast1" />
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineFirstAndLast1"
+        app:endIconMode="clear_text"
+        app:hintEnabled="false">
 
     <EditText
-        android:id="@+id/inputEmailSignUp"
+        android:id="@+id/txtLastNameXML"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_plaintext"
+        android:hint="Last Name"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/border_plaintext"
-        android:ems="10"
-        android:hint="Email Address"
-        android:inputType="textEmailAddress"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineUserName2"
         app:layout_constraintEnd_toEndOf="@id/verticalGuideLineImage2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLineImage"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineUserName1" />
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineUserName1"
+        app:endIconMode="clear_text"
+        app:hintEnabled="false">
 
     <EditText
-        android:id="@+id/inputContact"
+        android:id="@+id/txtEmailSignUpXML"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_plaintext"
+        android:hint="Email Address"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/border_plaintext"
-        android:ems="10"
-        android:hint="Contact"
-        android:inputType="number"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLinePass2"
         app:layout_constraintEnd_toEndOf="@id/verticalGuideLineImage2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLineImage"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLinePass1" />
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLinePass1"
+        app:endIconMode="clear_text"
+        app:hintEnabled="false">
 
     <EditText
-        android:id="@+id/inputPasswordSignUp"
+        android:id="@+id/txtContactXML"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_plaintext"
+        android:hint="Contact"
+        android:inputType="number"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <EditText
+        android:id="@+id/txtPasswordSignUpXML"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_plaintext"
-        android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         android:paddingLeft="10dp"
@@ -99,14 +127,14 @@
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineContact2"
         app:layout_constraintEnd_toEndOf="@id/verticalGuideLineImage2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLineImage"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineContact1" />
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineContact1"/>
+
 
     <EditText
-        android:id="@+id/inputConfirmSignUp"
+        android:id="@+id/txtConfirmPassXML"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/border_plaintext"
-        android:ems="10"
         android:enabled="false"
         android:hint="Confirm Password"
         android:inputType="textPassword"
@@ -115,10 +143,11 @@
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineEmail2"
         app:layout_constraintEnd_toEndOf="@id/verticalGuideLineImage2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLineImage"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineEmail1" />
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineEmail1"/>
+
 
     <Button
-        android:id="@+id/btnRegister"
+        android:id="@+id/btnRegisterXML"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/black"
