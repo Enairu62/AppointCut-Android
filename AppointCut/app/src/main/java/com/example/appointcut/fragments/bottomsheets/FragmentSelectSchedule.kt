@@ -15,6 +15,8 @@ import com.example.appointcut.R
 import com.example.appointcut.converters.AppointmentToWeekViewEventConverter
 import com.example.appointcut.models.Barber
 import com.example.appointcut.network.ApcService
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import fragments.BottomSheetFragmentAppointmentDetails
 import fragments.BottomSheetFragmentSelectBarber
@@ -39,6 +41,11 @@ class FragmentSelectSchedule(private val barber: Barber) : BottomSheetDialogFrag
             BottomSheetFragmentAppointmentDetails()
         val weekView: WeekView = view.findViewById(R.id.weekView)
 
+        (this.dialog as BottomSheetDialog).behavior.apply {
+            isHideable = false
+            peekHeight = BottomSheetBehavior.PEEK_HEIGHT_AUTO
+            isDraggable = false
+        }
 
         btnBack.setOnClickListener {
             dismiss()
@@ -69,8 +76,9 @@ class FragmentSelectSchedule(private val barber: Barber) : BottomSheetDialogFrag
                 val timePickerListener = TimePickerDialog.OnTimeSetListener { timePicker, i, i2 ->
 
                 }
+                val roundedMinute = 15*(Math.round(it.get(Calendar.MINUTE).toDouble()/15))
                 TimePickerDialog(requireContext(),timePickerListener
-                ,it.get(Calendar.HOUR),it.get(Calendar.MINUTE),false)
+                ,it.get(Calendar.HOUR),roundedMinute.toInt(),false)
                     .show()
             }
 

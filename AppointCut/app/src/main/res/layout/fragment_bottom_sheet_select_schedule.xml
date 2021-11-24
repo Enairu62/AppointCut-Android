@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@id/horizontalLine"
         app:noOfVisibleDays="3"
         app:hourHeight="100dp"
-        app:hourSeparatorHeight="8dp"
+        app:hourSeparatorHeight="2dp"
         app:pastBackgroundColor="@color/black"/>
 
     <Button
