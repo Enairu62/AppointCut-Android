@@ -23,7 +23,7 @@ import com.example.appointcut.network.NetworkJava;
 import java.util.ArrayList;
 
 import DataModels.DataModelBarberShop;
-import DataModels.Shop;
+import com.example.appointcut.models.Shop;
 import MyAdapters.MyAdapterBarberShop;
 
 /**
@@ -89,6 +89,7 @@ public class FragmentFindBarberShop extends Fragment implements MyAdapterBarberS
             ShopAdapter adapter = new ShopAdapter(list,navController);
             recyclerView.setAdapter(adapter);
         }catch (Exception e){
+            Log.e("FindShopJava", e.toString(),e);
             Toast.makeText(getContext(), "Unable to load Barbershops", Toast.LENGTH_SHORT).show();
         }
         return view;

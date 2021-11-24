@@ -3,7 +3,6 @@ package MyAdapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,7 +14,7 @@ import com.example.appointcut.R;
 import java.util.List;
 
 import DataModels.DataModelBarberShop;
-import DataModels.Shop;
+import com.example.appointcut.models.Shop;
 
 public class MyAdapterBarberShop extends RecyclerView.Adapter<MyAdapterBarberShop.MyViewHolder>{
 

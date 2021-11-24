@@ -1,8 +1,6 @@
 package com.example.appointcut.network
 
-import DataModels.Shop
-import DataModels.ShopService
-import DataModels.User
+import com.example.appointcut.models.*
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
@@ -24,13 +22,27 @@ private val retrofit = Retrofit.Builder()
 interface ApcServiceInterface {
     @GET("rest/token/{email}-{pw}")
     suspend fun getToken(@Path("email") email: String,
-        @Path("pw") pw: String):User
+        @Path("pw") pw: String): User
 
     @GET("rest/shops")
     suspend fun getShops(): List<Shop>
 
     @GET("rest/shops/services/{id}")
     suspend fun getShopServices(@Path("id") id: Int): List<ShopService>
+
+    @GET("rest/barbers/withshopservice/{id}")
+    suspend fun  getSpecializationWithService(@Path("id") id: Int):
+            List<EmployeeSpecialization>
+
+    @GET("rest/barbers/{id}")
+    suspend fun getBarber(@Path("id") id: Int): Barber
+
+    @GET("rest/barbers/schedule/{id}-{month}-{year}")
+    suspend fun getBarberScheduleForMonthYear(
+        @Path("id") id: Int,
+        @Path("month") month: Int,
+        @Path("year") year: Int
+    ): List<Appointment>
 }
 
 object ApcService {

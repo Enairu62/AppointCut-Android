@@ -1,4 +1,4 @@
-package DataModels
+package com.example.appointcut.models
 
 /**
  * @property authStatus Type of user or invalid input

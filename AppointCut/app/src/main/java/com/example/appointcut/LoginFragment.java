@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.example.appointcut.file.UserFile;
 import com.example.appointcut.network.NetworkJava;
 
-import DataModels.User;
+import com.example.appointcut.models.User;
 
 public class LoginFragment extends AppCompatActivity {
 

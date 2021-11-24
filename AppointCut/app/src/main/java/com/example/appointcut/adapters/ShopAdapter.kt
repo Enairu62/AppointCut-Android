@@ -1,6 +1,6 @@
 package com.example.appointcut.adapters
 
-import DataModels.Shop
+import com.example.appointcut.models.Shop
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup

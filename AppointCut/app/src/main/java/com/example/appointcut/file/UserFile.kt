@@ -1,8 +1,7 @@
 package com.example.appointcut.file
 
-import DataModels.User.Companion.AuthStatus
-import DataModels.User
-import android.R
+import com.example.appointcut.models.User.Companion.AuthStatus
+import com.example.appointcut.models.User
 import android.content.Context
 import android.util.Log
 import org.json.JSONObject
@@ -49,7 +48,7 @@ object UserFile {
      * @param context context of the activity
      * @return User data saved in file
      */
-    fun read(context: Context):User?{
+    fun read(context: Context): User?{
         var user: User?
         try{
             //get the file

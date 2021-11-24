@@ -47,24 +47,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="380dp"
+    <com.alamkanak.weekview.WeekView
+        android:id="@+id/weekView"
+        android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="10dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalLine"
-        app:srcCompat="@drawable/selecttimeandday" />
-
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/horizontalLine"
+        app:noOfVisibleDays="3"
+        app:hourHeight="100dp"
+        app:hourSeparatorHeight="8dp"
+        app:pastBackgroundColor="@color/black"/>
 
     <Button
         android:id="@+id/btnBack"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="31dp"
         android:backgroundTint="@color/yellow"
         android:padding="15dp"
         android:text="Back"
@@ -72,13 +71,13 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/weekView" />
 
     <Button
         android:id="@+id/btnNext"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="31dp"
         android:layout_marginEnd="50dp"
         android:backgroundTint="@color/yellow"
         android:padding="15dp"
@@ -87,6 +86,6 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/weekView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

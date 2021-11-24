@@ -36,7 +36,7 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:backgroundTint="@color/black"
         android:text="Hair"
@@ -79,20 +79,6 @@
         app:layout_constraintEnd_toEndOf="@+id/verticalGuideLineButton4"
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineButton4"
         app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineButton3"/>
-
-    <Button
-        android:id="@+id/btnNext"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="@color/yellow"
-        android:text="Next"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/verticalGuideLineButton5"
-        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLineButton6"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineButton4"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineButton3" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/verticalGuideLine1"

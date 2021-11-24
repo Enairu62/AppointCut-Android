@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import DataModels.DataModelSelectBarber;
+import com.example.appointcut.models.ShopService;
 import MyAdapters.MyAdapterSelectBarber;
 import com.example.appointcut.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -27,9 +28,18 @@ public class BottomSheetFragmentSelectBarber extends BottomSheetDialogFragment{
 
     RecyclerView recyclerView;
     private ArrayList<DataModelSelectBarber> list = new ArrayList<>();
+    private ShopService shopService;
 
     public BottomSheetFragmentSelectBarber() {
         // Required empty public constructor
+    }
+
+    /**
+     * Creates a new Select Barber Fragment with a given Shop Service
+     * @param shopService Shop Service chosen by the user
+     */
+    public BottomSheetFragmentSelectBarber(ShopService shopService){
+        this.shopService = shopService;
     }
 
     /**
@@ -57,6 +67,7 @@ public class BottomSheetFragmentSelectBarber extends BottomSheetDialogFragment{
         View view =  inflater.inflate(R.layout.fragment_bottom_sheet_select_barber, container, false);
         Button btnBack = (Button) view.findViewById(R.id.btnBack);
         Button btnNext = (Button) view.findViewById(R.id.btnNext);
+        Button btn = (Button) view.findViewById(R.id.button);
 
         BottomSheetDialogFragment  bottomSheetFragmentSelectServices = new BottomSheetFragmentSelectServices();
         BottomSheetDialogFragment  bottomSheetFragmentSelectSchedule = new BottomSheetFragmentSelectSchedule();
@@ -76,6 +87,9 @@ public class BottomSheetFragmentSelectBarber extends BottomSheetDialogFragment{
                 bottomSheetFragmentSelectSchedule.show(getActivity().getSupportFragmentManager(), bottomSheetFragmentSelectSchedule.getTag());
             }
         });
+        //change category text
+        btn.setText(shopService.getName());
+
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());

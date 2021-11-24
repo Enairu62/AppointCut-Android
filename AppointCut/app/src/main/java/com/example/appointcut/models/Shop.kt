@@ -1,4 +1,4 @@
-package DataModels
+package com.example.appointcut.models
 
 import com.squareup.moshi.Json
 
@@ -11,7 +11,7 @@ class Shop(
     val name: String,
     @Json(name = "Address")
     val address: String,
-    @Json(name = "Contact")
+    @Json(name = "ShopContact")
     val contact: String,
     @Json(name = "Email")
     val email: String,

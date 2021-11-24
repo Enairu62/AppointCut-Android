@@ -26,7 +26,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-import fragments.kotlin.FragmentSelectService;
+import com.example.appointcut.fragments.FragmentSelectService;
 
 /**
  * A simple {@link Fragment} subclass.
