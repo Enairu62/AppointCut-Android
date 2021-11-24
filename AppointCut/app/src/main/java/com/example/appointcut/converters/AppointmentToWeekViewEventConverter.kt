@@ -25,10 +25,10 @@ object AppointmentToWeekViewEventConverter {
 
         //create the calendar objects
         val startTime = GregorianCalendar().apply{
-            set(year,month-1,day+1,startHour,startMinute)
+            set(year,month-1,day,startHour,startMinute)
         }
         val endTime = GregorianCalendar().apply {
-            set(year,month-1,day+1,endHour,endMinute)
+            set(year,month-1,day,endHour,endMinute)
         }
         Log.d("Converter","${startTime.time}")
 
