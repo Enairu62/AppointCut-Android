@@ -9,8 +9,8 @@ import androidx.navigation.NavDirections
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.appointcut.databinding.RecyclerRowBarbershopBinding
+import com.example.appointcut.fragments.FragmentFindShopDirections
 import com.example.appointcut.network.BASE_URL
-import fragments.FragmentFindBarberShopDirections
 
 /**
  * Adapter for Shop Data Class
@@ -55,7 +55,7 @@ class ShopAdapter(private val shops: List<Shop>,
             val contact = shop.contact
             val rating = shop.rating
 
-            val action: NavDirections = FragmentFindBarberShopDirections
+            val action: NavDirections = FragmentFindShopDirections
                 .actionFragmentFindBarberShopToFragmentBarberShopMap(name, address, contact, rating, id)
             navController.navigate(action)
         }
