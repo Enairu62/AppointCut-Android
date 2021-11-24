@@ -81,7 +81,7 @@ public class FragmentFindBarberShop extends Fragment implements MyAdapterBarberS
         recyclerView.setLayoutManager(layoutManager);
 
         try{
-            list = NetworkJava.INSTANCE.getShop();
+            list = new ArrayList<>(NetworkJava.INSTANCE.getShop());
             Log.d("FragmentShop", list.size()+"");
             NavController navController =
                     (NavController) Navigation

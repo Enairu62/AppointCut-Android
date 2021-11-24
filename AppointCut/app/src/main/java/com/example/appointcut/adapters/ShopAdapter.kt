@@ -20,6 +20,7 @@ import fragments.FragmentFindBarberShopDirections
 class ShopAdapter(private val shops: List<Shop>,
                   private var navController: NavController): RecyclerView.Adapter<ShopAdapter.ShopHolder>() {
 
+
     /**
      * Holder for the Shop data class
      * @param binding View binding used by the holder

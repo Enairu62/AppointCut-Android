@@ -37,12 +37,15 @@ interface ApcServiceInterface {
     @GET("rest/barbers/{id}")
     suspend fun getBarber(@Path("id") id: Int): Barber
 
-    @GET("rest/barbers/schedule/{id}-{month}-{year}")
-    suspend fun getBarberScheduleForMonthYear(
+    @GET("rest/barbers/appointments/{id}-{month}-{year}")
+    suspend fun getBarberAppointmentsForMonthYear(
         @Path("id") id: Int,
         @Path("month") month: Int,
         @Path("year") year: Int
     ): List<Appointment>
+
+    @GET("rest/barbers/schedule/{id}")
+    suspend fun getBarberSchedule(@Path("id") barberId: Int): MutableList<Schedule>
 }
 
 object ApcService {

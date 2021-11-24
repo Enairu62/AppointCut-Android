@@ -4,10 +4,12 @@ import android.graphics.Color
 import android.util.Log
 import com.alamkanak.weekview.WeekViewEvent
 import com.example.appointcut.models.Appointment
+import com.example.appointcut.models.Schedule
 import java.util.*
 
-object AppointmentToWeekViewEventConverter {
-    fun convertToBasic(appointment: Appointment, eventId: Int, eventName: String): WeekViewEvent{
+object ToWeekViewEventConverter {
+    fun fromBasicAppointment(appointment: Appointment, eventId: Int, eventName: String)
+    : WeekViewEvent{
         //split the values
         val dateSplit = appointment.date.split('-')
         val startTimeSplit = appointment.timeIn.split(':')
@@ -32,6 +34,26 @@ object AppointmentToWeekViewEventConverter {
         }
         Log.d("Converter","${startTime.time}")
 
-        return WeekViewEvent(eventId.toLong(),eventName,startTime,endTime).apply { color = Color.RED }
+
+        val event =  WeekViewEvent(eventId.toLong(),eventName,startTime,endTime)
+        event.color = Color.RED
+        return  event
     }
+
+    /**
+     * Converts given schedule into a WeekViewEvent
+     * @param schedule Schedule to be converted
+     * @param eventId Id of the resulting event
+     * @param eventName Name of the resulting event
+     * @returns WeekViewEvent of a given Schedule
+     */
+//    fun convertFromSchedule(schedule: Schedule, eventId: Int, eventName: String)
+//    :List<WeekViewEvent>{
+//        val calendar = GregorianCalendar()
+//        //get the header event
+//        //00:00 til timein
+//
+//        //get the footer event
+//        //time out til 2400
+//    }
 }

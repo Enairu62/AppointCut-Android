@@ -1,18 +1,20 @@
 package com.example.appointcut.fragments.bottomsheets
 
 import android.app.TimePickerDialog
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import com.alamkanak.weekview.WeekView
 import com.alamkanak.weekview.WeekViewEvent
 import com.example.appointcut.R
-import com.example.appointcut.converters.AppointmentToWeekViewEventConverter
+import com.example.appointcut.converters.ToWeekViewEventConverter
 import com.example.appointcut.models.Barber
 import com.example.appointcut.network.ApcService
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -20,6 +22,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import fragments.BottomSheetFragmentAppointmentDetails
 import fragments.BottomSheetFragmentSelectBarber
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import java.util.*
 
@@ -41,6 +44,7 @@ class FragmentSelectSchedule(private val barber: Barber) : BottomSheetDialogFrag
             BottomSheetFragmentAppointmentDetails()
         val weekView: WeekView = view.findViewById(R.id.weekView)
 
+        //change the behavior of this dialog
         (this.dialog as BottomSheetDialog).behavior.apply {
             isHideable = false
             peekHeight = BottomSheetBehavior.PEEK_HEIGHT_AUTO
@@ -62,19 +66,31 @@ class FragmentSelectSchedule(private val barber: Barber) : BottomSheetDialogFrag
             )
         }
 
-
+        //configure the weekView
+        val arm = WeekViewRequestManager(viewLifecycleOwner,weekView)
         weekView.apply {
-            val arm = AppointmentRequestManager(viewLifecycleOwner,weekView)
             setMonthChangeListener { newYear, newMonth ->
-                arm.requestAppointmentDetails(barber,newYear,newMonth)
+                Log.d("SelectShedule", "Month Change Triggered for $newYear, $newMonth")
+                val events = mutableListOf<WeekViewEvent>()
+                //request for the appointments
+                events.addAll(arm.requestBarberTimeTable(barber,newYear,newMonth))
+                //get the barber's schedule
+
+                events
             }
 
-            setOnEventClickListener { event, eventRect ->  }
+            //customer can't pick events
+            setOnEventClickListener { _, _ ->
+                Toast.makeText(requireContext(),"Time slot is taken", Toast.LENGTH_LONG)
+                    .show()
+            }
 
+            //customer selects a free slot
             setEmptyViewClickListener {
                 Log.d("FragmentSelectSchedule", "${it.get(Calendar.DATE)}, ${it.time}")
                 val timePickerListener = TimePickerDialog.OnTimeSetListener { timePicker, i, i2 ->
-
+                    Toast.makeText(requireContext(),"Selected $i:$i2 time Slot", Toast.LENGTH_LONG)
+                        .show()
                 }
                 val roundedMinute = 15*(Math.round(it.get(Calendar.MINUTE).toDouble()/15))
                 TimePickerDialog(requireContext(),timePickerListener
@@ -87,42 +103,104 @@ class FragmentSelectSchedule(private val barber: Barber) : BottomSheetDialogFrag
         return view
     }
 
-    private class AppointmentRequestManager(private val lifecycleOwner: LifecycleOwner,
-        private val weekView: WeekView){
-        private val requests = mutableMapOf<String,List<WeekViewEvent>>()
+    /**
+     * Manages the requests made by the Week View
+     */
+    private class WeekViewRequestManager(private val lifecycleOwner: LifecycleOwner,
+                                         private val weekView: WeekView){
+        private val requests = mutableMapOf<String,MutableList<WeekViewEvent>>()
 
-        fun requestAppointmentDetails(barber: Barber,year: Int,month: Int)
+        fun requestBarberTimeTable(barber: Barber, year: Int, month: Int)
         : List<WeekViewEvent>{
             //if key exists, return contents
             if (requests.containsKey("${barber.id}${year}${month}")) {
                 return requests["${barber.id}${year}${month}"]!!
             }
-            //otherwise, add to map then get
+            //otherwise, add to map then get from server
             else{
-                requests["${barber.id}${year}${month}"] = listOf()
+                requests["${barber.id}${year}${month}"] = mutableListOf()
                 lifecycleOwner.lifecycleScope.launch {
-                    requests["${barber.id}${year}${month}"] =
+
+
+                    //get and add events
+                    requests["${barber.id}${year}${month}"]!!.addAll(
                         getBarberAppointmentAsWeekViewEvent(barber, year, month)
+                    )
+                    //add off time
+                    requests["${barber.id}${year}${month}"]!!.addAll(
+                        getBarberOffEvents(barber, year, month)
+                    )
+                    Log.d("FragmentSelectSchedule","retrieved events for ${barber.id}-${year}-${month}")
                     weekView.notifyDatasetChanged()
                 }
             }
             return requests["${barber.id}${year}${month}"]!!
         }
 
+        private suspend fun getBarberOffEvents(barber: Barber, year: Int, month: Int):
+                List<WeekViewEvent> {
+            //populate barber schedule
+            barber.fillSchedule()
+            //initialize list to be returned
+            val offEvents = mutableListOf<WeekViewEvent>()
+            //make the calendar
+            val calendar = GregorianCalendar(year, month, 1)
+            //while still in wanted month
+            while (calendar.get(Calendar.MONTH) == month){
+                //get the schedule for this day of week
+                barber.getDaySchedule(calendar.get(Calendar.DAY_OF_WEEK))?.also {
+                    //separate the times
+                    val timeIn = it.timeIn.split(':')
+                    val timeOut = it.timeOut.split(':')
+
+                    //before shift
+                    val headStart = GregorianCalendar(year,
+                        month, calendar.get(Calendar.DAY_OF_MONTH),0,0)
+                    val headEnd = GregorianCalendar(year,
+                        month, calendar.get(Calendar.DAY_OF_MONTH),
+                        timeIn[0].toInt(),timeIn[1].toInt())
+
+                    //after shift
+                    val footerStart = GregorianCalendar(year,
+                        month, calendar.get(Calendar.DAY_OF_MONTH),
+                        timeOut[0].toInt(),timeOut[1].toInt())
+                    val footerEnd = GregorianCalendar(year,
+                        month, calendar.get(Calendar.DAY_OF_MONTH),
+                        24,0)
+
+                    //add the events
+                    offEvents.add(
+                        WeekViewEvent(0,"",headStart,headEnd).also{
+                            it.color = Color.BLACK
+                        }
+                    )
+                    offEvents.add(
+                        WeekViewEvent(0,"",footerStart,footerEnd).also{
+                            it.color = Color.BLACK
+                        }
+                    )
+                }
+                //increment by one day
+                calendar.add(Calendar.DATE, 1)
+            }
+
+            return offEvents
+        }
+
         private suspend fun getBarberAppointmentAsWeekViewEvent(barber: Barber
                                                                 , year: Int, month: Int)
-                :List<WeekViewEvent> {
+                :MutableList<WeekViewEvent> {
             val weekViewEvent = mutableListOf<WeekViewEvent>()
             Log.d("FragmentSelectSchedule", "get barber apts called")
             //get the appointments
             val appointments = ApcService.retrofitService
-                .getBarberScheduleForMonthYear(
+                .getBarberAppointmentsForMonthYear(
                     barber.id, month, year
                 )
             //convert the appointments
             for (apt in appointments) {
-                val event = AppointmentToWeekViewEventConverter
-                    .convertToBasic(apt, 0, "")
+                val event = ToWeekViewEventConverter
+                    .fromBasicAppointment(apt, 0, "")
                 Log.d("SelectSchedule", "${event.startTime.time}")
                 weekViewEvent.add(
                     event
