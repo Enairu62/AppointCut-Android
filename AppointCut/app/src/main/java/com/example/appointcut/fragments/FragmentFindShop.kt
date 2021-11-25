@@ -21,11 +21,7 @@ import com.example.appointcut.models.Shop
 import com.example.appointcut.network.NetworkJava.getShop
 import java.util.*
 
-/**
- * A simple [Fragment] subclass.
- * Use the [FragmentFindShop.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class FragmentFindShop : Fragment(), MyAdapterBarberShop.ItemClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,7 +53,7 @@ class FragmentFindShop : Fragment(), MyAdapterBarberShop.ItemClickListener {
         val layoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = layoutManager
         try {
-            var list = getShop()
+            val list = getShop()
             Log.d("FragmentShop", list.size.toString() + "")
             val adapter = ShopAdapter(
                 list, Navigation
@@ -81,17 +77,5 @@ class FragmentFindShop : Fragment(), MyAdapterBarberShop.ItemClickListener {
 //        NavDirections action = FragmentFindBarberShopDirections
 //                .actionFragmentFindBarberShopToFragmentBarberShopMap();
 //        navController.navigate(action);
-    }
-
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         * @return A new instance of fragment FragmentFindBarberShop.
-         */
-        // TODO: Rename and change types and number of parameters
-        fun newInstance(): FragmentFindShop {
-            return FragmentFindShop()
-        }
     }
 }
