@@ -40,8 +40,6 @@ class FragmentSelectSchedule(private val barber: Barber) : BottomSheetDialogFrag
         val btnNext = view.findViewById<View>(R.id.btnNext) as Button
         val bottomSheetFragmentSelectBarber: BottomSheetDialogFragment =
             BottomSheetFragmentSelectBarber()
-        val bottomSheetFragmentAppointmentDetails: BottomSheetDialogFragment =
-            BottomSheetFragmentAppointmentDetails()
         val weekView: WeekView = view.findViewById(R.id.weekView)
 
         //change the behavior of this dialog
@@ -58,49 +56,64 @@ class FragmentSelectSchedule(private val barber: Barber) : BottomSheetDialogFrag
                 bottomSheetFragmentSelectBarber.tag
             )
         }
-        btnNext.setOnClickListener {
-            dismiss()
-            bottomSheetFragmentAppointmentDetails.show(
-                requireActivity().supportFragmentManager,
-                bottomSheetFragmentAppointmentDetails.tag
-            )
-        }
+        btnNext.setOnClickListener { nextFragment() }
 
         //configure the weekView
         val arm = WeekViewRequestManager(viewLifecycleOwner,weekView)
         weekView.apply {
-            setMonthChangeListener { newYear, newMonth ->
-                Log.d("SelectShedule", "Month Change Triggered for $newYear, $newMonth")
-                val events = mutableListOf<WeekViewEvent>()
-                //request for the appointments
-                events.addAll(arm.requestBarberTimeTable(barber,newYear,newMonth))
-                //get the barber's schedule
 
-                events
+            setMonthChangeListener { newYear, newMonth ->
+                Log.d("SelectSchedule", "Month Change Triggered for $newYear, $newMonth")
+                //request for the barbers time table
+                arm.requestBarberTimeTable(barber,newYear,newMonth)
             }
 
             //customer can't pick events
             setOnEventClickListener { _, _ ->
-                Toast.makeText(requireContext(),"Time slot is taken", Toast.LENGTH_LONG)
+                Toast.makeText(requireContext(),"Time slot is unavailable", Toast.LENGTH_LONG)
                     .show()
             }
 
             //customer selects a free slot
-            setEmptyViewClickListener {
-                Log.d("FragmentSelectSchedule", "${it.get(Calendar.DATE)}, ${it.time}")
-                val timePickerListener = TimePickerDialog.OnTimeSetListener { timePicker, i, i2 ->
-                    Toast.makeText(requireContext(),"Selected $i:$i2 time Slot", Toast.LENGTH_LONG)
-                        .show()
-                }
-                val roundedMinute = 15*(Math.round(it.get(Calendar.MINUTE).toDouble()/15))
-                TimePickerDialog(requireContext(),timePickerListener
-                ,it.get(Calendar.HOUR),roundedMinute.toInt(),false)
-                    .show()
-            }
+            emptyViewClickListener = selectTimeSlot
+            goToHour(12.0)
 
         }
 
         return view
+    }
+
+    //Listener for when the customer selects an empty slot
+    private val selectTimeSlot = WeekView.EmptyViewClickListener {
+        //TODO: Implement checking for appointment conflicts
+        Log.d("FragmentSelectSchedule", "${it.get(Calendar.DATE)}, ${it.time}")
+        val timePickerListener = TimePickerDialog.OnTimeSetListener { timePicker, i, i2 ->
+            Toast.makeText(requireContext(),"Selected $i:$i2 time Slot", Toast.LENGTH_LONG)
+                .show()
+            nextFragment()
+        }
+        //round to 15 minute increments
+        var roundedMinute = 15*(Math.round(it.get(Calendar.MINUTE).toDouble()/15))
+        var hour = it.get(Calendar.HOUR_OF_DAY)
+        //TimePickerDialog does not like minute of 60
+        if (roundedMinute == 60.toLong()){
+            roundedMinute = 0
+            hour++
+        }
+        TimePickerDialog(requireContext(),timePickerListener
+            ,hour,roundedMinute.toInt(),false)
+            .show()
+
+    }
+
+    private fun nextFragment(){
+        val bottomSheetFragmentAppointmentDetails = BottomSheetFragmentAppointmentDetails()
+
+        dismiss()
+        bottomSheetFragmentAppointmentDetails.show(
+            requireActivity().supportFragmentManager,
+            bottomSheetFragmentAppointmentDetails.tag
+        )
     }
 
     /**
@@ -120,8 +133,6 @@ class FragmentSelectSchedule(private val barber: Barber) : BottomSheetDialogFrag
             else{
                 requests["${barber.id}${year}${month}"] = mutableListOf()
                 lifecycleOwner.lifecycleScope.launch {
-
-
                     //get and add events
                     requests["${barber.id}${year}${month}"]!!.addAll(
                         getBarberAppointmentAsWeekViewEvent(barber, year, month)
