@@ -11,8 +11,17 @@ class Appointment(
     @Json(name = "TimeOut")
     val timeOut: String
 ) {
-    public val date: String
+    val date: String
         get(){
             return _rawDate.substringBefore("T")
         }
+
+    @Json(name = "CustomerID") var customerID = 0
+    @Json(name = "ShopID") var shopId = 0
+    @Json(name = "EmployeeID") var employeeId = 0
+    @Json(name = "ShopServicesID") var shopServiceId = 0
+    @Json(name = "HaircutID") var haircutId = 0
+    var amountDue = 0.toDouble()
+    @Json(name = "appStatusID")var appStatusId = 0
+
 }
