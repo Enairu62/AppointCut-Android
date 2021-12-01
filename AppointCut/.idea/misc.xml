@@ -144,21 +144,34 @@
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/menu/nav_drawer_barber.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/menu/nav_drawer_customer.xml" value="0.1736842105263158" />
         <entry key="..\:/Brent jansen/AppointCut/app/src/main/res/mipmap-anydpi-v26/ic_launcher2.xml" value="0.10098684210526315" />
-        <entry key="app/src/main/res/layout/activity_home_page_customer.xml" value="0.20208333333333334" />
+        <entry key="app/src/main/res/drawable/ic_arrow_down.xml" value="0.215625" />
+        <entry key="app/src/main/res/drawable/ic_xclose_white.xml" value="0.215625" />
+        <entry key="app/src/main/res/layout/activity_home_page_customer.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_homepage_barber.xml" value="0.75" />
         <entry key="app/src/main/res/layout/activity_kotlin.xml" value="0.20208333333333334" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_payment.xml" value="0.19947916666666668" />
         <entry key="app/src/main/res/layout/content_kotlin.xml" value="0.115625" />
-        <entry key="app/src/main/res/layout/fragment_barber_shop_map.xml" value="0.19947916666666668" />
+        <entry key="app/src/main/res/layout/dialog_appointment_success.xml" value="0.19947916666666668" />
+        <entry key="app/src/main/res/layout/fragment_appointment.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_barber_shop_map.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_bottom_sheet_appointment_details.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_bottom_sheet_select_barber.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/fragment_bottom_sheet_select_schedule.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_bottom_sheet_select_services.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_find_barber_shop.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_bottom_sheet_select_schedule.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_bottom_sheet_select_services.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/fragment_find_barber_shop.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.20208333333333334" />
+        <entry key="app/src/main/res/layout/fragment_hair_complete_info.xml" value="0.19947916666666668" />
+        <entry key="app/src/main/res/layout/fragment_message.xml" value="0.1111111111111111" />
+        <entry key="app/src/main/res/layout/fragment_schedule.xml" value="0.9" />
         <entry key="app/src/main/res/layout/nav_drawer_header_customers.xml" value="0.20208333333333334" />
-        <entry key="app/src/main/res/layout/recycler_row_barbershop.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/recycler_row_schedule.xml" value="0.19947916666666668" />
+        <entry key="app/src/main/res/layout/payment_fragment.xml" value="0.17731481481481481" />
+        <entry key="app/src/main/res/layout/recycler_row_barbershop.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/recycler_row_schedule.xml" value="0.5" />
         <entry key="app/src/main/res/layout/recycler_row_selectbarber.xml" value="0.33" />
         <entry key="app/src/main/res/layout/recycler_row_selectservices.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/toolbar_customer.xml" value="0.20208333333333334" />
+        <entry key="app/src/main/res/layout/toolbar_barber.xml" value="2.0" />
+        <entry key="app/src/main/res/layout/toolbar_customer.xml" value="0.5984375" />
         <entry key="app/src/main/res/menu/nav_drawer_barber.xml" value="0.20208333333333334" />
         <entry key="app/src/main/res/menu/nav_drawer_customer.xml" value="0.20208333333333334" />
       </map>

@@ -6,7 +6,7 @@
     app:startDestination="@id/fragmentSchedule">
     <fragment
         android:id="@+id/fragmentSchedule"
-        android:name="fragments.FragmentSchedule"
+        android:name="online.appointcut.barberfragments.FragmentSchedule"
         android:label="fragment_schedule"
         tools:layout="@layout/fragment_schedule" />
     <fragment

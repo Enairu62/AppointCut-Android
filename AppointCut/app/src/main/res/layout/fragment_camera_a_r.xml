@@ -5,7 +5,7 @@
     android:id="@+id/fragmentCamera"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fragments.FragmentCameraAR">
+    tools:context="customerfragments.FragmentCameraAR">
 
     <View
         android:id="@+id/horizontalLine"

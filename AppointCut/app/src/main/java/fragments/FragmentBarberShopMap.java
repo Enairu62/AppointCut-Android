@@ -15,8 +15,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.appointcut.R;
+import online.appointcut.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -26,7 +27,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-import com.example.appointcut.fragments.FragmentSelectService;
+import online.appointcut.customerfragments.bottomsheets.FragmentSelectService;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,7 +43,8 @@ public class FragmentBarberShopMap extends Fragment {
     private String shopContact;
     private float shopRating;
     private int shopId;
-    private float mParam6;
+    private float shopLong;
+    private float shopLat;
 
 
     public FragmentBarberShopMap() {
@@ -69,7 +71,9 @@ public class FragmentBarberShopMap extends Fragment {
             shopContact = args.getContact();
             shopRating = args.getRating();
             shopId = args.getId();
-//            mParam6 = args.getBarbershopDistance();
+            shopLong = args.getLongi();
+            shopLat = args.getLat();
+
         }
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
@@ -105,17 +109,14 @@ public class FragmentBarberShopMap extends Fragment {
         TextView shopName = (TextView) view.findViewById(R.id.txtShopName);
         TextView shopAddress = (TextView) view.findViewById(R.id.txtShopAddress);
         TextView shopContact = (TextView) view.findViewById(R.id.txtShopContact);
-        TextView shopSched = (TextView) view.findViewById(R.id.txtShopSched);
-        RatingBar shopRating = (RatingBar) view.findViewById(R.id.shopRatingBar);
+        RatingBar shopRatingBar = (RatingBar) view.findViewById(R.id.shopRatingBar);
         TextView shopDistance = (TextView) view.findViewById(R.id.txtShopDistance);
 
         //set contents
         shopName.setText(this.shopName);
         shopAddress.setText(this.shopAddress);
         shopContact.setText(String.valueOf(this.shopContact));
-        shopSched.setText(this.shopRating+"");
-        shopRating.setRating(shopId);
-        shopDistance.setText(mParam6 + " km");
+        shopRatingBar.setRating(shopRating);
 
         //set onclick to button
         Button btnSetAppointment = view.findViewById(R.id.btnSetAppointment);
@@ -141,17 +142,17 @@ public class FragmentBarberShopMap extends Fragment {
         supportMapFragment.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap googleMap) {
-                googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-                    @Override
-                    public void onMapClick(LatLng latLng) {
-                        MarkerOptions markerOptions = new MarkerOptions();
-                        markerOptions.position(latLng);
-                        markerOptions.title(latLng.latitude + " " + latLng.longitude);
-                        googleMap.clear();
-                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10));
-                        googleMap.addMarker(markerOptions);
-                    }
-                });
+                if (shopLat == 0F || shopLong == 0F) {
+                    Toast.makeText(requireContext(),"Shop has no Coordinates given", Toast.LENGTH_LONG).show();
+                }else{
+                    LatLng latLng = new LatLng(shopLat, shopLong);
+                    MarkerOptions markerOptions = new MarkerOptions();
+                    markerOptions.position(latLng);
+                    markerOptions.title(latLng.latitude + " " + latLng.longitude);
+                    googleMap.clear();
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
+                    googleMap.addMarker(markerOptions);
+                }
             }
         });
     }

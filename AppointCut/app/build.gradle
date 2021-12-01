@@ -10,9 +10,9 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.example.appointcut"
+        applicationId "online.appointcut"
         minSdk 21
-        targetSdk 31
+        targetSdk 30
         versionCode 1
         versionName "1.0"
 
@@ -74,4 +74,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
     //Week view
     implementation 'com.github.alamkanak:android-week-view:1.2.6'
+    //Paypal
+    implementation 'com.paypal.checkout:android-sdk:0.2.0'
 }

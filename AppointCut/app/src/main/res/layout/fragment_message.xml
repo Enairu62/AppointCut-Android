@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawerLayout"
-    tools:context="fragments.FragmentMessage">
+    tools:context="customerfragments.FragmentMessage">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,7 +47,7 @@
                     app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineSearch1" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
+                    android:id="@+id/approvedRecycler"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineRecycler2"

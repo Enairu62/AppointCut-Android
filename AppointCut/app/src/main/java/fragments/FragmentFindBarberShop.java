@@ -16,14 +16,15 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.appointcut.R;
-import com.example.appointcut.adapters.ShopAdapter;
-import com.example.appointcut.network.NetworkJava;
+import online.appointcut.R;
+import online.appointcut.adapters.ShopAdapter;
+import online.appointcut.models.Appointment;
+import online.appointcut.network.NetworkJava;
 
 import java.util.ArrayList;
 
 import DataModels.DataModelBarberShop;
-import com.example.appointcut.models.Shop;
+import online.appointcut.models.Shop;
 import MyAdapters.MyAdapterBarberShop;
 
 /**
@@ -76,7 +77,7 @@ public class FragmentFindBarberShop extends Fragment implements MyAdapterBarberS
         Log.d("FragmentFindBarberShop", "onCreateView started");
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_find_barber_shop, container, false);
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.approvedRecycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
@@ -86,7 +87,9 @@ public class FragmentFindBarberShop extends Fragment implements MyAdapterBarberS
             NavController navController =
                     (NavController) Navigation
                             .findNavController(getActivity(),R.id.fragmentContainerView);
-            ShopAdapter adapter = new ShopAdapter(list,navController);
+            //TODO: this is not a todo, this is a warning, do not use this file
+            //TODO: Delete this file
+            ShopAdapter adapter = new ShopAdapter(list,navController, new Appointment());
             recyclerView.setAdapter(adapter);
         }catch (Exception e){
             Log.e("FindShopJava", e.toString(),e);

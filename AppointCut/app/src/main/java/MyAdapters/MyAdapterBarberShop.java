@@ -9,12 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.appointcut.R;
+import online.appointcut.R;
 
 import java.util.List;
 
 import DataModels.DataModelBarberShop;
-import com.example.appointcut.models.Shop;
+import online.appointcut.models.Shop;
 
 public class MyAdapterBarberShop extends RecyclerView.Adapter<MyAdapterBarberShop.MyViewHolder>{
 

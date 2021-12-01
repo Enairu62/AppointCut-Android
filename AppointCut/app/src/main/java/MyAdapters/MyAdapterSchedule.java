@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.appointcut.R;
+import online.appointcut.R;
 
 import java.util.List;
 
@@ -53,7 +53,6 @@ public class MyAdapterSchedule extends RecyclerView.Adapter<MyAdapterSchedule.My
             super(itemView);
             schedName = itemView.findViewById(R.id.txtSchedName);
             schedService = itemView.findViewById(R.id.txtSchedServices);
-            schedPrice = itemView.findViewById(R.id.txtSchedPrice);
             schedTime = itemView.findViewById(R.id.txtSchedRange);
             scheduleRowLayout = itemView.findViewById(R.id.scheduleRowLayout);
         }

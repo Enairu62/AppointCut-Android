@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -12,14 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.appointcut.R;
+import online.appointcut.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
 
-import DataModels.DataModelSelectBarber;
 import DataModels.DataModelSelectServices;
-import MyAdapters.MyAdapterSelectBarber;
 import MyAdapters.MyAdapterSelectService;
 
 /**
@@ -60,7 +57,6 @@ public class BottomSheetFragmentSelectServices extends BottomSheetDialogFragment
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_bottom_sheet_select_services, container, false);
         Button btnBack = (Button) view.findViewById(R.id.btnBack);
-        Button btnNext = (Button) view.findViewById(R.id.btnNext);
         BottomSheetDialogFragment bottomSheetFragmentSelectBarber = new BottomSheetFragmentSelectBarber();
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -70,15 +66,9 @@ public class BottomSheetFragmentSelectServices extends BottomSheetDialogFragment
             }
         });
 
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-                bottomSheetFragmentSelectBarber.show(getActivity().getSupportFragmentManager(), bottomSheetFragmentSelectBarber.getTag());
-            }
-        });
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.approvedRecycler);
         GridLayoutManager gridLayoutManager= new GridLayoutManager(getActivity(),3, GridLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(gridLayoutManager);
         MyAdapterSelectService adapter = new MyAdapterSelectService(list);

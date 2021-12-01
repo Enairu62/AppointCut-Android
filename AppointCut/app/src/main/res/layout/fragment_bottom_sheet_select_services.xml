@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bottomSheetServices"
     android:paddingBottom="15dp"
-    tools:context=".fragments.FragmentSelectService">
+    tools:context=".customerfragments.bottomsheets.FragmentSelectService">
 
     <TextView
         android:id="@+id/textView"
@@ -21,50 +21,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="20dp"
-        android:text="Services:"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/black"
-        android:text="Haircut"
-        android:textColor="@color/white"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
 
     <View
+        android:id="@+id/horizontalLine"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="15dp"
+        android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        android:background="@color/black"
-        android:layout_marginTop ="5dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:id ="@+id/horizontalLine"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/servicesRecycler"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
         app:layout_constraintTop_toBottomOf="@+id/horizontalLine" />
@@ -74,7 +49,7 @@
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="16dp"
         android:backgroundTint="@color/yellow"
         android:padding="15dp"
         android:text="Back"
@@ -82,22 +57,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
-
-    <Button
-        android:id="@+id/btnNext"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="50dp"
-        android:backgroundTint="@color/yellow"
-        android:padding="15dp"
-        android:text="Next"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
+        app:layout_constraintTop_toBottomOf="@+id/servicesRecycler" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/verticalGuideLine1"

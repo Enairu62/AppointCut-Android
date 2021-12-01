@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.appointcut.R;
+import online.appointcut.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 /**

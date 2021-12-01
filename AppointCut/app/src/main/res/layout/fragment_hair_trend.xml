@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fragments.FragmentHairTrend">
+    tools:context="customerfragments.FragmentHairTrend">
 
     <TextView
         android:id="@+id/lblFilters"
@@ -59,7 +59,7 @@
         app:layout_constraintTop_toBottomOf="@+id/horizontalLine" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/approvedRecycler"
         android:layout_width="match_parent"
         android:layout_height="650dp"
         android:layout_marginBottom="80dp"
