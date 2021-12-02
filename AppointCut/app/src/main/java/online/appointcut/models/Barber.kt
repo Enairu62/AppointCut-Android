@@ -17,7 +17,8 @@ class Barber(
         }
 
     suspend fun fillSchedule(){
-        _schedule = ApcService.retrofitService.getBarberSchedule(id)
+        if (_schedule == null)
+            _schedule = ApcService.retrofitService.getBarberSchedule(id)
     }
 
     /**

@@ -37,6 +37,7 @@ allprojects {
             }
         }
         mavenLocal()
+        maven { url 'https://jitpack.io' }
     }
 
     configurations.all {

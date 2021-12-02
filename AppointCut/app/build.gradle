@@ -73,7 +73,8 @@ dependencies {
     //Lifecycle scope
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.0'
     //Week view
-    implementation 'com.github.alamkanak:android-week-view:1.2.6'
+//    implementation 'com.github.alamkanak:android-week-view:1.2.6'
+    implementation 'com.github.thellmund.Android-Week-View:core:5.2.4'
     //Paypal
     implementation 'com.paypal.checkout:android-sdk:0.2.0'
 }
