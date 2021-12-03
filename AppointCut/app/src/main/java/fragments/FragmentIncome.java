@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import DataModels.DataModelIncome;
 
 import MyAdapters.MyAdapterIncome;
-import com.example.appointcut.R;
+import online.appointcut.R;
 
 import java.util.ArrayList;
 
@@ -70,7 +70,7 @@ public class FragmentIncome extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_income, container, false);
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.approvedRecycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         MyAdapterIncome adapter = new MyAdapterIncome(list);

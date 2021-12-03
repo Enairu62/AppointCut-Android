@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 
 import DataModels.DataModelHair;
 import MyAdapters.MyAdapterHair;
-import com.example.appointcut.R;
+import online.appointcut.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;

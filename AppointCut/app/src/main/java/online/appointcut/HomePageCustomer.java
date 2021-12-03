@@ -1,4 +1,4 @@
-package com.example.appointcut;
+package online.appointcut;
 
 
 
@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import online.appointcut.file.UserFile;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -90,7 +91,9 @@ public class HomePageCustomer extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 homePage.finishAffinity();
-                Intent intent = new Intent(HomePageCustomer.this, Login.class);
+                //delete saved user data
+                UserFile.INSTANCE.delete(HomePageCustomer.this);
+                Intent intent = new Intent(HomePageCustomer.this, LoginFragment.class);
                 startActivity(intent);
             }
         });

@@ -57,21 +57,6 @@
         app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineFirstAndLast1" />
 
     <EditText
-        android:id="@+id/inputUserNameSignUp"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/border_plaintext"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="textEmailAddress"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineUserName2"
-        app:layout_constraintEnd_toEndOf="@id/verticalGuideLineImage2"
-        app:layout_constraintStart_toStartOf="@+id/verticalGuideLineImage"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineUserName1" />
-
-    <EditText
         android:id="@+id/inputPasswordSignUp"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -92,7 +77,7 @@
         android:layout_height="0dp"
         android:background="@drawable/border_plaintext"
         android:ems="10"
-        android:hint="Contact Number"
+        android:hint="Cellphone Number"
         android:inputType="number"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
@@ -111,10 +96,10 @@
         android:inputType="textEmailAddress"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineEmail2"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalGuideLineUserName2"
         app:layout_constraintEnd_toEndOf="@id/verticalGuideLineImage2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLineImage"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineEmail1" />
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineUserName1" />
 
     <Button
         android:id="@+id/btnRegister"
@@ -127,7 +112,22 @@
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineRegister2"
         app:layout_constraintEnd_toEndOf="@id/verticalGuideLineImage2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLineImage"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineRegister1" />
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineRegister1"
+        tools:visibility="visible" />
+
+    <ProgressBar
+        android:id="@+id/registerWait"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/yellow"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/btnRegister"
+        app:layout_constraintEnd_toEndOf="@+id/btnRegister"
+        app:layout_constraintStart_toStartOf="@+id/btnRegister"
+        app:layout_constraintTop_toTopOf="@+id/btnRegister"
+        tools:visibility="visible" />
 
     <TextView
         android:id="@+id/textView"

@@ -10,11 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.appointcut.R;
+import online.appointcut.R;
 
 import java.util.List;
 
-import DataModels.DataModelSelectBarber;
 import DataModels.DataModelSelectServices;
 
 public class MyAdapterSelectService extends RecyclerView.Adapter<MyAdapterSelectService.MyViewHolder> {
@@ -56,7 +55,6 @@ public class MyAdapterSelectService extends RecyclerView.Adapter<MyAdapterSelect
             serviceName = itemView.findViewById(R.id.serviceName);
             servicePic = itemView.findViewById(R.id.servicePic);
             selectServiceRowLayout = itemView.findViewById(R.id.selectServiceRowLayout);
-
         }
     }
 

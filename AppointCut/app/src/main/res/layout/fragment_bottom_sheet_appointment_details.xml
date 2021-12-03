@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/bottomSheetAppointDetails"
     android:paddingBottom="15dp"
-    tools:context="fragments.BottomSheetFragmentAppointmentDetails">
+    tools:context="customerfragments.BottomSheetFragmentAppointmentDetails">
 
     <TextView
         android:id="@+id/textView"
@@ -81,30 +81,6 @@
             app:layout_constraintTop_toBottomOf="@+id/txtService2" />
 
 
-        <TextView
-            android:id="@+id/textTotal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="5dp"
-            android:text="Total:"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/horizontalLine" />
-
-        <TextView
-            android:id="@+id/txtTotalPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="50dp"
-            android:text="100.00"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/horizontalLine" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -128,40 +104,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imageBarber"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="5dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
-            app:shapeAppearanceOverlay="@style/Circular"
-            app:srcCompat="@drawable/sampleprofilepic_bolima" />
-
         <TextView
             android:id="@+id/txtBarberName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="40dp"
+            android:paddingStart="4dp"
             android:text="Brent Jansen Bolima"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/imageBarber"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txtBarberSpecialty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:text="Haircut, Hair Color"
-            android:textColor="@color/black"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/imageBarber"
-            app:layout_constraintTop_toBottomOf="@+id/txtBarberName" />
+            app:layout_constraintBottom_toBottomOf="@+id/textView3"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintTop_toTopOf="@+id/textView3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -187,14 +140,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/schedule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
             android:layout_marginTop="5dp"
             android:text="October 26, 2021 / 10:00 am - 11:00 am"
             android:textColor="@color/black"
             android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView4"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingBottom="15dp"
     android:id="@+id/bottomSheetSelectSched"
-    tools:context="fragments.BottomSheetFragmentSelectSchedule">
+    tools:context="customerfragments.bottomsheets.FragmentSelectSchedule"
+    tools:ignore="HardcodedText">
 
     <TextView
         android:id="@+id/textView"
@@ -19,52 +20,46 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:backgroundTint="@color/black"
-        android:text="October 24, 2021 - October 30, 2021"
-        android:textColor="@color/white"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent"
+         />
 
     <View
         android:id="@+id/horizontalLine"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/margin_small"
         android:layout_marginEnd="15dp"
         android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/_estimate" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="380dp"
+    <com.alamkanak.weekview.WeekView
+        android:id="@+id/weekView"
+        android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="10dp"
-        android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalLine"
-        app:srcCompat="@drawable/selecttimeandday" />
-
+        app:defaultEventColor="@color/red"
+        app:eventTextColor="@color/white"
+        app:timeColumnTextSize="12sp"
+        app:hourHeight="100dp"
+        app:timeColumnTextColor="@color/black"
+        app:timeColumnBackgroundColor="@color/white"
+        app:headerPadding="12dp"
+        app:numberOfVisibleDays="5"
+        app:headerBackgroundColor="@color/light_gray"
+        app:dayBackgroundColor="@color/white"
+        app:todayBackgroundColor="@color/yellow"
+        app:layout_constraintTop_toTopOf="@id/horizontalLine"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <Button
         android:id="@+id/btnBack"
         android:layout_width="125dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="31dp"
         android:backgroundTint="@color/yellow"
         android:padding="15dp"
         android:text="Back"
@@ -72,21 +67,31 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/weekView" />
 
-    <Button
-        android:id="@+id/btnNext"
-        android:layout_width="125dp"
+    <TextView
+        android:id="@+id/_estimate"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        android:backgroundTint="@color/yellow"
-        android:padding="15dp"
-        android:text="Next"
+        android:layout_marginStart="@dimen/margin_big"
+        android:layout_marginTop="@dimen/margin_big"
+        android:text="Estimated Duration: "
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="@dimen/font_normal"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/estimate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_normal"
+        app:layout_constraintBottom_toBottomOf="@+id/_estimate"
+        app:layout_constraintStart_toEndOf="@+id/_estimate"
+        app:layout_constraintTop_toTopOf="@+id/_estimate"
+        tools:text="60 Minutes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
