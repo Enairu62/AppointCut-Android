@@ -3,6 +3,7 @@ package online.appointcut.network
 import online.appointcut.models.*
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import online.appointcut.viewmodels.SignUpViewModel
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.Body
@@ -11,7 +12,7 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 
 
-const val BASE_URL = "http://appointcut.online"
+const val BASE_URL = "http://192.168.1.19:3000"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -76,6 +77,9 @@ interface ApcServiceInterface {
         @Path("in") timeIn: String,
         @Path("out") timeOut: String
     ): Int
+
+    @POST("rest/register")
+    suspend fun registerUser(@Body signUp: SignUpViewModel): Int
 }
 
 object ApcService {

@@ -151,6 +151,7 @@
         <entry key="app/src/main/res/layout/activity_kotlin.xml" value="0.20208333333333334" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_payment.xml" value="0.19947916666666668" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.5" />
         <entry key="app/src/main/res/layout/content_kotlin.xml" value="0.115625" />
         <entry key="app/src/main/res/layout/dialog_appointment_success.xml" value="0.19947916666666668" />
         <entry key="app/src/main/res/layout/fragment_appointment.xml" value="0.25" />

@@ -42,6 +42,8 @@ class ShopAdapter(private val shops: List<Shop>,
             binding.txtBarberShopName.text = shop.name
             if(shop.imgSrcUrl != null)
                 binding.myImages.load("$BASE_URL/${shop.imgSrcUrl}")
+            else
+                binding.myImages.load(drawable = null)
             binding.txtBarberShopRating.text = shop.rating.toString()
             binding.barberShopRowLayout.setOnClickListener { onHolderClick(shop,appointment) }
             binding.shopAddress.text = shop.address

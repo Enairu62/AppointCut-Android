@@ -1,88 +1,139 @@
-package online.appointcut;
+package online.appointcut
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent
+import android.os.Bundle
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.UnderlineSpan
+import android.view.View
+import android.widget.*
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
+import online.appointcut.databinding.ActivitySignUpBinding
+import online.appointcut.viewmodels.SignUpViewModel
+import java.net.ConnectException
+import java.net.SocketTimeoutException
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.UnderlineSpan;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+class SignUp : AppCompatActivity() {
+    var inputFirstName: EditText? = null
+    var inputLastName: EditText? = null
+    var inputPasswordSignUp: EditText? = null
+    var inputContact: EditText? = null
+    var inputEmailAdd: EditText? = null
+    private lateinit var binding: ActivitySignUpBinding
+    private val viewModel: SignUpViewModel by viewModels()
 
-public class SignUp extends AppCompatActivity {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-    ImageView imageBack;
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-    EditText inputFirstName, inputLastName, inputUserNameSignUp, inputPasswordSignUp, inputContact, inputEmailAdd;
+        inputFirstName = findViewById<View>(R.id.inputFirstName) as EditText
+        inputLastName = findViewById<View>(R.id.inputLastName) as EditText
+        inputPasswordSignUp = findViewById<View>(R.id.inputPasswordSignUp) as EditText
+        inputContact = findViewById<View>(R.id.inputContact) as EditText
+        inputEmailAdd = findViewById<View>(R.id.inputEmailAdd) as EditText
 
-    TextView linkTerms;
-
-    Button btnRegister;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
-
-        declareViews();
-
-        String termText = "Terms and Conditions";
-        SpannableString ss = new SpannableString(termText);
-        ss.setSpan(new UnderlineSpan(),0,20, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        linkTerms.setText(ss);
-
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String first = inputFirstName.getText().toString();
-                String last= inputLastName.getText().toString();
-                String user = inputUserNameSignUp.getText().toString();
-                String pass= inputPasswordSignUp.getText().toString();
-                String contact = inputContact.getText().toString();
-                String email= inputEmailAdd.getText().toString();
-
-                String fullName = first + " " + last;
-
-                if(first.trim().isEmpty() || last.trim().isEmpty() || user.trim().isEmpty() || pass.trim().isEmpty() || contact.trim().isEmpty() || email.trim().isEmpty()){
-                    Toast.makeText(SignUp.this, "Please insert all necessary details.", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Intent intent = new Intent(SignUp.this, HomePageCustomer.class);
-                    intent.putExtra("fullName", fullName);
-                    startActivity(intent);
-                }
-            }
-        });
-
-        imageBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SignUp.this, LoginFragment.class);
-                startActivity(intent);
-            }
-        });
+        val termText = "Terms and Conditions"
+        val ss = SpannableString(termText)
+        ss.setSpan(UnderlineSpan(), 0, 20, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        binding.linkTerms.text = ss
+        binding.btnRegister.setOnClickListener(onRegisterClick)
+        binding.imageView.setOnClickListener {
+            val intent = Intent(this@SignUp, LoginFragment::class.java)
+            startActivity(intent)
+        }
     }
 
-    @Override
-    public void onBackPressed() {
+    override fun onBackPressed() {}
+
+    private val onRegisterClick = View.OnClickListener{
+        //check for empty inputs
+        if (checkInputs()) {
+            Toast.makeText(
+                this@SignUp,
+                "All details are required.",
+                Toast.LENGTH_SHORT
+            ).show()
+            return@OnClickListener
+        }
+
+        //block the button
+        toggleButtons(false)
+
+        //give data to viewModel
+        viewModel.firstName = binding.inputFirstName.text.toString()
+        viewModel.lastName = binding.inputLastName.text.toString()
+        viewModel.password = binding.inputPasswordSignUp.text.toString()
+        viewModel.contact = binding.inputContact.text.toString()
+        viewModel.email = binding.inputEmailAdd.text.toString()
+
+        lifecycleScope.launch {
+            //register the user
+            //if success go back to login
+            try {
+                val serverResponse = viewModel.register()
+                when (serverResponse) {
+                    SignUpViewModel.SUCCESS -> {
+                        startActivity(Intent(this@SignUp, LoginFragment::class.java))
+                    }
+                    SignUpViewModel.EMAIL -> {
+                        //otherwise unblock button
+                        toggleButtons(true)
+                        Toast.makeText(this@SignUp, "Email taken", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                    SignUpViewModel.FAIL -> {
+                        //otherwise unblock button
+                        toggleButtons(true)
+                        Toast.makeText(this@SignUp, "Failed for unknown reason", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            }catch(e: ConnectException){
+                toggleButtons(true)
+                Toast.makeText(this@SignUp, "Server unreachable", Toast.LENGTH_SHORT)
+                    .show()
+            }catch(e: SocketTimeoutException){
+                toggleButtons(true)
+                Toast.makeText(this@SignUp, "Server timed out", Toast.LENGTH_SHORT)
+                    .show()
+            }catch(e: Exception){
+                toggleButtons(true)
+                Toast.makeText(this@SignUp, "An unknown error occurred", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+
+//            val intent = Intent(this@SignUp, HomePageCustomer::class.java)
+//            intent.putExtra("fullName", fullName)
     }
 
-    private void declareViews(){
-        imageBack = (ImageView) findViewById(R.id.imageView);
+    private fun toggleButtons(activate: Boolean){
+        //disable
+        if(!activate){
+            binding.registerWait.visibility = View.VISIBLE
+            binding.btnRegister.visibility = View.INVISIBLE
+            binding.imageView.visibility = View.GONE
+        }else{//enable
+            binding.registerWait.visibility = View.GONE
+            binding.btnRegister.visibility = View.VISIBLE
+            binding.imageView.visibility = View.VISIBLE
+        }
+    }
 
-        inputFirstName = (EditText) findViewById(R.id.inputFirstName);
-        inputLastName = (EditText) findViewById(R.id.inputLastName);
-        inputUserNameSignUp = (EditText) findViewById(R.id.inputUserNameSignUp);
-        inputPasswordSignUp = (EditText) findViewById(R.id.inputPasswordSignUp);
-        inputContact = (EditText) findViewById(R.id.inputContact);
-        inputEmailAdd = (EditText) findViewById(R.id.inputEmailAdd);
-        linkTerms = (TextView) findViewById(R.id.linkTerms);
+    private fun checkInputs(): Boolean{
+        val first = binding.inputFirstName.text.toString()
+        val last = binding.inputLastName.text.toString()
+        val pass = binding.inputPasswordSignUp.text.toString()
+        val contact = binding.inputContact.text.toString()
+        val email = binding.inputEmailAdd.text.toString()
 
-        btnRegister = (Button) findViewById(R.id.btnRegister);
+        return first.trim { it <= ' ' }.isEmpty() || last.trim { it <= ' ' }
+            .isEmpty() || pass.trim { it <= ' ' }.isEmpty() || contact.trim { it <= ' ' }
+            .isEmpty() || email.trim { it <= ' ' }.isEmpty()
     }
 }
