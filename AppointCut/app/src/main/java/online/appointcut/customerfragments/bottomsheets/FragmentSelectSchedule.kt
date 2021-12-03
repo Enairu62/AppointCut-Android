@@ -71,7 +71,7 @@ class FragmentSelectSchedule(private val barber: Barber) : BottomSheetDialogFrag
 
         //configure the weekView
         weekViewAdapter = ScheduleWeekViewAdapter(::loadMoreEvent,::onEmptyClick)
-        weekView.adapter = weekViewAdapter;
+        weekView.adapter = weekViewAdapter
     }
 
 
@@ -213,9 +213,6 @@ class FragmentSelectSchedule(private val barber: Barber) : BottomSheetDialogFrag
     //Listener for when the customer selects an empty slot
     private fun onEmptyClick(it: Calendar) {
         Log.d("FragmentSelectSchedule", "${it.get(Calendar.DATE)}, ${it.time}")
-        val timePickerListener = TimePickerDialog.OnTimeSetListener { timePicker, i, i2 ->
-
-        }
         //round to 15 minute increments
         var roundedMinute = 15 * (Math.floor(it.get(Calendar.MINUTE).toDouble() / 15))
         var hour = it.get(Calendar.HOUR_OF_DAY)
@@ -251,9 +248,41 @@ class FragmentSelectSchedule(private val barber: Barber) : BottomSheetDialogFrag
                     "${sharedViewModel.timeOut}"
         )
         //check for conflict
+        var conflicts = 0
+        //Employee schedule conflict
+        //get employee schedule for the day
+        val date = GregorianCalendar(
+            sharedViewModel.date.split("-")[0].toInt(),
+            sharedViewModel.date.split("-")[1].toInt()-1,
+            sharedViewModel.date.split("-")[2].toInt()
+        )
+        val empSchedule = barber.getDaySchedule(date.get(Calendar.DAY_OF_WEEK))
+        //if null, barber is day off
+        if (empSchedule?.timeIn == null) conflicts++
+        else {
+            //check if appointment timeout > schedule timeout
+            val aptEndTime =
+                "${sharedViewModel.timeOut.split(":")[0]}${sharedViewModel.timeOut.split(":")[1]}".toInt()
+            val schedEndTime = "${empSchedule?.timeOut?.split(":")?.get(0)}${
+                empSchedule?.timeOut?.split(":")
+                    ?.get(1)
+            }".toInt()
+            if (aptEndTime > schedEndTime) conflicts++
+
+            //check if appt timein < schedule timeint
+            val aptStartTime =
+                "${sharedViewModel.timeIn.split(":")[0]}${sharedViewModel.timeIn.split(":")[1]}".toInt()
+            val schedStartTime = "${empSchedule?.timeIn?.split(":")?.get(0)}${
+                empSchedule?.timeIn?.split(":")?.get(1)
+            }".toInt()
+            if (aptStartTime < schedStartTime) conflicts++
+        }
+
+
+        //appointments conflict
         lifecycleScope.launch{
 
-            var conflicts = ApcService.retrofitService.checkConflict(
+            conflicts += ApcService.retrofitService.checkConflict(
                 sharedViewModel.employeeId,"${sharedViewModel.date}",
                 sharedViewModel.timeIn,
                 sharedViewModel.timeOut
