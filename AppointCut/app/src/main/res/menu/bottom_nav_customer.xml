@@ -3,19 +3,16 @@
 
     <group android:checkableBehavior="single">
     <item
-        android:id="@+id/bottomNavAR"
+        android:id="@+id/fragmentCameraAR"
         android:icon="@drawable/ic_cameraicon"
         android:title="" />
     <item
-        android:id="@+id/bottomNavHairStyle"
-        android:icon="@drawable/ic_hairstyleicon"
+        android:id="@+id/fragmentFindBarberShop"
+        android:icon="@drawable/ic_searchbarbericon"
         android:title="" />
+
     <item
-        android:id="@+id/bottomNavHairTrends"
-        android:icon="@drawable/ic_hairtrendicon"
-        android:title="" />
-    <item
-        android:id="@+id/bottomNavMessage"
+        android:id="@+id/fragmentMessage"
         android:icon="@drawable/ic_messageicon"
         android:title="" />
     </group>

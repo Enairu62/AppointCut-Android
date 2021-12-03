@@ -2,14 +2,19 @@ package fragments;
 
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.appointcut.R;
+import online.appointcut.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,6 +61,24 @@ public class FragmentCameraAR extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                DrawerLayout drawerLayoutCustomer = getActivity().findViewById(R.id.drawerLayoutCustomer);
+                BottomNavigationView bottomNavCustomer = (BottomNavigationView) getActivity().findViewById(R.id.bottomNavCustomer);
+                NavController navController = (NavController) Navigation.findNavController(getActivity(),R.id.fragmentContainerView);
+                if (drawerLayoutCustomer.isDrawerOpen(GravityCompat.START)) {
+                    drawerLayoutCustomer.closeDrawer(GravityCompat.START);
+                }
+                else {
+                    navController.navigate(R.id.action_fragmentCameraAR_to_fragmentFindBarberShop);
+                    bottomNavCustomer.setVisibility(View.VISIBLE);
+                    bottomNavCustomer.getMenu().setGroupCheckable(0, true, true);
+                    bottomNavCustomer.setSelectedItemId(R.id.fragmentFindBarberShop);
+                }
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
     }
 
     @Override
@@ -63,6 +86,8 @@ public class FragmentCameraAR extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_camera_a_r, container, false);
+        BottomNavigationView bottomNavCustomer = (BottomNavigationView) getActivity().findViewById(R.id.bottomNavCustomer);
+        bottomNavCustomer.setVisibility(View.GONE);
         return view;
     }
 

@@ -14,9 +14,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.appointcut.DataModel;
-import com.example.appointcut.MyAdapterHairRow;
-import com.example.appointcut.R;
+import DataModels.DataModelHair;
+import MyAdapters.MyAdapterHair;
+import online.appointcut.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -27,12 +27,11 @@ import java.util.ArrayList;
  * Use the {@link FragmentHairStyle#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentHairStyle extends Fragment implements MyAdapterHairRow.ItemClickListener{
+public class FragmentHairStyle extends Fragment implements MyAdapterHair.ItemClickListener{
 
     RecyclerView recyclerView;
-    private ArrayList<DataModel> list = new ArrayList<>();
-    int images[] = {R.drawable.ic_hairtrendicon,R.drawable.ic_hairtrendicon, R.drawable.ic_hairtrendicon,
-            R.drawable.ic_hairtrendicon,R.drawable.ic_hairtrendicon,R.drawable.ic_hairtrendicon};
+    private ArrayList<DataModelHair> list = new ArrayList<>();
+
 
     public FragmentHairStyle() {
         // Required empty public constructor
@@ -64,7 +63,7 @@ public class FragmentHairStyle extends Fragment implements MyAdapterHairRow.Item
         View view2 = getActivity().findViewById(R.id.constraintLayoutCustomer);
         BottomNavigationView bottomNavCustomer = (BottomNavigationView) view2.findViewById(R.id.bottomNavCustomer);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView = (RecyclerView) view.findViewById(R.id.approvedRecycler);
 
         FloatingActionButton search = (FloatingActionButton) view.findViewById(R.id.floatSearch);
         search.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +76,7 @@ public class FragmentHairStyle extends Fragment implements MyAdapterHairRow.Item
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        MyAdapterHairRow adapter = new MyAdapterHairRow(list,this);
+        MyAdapterHair adapter = new MyAdapterHair(list,this);
         recyclerView.setAdapter(adapter);
         buildListData();
 
@@ -94,17 +93,20 @@ public class FragmentHairStyle extends Fragment implements MyAdapterHairRow.Item
     }
 
     private void buildListData(){
-        list.add(new DataModel(images[0],"Hairstyle 1", "style1"));
-        list.add(new DataModel(images[1],"Hairstyle 2", "style2"));
-        list.add(new DataModel(images[2],"Hairstyle 3" , "style3"));
-        list.add(new DataModel(images[3],"Hairstyle 4" , "style4"));
-        list.add(new DataModel(images[4],"Hairstyle 5" ,"style5"));
-        list.add(new DataModel(images[5],"Hairstyle 6" ,"style6"));
+        int images[] = {R.drawable.part_hair,R.drawable.short_hair, R.drawable.short_curly_hair,
+                R.drawable.braid_hair,R.drawable.perm_hair,R.drawable.straight_hair};
+
+        list.add(new DataModelHair(images[0],"How To Part Hair", getString(R.string.how_to_part_hair)));
+        list.add(new DataModelHair(images[1],"How To Style Short Hair", getString(R.string.how_to_style_short_hair)));
+        list.add(new DataModelHair(images[2],"How To Style Short Curly Hair" , getString(R.string.how_to_style_short_curly_hair)));
+        list.add(new DataModelHair(images[3],"How To Braid Hair" , getString(R.string.how_to_braid_hair)));
+        list.add(new DataModelHair(images[4],"How To Perm Hair" ,getString(R.string.how_to_perm_hair)));
+        list.add(new DataModelHair(images[5],"How To Straighten Your Hair" ,getString(R.string.how_to_straighten_hair)));
     }
 
     @Override
-    public void onItemClick(DataModel dataModel) {
-        Fragment fragment =  FragmentHairCompleteInfo.newInstance(dataModel.getImage(), dataModel.getTitle(), dataModel.getDesc());
+    public void onItemClick(DataModelHair dataModelHair) {
+        Fragment fragment =  FragmentHairCompleteInfo.newInstance(dataModelHair.getImage(), dataModelHair.getTitle(), dataModelHair.getDesc());
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.constraintLayoutCustomer, fragment);
         transaction.addToBackStack(null);

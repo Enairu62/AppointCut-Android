@@ -1,42 +1,40 @@
 package fragments;
 
-import static android.content.ContentValues.TAG;
-
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import androidx.activity.OnBackPressedCallback;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.example.appointcut.DataModel;
-import com.example.appointcut.MyAdapterBarberShopRow;
-import com.example.appointcut.MyAdapterHairRow;
-import com.example.appointcut.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
+import online.appointcut.R;
+import online.appointcut.adapters.ShopAdapter;
+import online.appointcut.models.Appointment;
+import online.appointcut.network.NetworkJava;
 
 import java.util.ArrayList;
+
+import DataModels.DataModelBarberShop;
+import online.appointcut.models.Shop;
+import MyAdapters.MyAdapterBarberShop;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link FragmentFindBarberShop#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentFindBarberShop extends Fragment implements MyAdapterBarberShopRow.ItemClickListener{
+public class FragmentFindBarberShop extends Fragment implements MyAdapterBarberShop.ItemClickListener{
 
-    RecyclerView recyclerView;
-    private ArrayList<DataModel> list = new ArrayList<>();
-
-    int images[] = {R.drawable.ic_work,R.drawable.ic_work,R.drawable.ic_work,
-            R.drawable.ic_work, R.drawable.ic_work, R.drawable.ic_work,};
+    private ArrayList<Shop> list = new ArrayList<>();
 
     public FragmentFindBarberShop() {
         // Required empty public constructor
@@ -56,74 +54,61 @@ public class FragmentFindBarberShop extends Fragment implements MyAdapterBarberS
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
+        Log.d("FragmentFindBarberShop", "onCreate started");
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                DrawerLayout drawerLayoutCustomer = getActivity().findViewById(R.id.drawerLayoutCustomer);
+                if(drawerLayoutCustomer.isDrawerOpen(GravityCompat.START)){
+                    drawerLayoutCustomer.closeDrawer(GravityCompat.START);
+                }
+                else{
+                    getActivity().moveTaskToBack(true);
+                }
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d("FragmentFindBarberShop", "onCreateView started");
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_find_barber_shop, container, false);
-        View view2 = getActivity().findViewById(R.id.constraintLayoutCustomer);
-        BottomNavigationView bottomNavCustomer = (BottomNavigationView) view2.findViewById(R.id.bottomNavCustomer);
-
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        /*bottomNavCustomer.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                bottomNavCustomer.getMenu().setGroupCheckable(0, true, true);
-                switch (item.getItemId()) {
-                    case R.id.bottomNavAR:
-                        openFragment(FragmentCameraAR.newInstance("",""));
-                        bottomNavCustomer.setVisibility(View.GONE);
-                        return true;
-                    case R.id.bottomNavHairStyle:
-                        openFragment(FragmentHairStyle.newInstance());
-                        return true;
-                    case R.id.bottomNavHairTrends:
-                        openFragment(FragmentHairTrend.newInstance());
-                        return true;
-                    case R.id.bottomNavMessage:
-                        openFragment(FragmentMessage.newInstance("",""));
-                        return true;
-                }
-                return false;
-            }
-        });*/
-
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.approvedRecycler);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        MyAdapterBarberShopRow adapter = new MyAdapterBarberShopRow(list,this);
-        recyclerView.setAdapter(adapter);
-        buildListData();
 
+        try{
+            list = new ArrayList<>(NetworkJava.INSTANCE.getShop());
+            Log.d("FragmentShop", list.size()+"");
+            NavController navController =
+                    (NavController) Navigation
+                            .findNavController(getActivity(),R.id.fragmentContainerView);
+            //TODO: this is not a todo, this is a warning, do not use this file
+            //TODO: Delete this file
+            ShopAdapter adapter = new ShopAdapter(list,navController, new Appointment());
+            recyclerView.setAdapter(adapter);
+        }catch (Exception e){
+            Log.e("FindShopJava", e.toString(),e);
+            Toast.makeText(getContext(), "Unable to load Barbershops", Toast.LENGTH_SHORT).show();
+        }
         return view;
     }
 
-    private void openFragment(Fragment fragment) {
-        Log.d(TAG, "openFragment: ");
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.constraintLayoutCustomer, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
-
-    private void buildListData(){
-        list.add(new DataModel(images[0],"BarberShop 1", "shop1"));
-        list.add(new DataModel(images[1],"BarberShop 2", "shop2"));
-        list.add(new DataModel(images[2],"BarberShop 3" , "shop3"));
-        list.add(new DataModel(images[3],"BarberShop 4" , "shop4"));
-        list.add(new DataModel(images[4],"BarberShop 5" ,"shop5"));
-        list.add(new DataModel(images[5],"BarberShop 6" ,"shop6"));
+    @Override
+    public void onResume() {
+        super.onResume();
+        list.clear();
     }
 
     @Override
-    public void onItemClick(DataModel dataModel) {
-        /*Fragment fragment =  FragmentHairCompleteInfo.newInstance(dataModel.getImage(), dataModel.getTitle(), dataModel.getDesc());
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.constraintLayoutCustomer, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();*/
+    public void onItemClick(DataModelBarberShop dataModelBarberShop) {
+//        NavController navController = (NavController) Navigation.findNavController(getActivity(),R.id.fragmentContainerView);
+//        NavDirections action = FragmentFindBarberShopDirections
+//                .actionFragmentFindBarberShopToFragmentBarberShopMap();
+//        navController.navigate(action);
     }
 }

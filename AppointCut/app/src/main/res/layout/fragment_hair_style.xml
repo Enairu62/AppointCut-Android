@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="fragments.FragmentHairStyle">
+    tools:context="customerfragments.FragmentHairStyle">
 
     <TextView
         android:id="@+id/textView"
@@ -72,7 +72,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/approvedRecycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="80dp"
@@ -89,7 +89,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="80dp"
         app:backgroundTint="@color/yellow"
-        app:elevation="6dp"
+        app:elevation="10dp"
         app:fabSize="normal"
         app:maxImageSize="40dp"
         app:layout_constraintBottom_toBottomOf="parent"

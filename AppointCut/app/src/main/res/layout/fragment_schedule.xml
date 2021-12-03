@@ -3,26 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fragments.FragmentSchedule">
+    tools:context=".barberfragments.FragmentSchedule">
 
     <View
-        android:layout_width="match_parent"
+        android:id="@+id/horizontalLine"
+        android:layout_width="@dimen/divider_normal"
         android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_small"
+        android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/black"
-        android:layout_marginTop ="75dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:id ="@+id/horizontalLine"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="@dimen/margin_big"
+        android:layout_marginTop="@dimen/margin_small"
         android:text="Date Range"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -30,13 +28,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontalLine" />
 
+    <Button
+        android:id="@+id/btnDateRange"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_big"
+        android:layout_marginBottom="@dimen/margin_small"
+        android:background="@drawable/rounded_button"
+        android:text="Octoboer 24, 2021 - October 30, 2021"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/calendarView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalLine" />
 
 
     <devs.mulham.horizontalcalendar.HorizontalCalendarView
         android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/calendar_height"
+        android:layout_marginTop="@dimen/margin_small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
@@ -44,15 +58,55 @@
         app:selectorColor="@color/black"
         app:sizeMiddleText="25sp"
         app:sizeTopText="20sp" />
+
     <View
-        android:layout_width="match_parent"
+        android:id="@+id/horizontalLine2"
+        android:layout_width="@dimen/divider_normal"
         android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_small"
+        android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView"
-        android:background="@color/black"
-        android:layout_marginTop ="5dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp" />
+        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_big"
+        android:layout_marginTop="@dimen/margin_small"
+        android:text="Time"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalLine2" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_big"
+        android:text="Appointment"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalLine2" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/approvedRecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView2"
+        android:layout_marginBottom="@dimen/margin_big"
+        android:layout_marginStart="@dimen/margin_big"
+        android:layout_marginEnd="@dimen/margin_big"
+        android:clipToPadding="false"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

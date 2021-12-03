@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentFindBarberShop">
+    <fragment
+        android:id="@+id/fragmentFindBarberShop"
+        android:name="online.appointcut.customerfragments.FragmentFindShop"
+        android:label="fragment_find_barber_shop"
+        tools:layout="@layout/fragment_find_barber_shop">
+        <action
+            android:id="@+id/action_fragmentFindBarberShop_to_fragmentBarberShopMap"
+            app:destination="@id/fragmentBarberShopMap" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentMessage"
+        android:name="fragments.FragmentMessage"
+        android:label="fragment_message"
+        tools:layout="@layout/fragment_message" >
+        <action
+            android:id="@+id/action_fragmentMessage_to_fragmentFindBarberShop"
+            app:destination="@id/fragmentFindBarberShop" />
+        <action
+            android:id="@+id/action_fragmentMessage_to_fragmentChat"
+            app:destination="@id/fragmentChat" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentCameraAR"
+        android:name="fragments.FragmentCameraAR"
+        android:label="fragment_camera_a_r"
+        tools:layout="@layout/fragment_camera_a_r" >
+        <action
+            android:id="@+id/action_fragmentCameraAR_to_fragmentFindBarberShop"
+            app:destination="@id/fragmentFindBarberShop" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentNotifications"
+        android:name="fragments.FragmentNotifications"
+        android:label="fragment_notifications"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/fragmentProfileCustomer"
+        android:name="fragments.FragmentProfileCustomer"
+        android:label="fragment_profile_customer"
+        tools:layout="@layout/fragment_profile_customer" >
+        <action
+            android:id="@+id/action_fragmentProfileCustomer_to_fragmentFindBarberShop"
+            app:destination="@id/fragmentFindBarberShop" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAppointment"
+        android:name="fragments.FragmentAppointment"
+        android:label="fragment_appointment"
+        tools:layout="@layout/fragment_appointment" >
+        <action
+            android:id="@+id/action_fragmentAppointment_to_fragmentFindBarberShop"
+            app:destination="@id/fragmentFindBarberShop" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentBarberShopMap"
+        android:name="fragments.FragmentBarberShopMap"
+        android:label="fragment_barber_shop_map"
+        tools:layout="@layout/fragment_barber_shop_map" >
+        <action
+            android:id="@+id/action_fragmentBarberShopMap_to_fragmentFindBarberShop"
+            app:destination="@id/fragmentFindBarberShop" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="address"
+            app:argType="string" />
+        <argument
+            android:name="contact"
+            app:argType="string" />
+        <argument
+            android:name="rating"
+            app:argType="float" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="longi"
+            app:argType="float" />
+        <argument
+            android:name="lat"
+            app:argType="float" />
+        <action
+            android:id="@+id/action_fragmentBarberShopMap_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentChat"
+        android:name="fragments.FragmentChat"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_fragmentChat_to_fragmentMessage"
+            app:destination="@id/fragmentMessage" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="online.appointcut.customerfragments.PaymentFragment"
+        android:label="payment_fragment"
+        tools:layout="@layout/payment_fragment" >
+        <action
+            android:id="@+id/action_paymentFragment_to_fragmentFindBarberShop"
+            app:destination="@id/fragmentFindBarberShop"
+            app:popUpTo="@id/fragmentFindBarberShop"
+            app:popUpToInclusive="true" />
+    </fragment>
+</navigation>

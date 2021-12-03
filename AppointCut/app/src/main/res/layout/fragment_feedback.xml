@@ -1,34 +1,112 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="fragments.FragmentFeedback">
+    tools:context="customerfragments.FragmentFeedback">
 
     <View
-        android:layout_width="match_parent"
+        android:id="@+id/horizontalLine"
+        android:layout_width="0dp"
         android:layout_height="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:background="@color/black"
-        android:layout_marginTop ="75dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:id ="@+id/horizontalLine"/>
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLine" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
         android:text="Feedback"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="23sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalLine" />
+        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLine3"
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine3"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLine2" />
+
+    <Button
+        android:id="@+id/btnDateRange"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/rounded_button"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="Octoboer 24, 2021 - October 30, 2021"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLine3"
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine3"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLine2" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/approvedRecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLine5"
+        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
+        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
+        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLine4" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideLine1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.035" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideLine2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.965" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.07" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLine2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.075" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLine3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.12" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLine4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.13" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontalGuideLine5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.91" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/verticalGuideLine3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

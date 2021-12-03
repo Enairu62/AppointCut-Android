@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.appointcut.R;
+import online.appointcut.R;
 
 /**
  * A simple {@link Fragment} subclass.

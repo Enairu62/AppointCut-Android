@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="online.appointcut.customerfragments.PaymentFragment">
+
+    <com.paypal.checkout.paymentbutton.PayPalButton
+        android:id="@+id/paypalButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/yellow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_big"
+        android:text="Service:"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <TextView
+        android:id="@+id/shopName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_big"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_big"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Shop Name" />
+
+    <TextView
+        android:id="@+id/service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_big"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_normal"
+        app:layout_constraintBottom_toBottomOf="@+id/_service"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/_service"
+        tools:text="Haircut"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="@dimen/divider_normal"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/margin_big"
+        android:background="@color/black"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/shopName" />
+
+    <TextView
+        android:id="@+id/_due"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_big"
+        android:text="Amount Due:"
+        android:textSize="@dimen/font_normal"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/_service"
+        app:layout_constraintTop_toBottomOf="@+id/_service" />
+    <TextView
+        android:id="@+id/due"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/_due"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/_due"
+        tools:text="150Php"
+        android:textSize="@dimen/font_normal"
+        android:textColor="@color/black"
+        android:layout_marginEnd="@dimen/margin_big"/>
+    <TextView
+        android:id="@+id/_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time:"
+        app:layout_constraintTop_toBottomOf="@id/_due"
+        app:layout_constraintStart_toStartOf="@id/_due"
+        android:layout_marginTop="@dimen/margin_big"
+        android:textSize="@dimen/font_normal"
+        android:textColor="@color/black"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/time"
+        tools:text="10:00"
+        app:layout_constraintTop_toTopOf="@id/_time"
+        app:layout_constraintBottom_toBottomOf="@id/_time"
+        app:layout_constraintEnd_toEndOf="@id/due"
+        android:textSize="@dimen/font_normal"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date:"
+        app:layout_constraintTop_toBottomOf="@id/_time"
+        app:layout_constraintStart_toStartOf="@id/_time"
+        android:layout_marginTop="@dimen/margin_big"
+        android:textSize="@dimen/font_normal"
+        android:textColor="@color/black"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/date"
+        tools:text="10:00"
+        app:layout_constraintTop_toTopOf="@id/_date"
+        app:layout_constraintBottom_toBottomOf="@id/_date"
+        app:layout_constraintEnd_toEndOf="@id/time"
+        android:textSize="@dimen/font_normal"
+        android:textColor="@color/black"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

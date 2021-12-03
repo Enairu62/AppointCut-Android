@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentSchedule">
+    <fragment
+        android:id="@+id/fragmentSchedule"
+        android:name="online.appointcut.barberfragments.FragmentSchedule"
+        android:label="fragment_schedule"
+        tools:layout="@layout/fragment_schedule" />
+    <fragment
+        android:id="@+id/fragmentFeedback"
+        android:name="fragments.FragmentFeedback"
+        android:label="fragment_feedback"
+        tools:layout="@layout/fragment_feedback" >
+        <action
+            android:id="@+id/action_fragmentFeedback_to_fragmentSchedule"
+            app:destination="@id/fragmentSchedule" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentIncome"
+        android:name="fragments.FragmentIncome"
+        android:label="fragment_income"
+        tools:layout="@layout/fragment_income" >
+        <action
+            android:id="@+id/action_fragmentIncome_to_fragmentSchedule"
+            app:destination="@id/fragmentSchedule" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentProfileBarber"
+        android:name="fragments.FragmentProfileBarber"
+        android:label="fragment_profile_barber"
+        tools:layout="@layout/fragment_profile_barber" >
+        <action
+            android:id="@+id/action_fragmentProfileBarber_to_fragmentSchedule"
+            app:destination="@id/fragmentSchedule" />
+    </fragment>
+</navigation>

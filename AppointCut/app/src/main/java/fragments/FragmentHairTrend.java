@@ -1,7 +1,5 @@
 package fragments;
 
-import static android.content.ContentValues.TAG;
-
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,14 +7,13 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.appointcut.DataModel;
-import com.example.appointcut.MyAdapterHairRow;
-import com.example.appointcut.R;
+import DataModels.DataModelHair;
+import MyAdapters.MyAdapterHair;
+import online.appointcut.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -27,13 +24,11 @@ import java.util.ArrayList;
  * Use the {@link FragmentHairTrend#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentHairTrend extends Fragment implements MyAdapterHairRow.ItemClickListener{
+public class FragmentHairTrend extends Fragment implements MyAdapterHair.ItemClickListener{
 
     RecyclerView recyclerView;
-    private ArrayList<DataModel> list = new ArrayList<>();
+    private ArrayList<DataModelHair> list = new ArrayList<>();
 
-    int images[] = {R.drawable.ic_hairtrendicon,R.drawable.ic_hairtrendicon, R.drawable.ic_hairtrendicon,
-            R.drawable.ic_hairtrendicon,R.drawable.ic_hairtrendicon,R.drawable.ic_hairtrendicon};
 
     public FragmentHairTrend() {
         // Required empty public constructor
@@ -67,7 +62,7 @@ public class FragmentHairTrend extends Fragment implements MyAdapterHairRow.Item
         View view2 = getActivity().findViewById(R.id.constraintLayoutCustomer);
       BottomNavigationView bottomNavCustomer = (BottomNavigationView) view2.findViewById(R.id.bottomNavCustomer);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.approvedRecycler);
 
         FloatingActionButton search = (FloatingActionButton) view.findViewById(R.id.floatSearch);
         search.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +75,7 @@ public class FragmentHairTrend extends Fragment implements MyAdapterHairRow.Item
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
-        MyAdapterHairRow adapter = new MyAdapterHairRow(list,this);
+        MyAdapterHair adapter = new MyAdapterHair(list,this);
         recyclerView.setAdapter(adapter);
         buildListData();
 
@@ -88,7 +83,6 @@ public class FragmentHairTrend extends Fragment implements MyAdapterHairRow.Item
     }
 
     private void openFragment(Fragment fragment) {
-        Log.d(TAG, "openFragment: ");
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.constraintLayoutCustomer, fragment);
         transaction.addToBackStack(null);
@@ -96,17 +90,20 @@ public class FragmentHairTrend extends Fragment implements MyAdapterHairRow.Item
     }
 
     private void buildListData(){
-        list.add(new DataModel(images[0],"Hairtrend 1", "trend1"));
-        list.add(new DataModel(images[1],"Hairtrend 2", "trend2"));
-        list.add(new DataModel(images[2],"Hairtrend 3" , "trend3"));
-        list.add(new DataModel(images[3],"Hairtrend 4" , "trend4"));
-        list.add(new DataModel(images[4],"Hairtrend 5" ,"trend5"));
-        list.add(new DataModel(images[5],"Hairtrend 6" ,"trend6"));
+        int images[] = {R.drawable.high_and_tight_haircut,R.drawable.spiky_hair,R.drawable.taper_fade_with_slick_back,
+                R.drawable.undercut,R.drawable.low_fade,R.drawable.buzz_cut};
+
+        list.add(new DataModelHair(images[0],"High and Tight", getString(R.string.high_and_tight)));
+        list.add(new DataModelHair(images[1],"Spiky Hair", getString(R.string.spiky_hair)));
+        list.add(new DataModelHair(images[2],"Taper Fade with Slick Back", getString(R.string.taper_fade)));
+        list.add(new DataModelHair(images[3],"Undercut", getString(R.string.undercut)));
+        list.add(new DataModelHair(images[4],"Low Fade" ,getString(R.string.low_fade) ));
+        list.add(new DataModelHair(images[5],"Buzz Cut" ,getString(R.string.buzz_cut)));
     }
 
     @Override
-    public void onItemClick(DataModel dataModel) {
-        Fragment fragment =  FragmentHairCompleteInfo.newInstance(dataModel.getImage(), dataModel.getTitle(), dataModel.getDesc());
+    public void onItemClick(DataModelHair dataModelHair) {
+        Fragment fragment =  FragmentHairCompleteInfo.newInstance(dataModelHair.getImage(), dataModelHair.getTitle(), dataModelHair.getDesc());
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.constraintLayoutCustomer, fragment);
         transaction.addToBackStack(null);
