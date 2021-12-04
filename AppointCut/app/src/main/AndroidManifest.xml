@@ -22,6 +22,18 @@
             android:value="AIzaSyAjGYo7Z140QHOJuMHqh6YNYNChJZuofH8" />
 
         <activity
+            android:name=".AugmentActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:label="@string/title_activity_augment"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+
+
+        <activity
+            android:name=".MainUnityActivity"
+            android:theme="@style/UnityThemeSelector.Translucent" >
+        </activity>
+        <activity
             android:name=".HomePageBarber"
             android:exported="true"
             android:screenOrientation="portrait" />
