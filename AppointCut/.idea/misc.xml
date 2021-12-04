@@ -92,29 +92,15 @@
         <entry key="app/src/main/res/layout/activity_augmented_reality.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/activity_barber_home_page.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/activity_customer_home_page.xml" value="0.21145833333333333" />
-        <entry key="app/src/main/res/layout/activity_home_page_customer.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_unity.xml" value="0.3251231527093596" />
+        <entry key="app/src/main/res/layout/activity_unity.xml" value="0.1793478260869565" />
         <entry key="app/src/main/res/layout/barbershop_row_recycler.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/fragment_appointment.xml" value="0.21145833333333333" />
-        <entry key="app/src/main/res/layout/fragment_bottom_sheet_appointment_details.xml" value="0.21145833333333333" />
-        <entry key="app/src/main/res/layout/fragment_bottom_sheet_select_services.xml" value="0.21145833333333333" />
-        <entry key="app/src/main/res/layout/fragment_camera_a_r.xml" value="0.21145833333333333" />
-        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.21145833333333333" />
-        <entry key="app/src/main/res/layout/fragment_find_barber_shop.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/fragment_hair_style.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_hair_trend.xml" value="0.1838768115942029" />
         <entry key="app/src/main/res/layout/fragment_message.xml" value="0.1838768115942029" />
         <entry key="app/src/main/res/layout/fragment_schedule.xml" value="0.21145833333333333" />
-        <entry key="app/src/main/res/layout/main_toolbar.xml" value="0.19583333333333333" />
         <entry key="app/src/main/res/layout/nav_drawer_barbers.xml" value="0.21145833333333333" />
-        <entry key="app/src/main/res/layout/nav_drawer_header_barber.xml" value="0.21145833333333333" />
-        <entry key="app/src/main/res/layout/nav_drawer_header_customers.xml" value="0.21145833333333333" />
-        <entry key="app/src/main/res/menu/bottom_nav_arcamera.xml" value="0.19583333333333333" />
-        <entry key="app/src/main/res/menu/bottom_nav_customer.xml" value="0.19583333333333333" />
-        <entry key="app/src/main/res/menu/nav_drawer_barber.xml" value="0.19583333333333333" />
-        <entry key="app/src/main/res/menu/nav_drawer_customer.xml" value="0.19583333333333333" />
-        <entry key="app/src/main/res/menu/test.xml" value="0.21145833333333333" />
       </map>
     </option>
   </component>
