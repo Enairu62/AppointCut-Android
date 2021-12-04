@@ -45,6 +45,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainUnityActivity"
+            android:theme="@style/UnityThemeSelector.Translucent">
+        </activity>
     </application>
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
 
 </manifest>
