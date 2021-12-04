@@ -61,7 +61,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/approvedRecycler"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="650dp"
         android:layout_marginBottom="80dp"
         android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
