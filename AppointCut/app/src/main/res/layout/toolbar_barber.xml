@@ -1,96 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/barberToolbar"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/toolbar_height"
     android:orientation="horizontal"
-    android:id="@+id/barberToolbar">
+    android:padding="@dimen/padding_normal">
 
     <ImageView
-        android:layout_width="0dp"
+        android:id="@+id/imageMenu"
+        android:layout_width="@dimen/toolbar_menu_icon_width"
         android:layout_height="0dp"
-        app:srcCompat="@drawable/ic_menu"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineMenu2"
-        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLineMenu2"
-        app:layout_constraintStart_toStartOf="@+id/verticalGuideLineMenu1"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineMenu1"
-        android:id="@+id/imageMenu"/>
-
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Hello"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/verticalGuideLineMenu2"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineMenu1"
-        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine"
-        android:id="@+id/textView"/>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineMenu2"
-        app:layout_constraintStart_toStartOf="@+id/verticalGuideLineMenu2"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineName1"
-        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_menu" />
 
     <TextView
         android:id="@+id/txtFullName"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
         android:text="Barber"
+        android:textColor="@color/black"
         android:textSize="23sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageMenu"
+        app:layout_constraintStart_toEndOf="@+id/imageMenu" />
+
+    <TextView
+        android:id="@+id/_hello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_small"
+        android:text="Hello"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>>
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/verticalGuideLineMenu1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.035" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/verticalGuideLineMenu2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.15" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontalGuideLineMenu1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontalGuideLineMenu2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="1" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/verticalGuideLine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.96" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontalGuideLineName1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.56" />
-
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/imageMenu"
+        app:layout_constraintTop_toTopOf="@+id/imageMenu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

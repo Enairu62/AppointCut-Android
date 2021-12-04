@@ -10,12 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.appointcut.R;
+import online.appointcut.R;
 
 import java.util.List;
 
 import DataModels.DataModelAppointmentList;
-import DataModels.DataModelSelectBarber;
 
 public class MyAdapterAppointmentList extends RecyclerView.Adapter<MyAdapterAppointmentList.MyViewHolder>{
 

@@ -1,4 +1,4 @@
-package com.example.appointcut;
+package online.appointcut;
 
 import org.junit.Test;
 

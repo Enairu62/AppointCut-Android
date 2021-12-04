@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="fragments.FragmentAppointment">
+    tools:context="customerfragments.FragmentAppointment">
 
     <View
         android:layout_width="0dp"
@@ -58,61 +58,13 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/approvedRecycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineRecycler2"
         app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineRecycler1" />
-
-    <TextView
-        android:id="@+id/emptyApproved"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        android:text="No Approved Appointments"
-        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
-        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineRecycler2"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineRecycler1"/>
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Pending Appointments"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
-        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineText5"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineText6"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
-        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineRecycler4"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineRecycler3" />
-
-    <TextView
-        android:id="@+id/emptyPending"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        android:text="No Pending Appointments"
-        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
-        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineRecycler4"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineRecycler3" />
 
     <TextView
         android:id="@+id/textView4"
@@ -128,26 +80,13 @@
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineText8" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView3"
+        android:id="@+id/completedRecycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
         app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
         app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineRecycler6"
         app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineRecycler5"/>
-
-    <TextView
-        android:id="@+id/emptyCompleted"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        android:text="No Completed Appointments"
-        app:layout_constraintEnd_toEndOf="@+id/verticalGuideLine2"
-        app:layout_constraintStart_toStartOf="@+id/verticalGuideLine1"
-        app:layout_constraintBottom_toBottomOf="@+id/horizontalGuideLineRecycler6"
-        app:layout_constraintTop_toTopOf="@+id/horizontalGuideLineRecycler5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/verticalGuideLine1"
@@ -225,56 +164,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.43" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontalGuideLineText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.435" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontalGuideLineText6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.47" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontalGuideLineRecycler3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.475" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontalGuideLineRecycler4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.70" />
+        app:layout_constraintGuide_percent="0.55" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontalGuideLineText7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.705" />
+        app:layout_constraintGuide_percent="0.56" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontalGuideLineText8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.74" />
+        app:layout_constraintGuide_percent="0.6" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontalGuideLineRecycler5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.745" />
+        app:layout_constraintGuide_percent="0.61" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontalGuideLineRecycler6"

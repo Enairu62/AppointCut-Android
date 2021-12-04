@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import DataModels.DataModelHair;
 import MyAdapters.MyAdapterHair;
-import com.example.appointcut.R;
+import online.appointcut.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -62,7 +62,7 @@ public class FragmentHairTrend extends Fragment implements MyAdapterHair.ItemCli
         View view2 = getActivity().findViewById(R.id.constraintLayoutCustomer);
       BottomNavigationView bottomNavCustomer = (BottomNavigationView) view2.findViewById(R.id.bottomNavCustomer);
 
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.approvedRecycler);
 
         FloatingActionButton search = (FloatingActionButton) view.findViewById(R.id.floatSearch);
         search.setOnClickListener(new View.OnClickListener() {

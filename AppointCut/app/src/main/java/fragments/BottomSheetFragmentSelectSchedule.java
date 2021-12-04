@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.example.appointcut.R;
+import online.appointcut.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 /**
@@ -65,7 +65,6 @@ public class BottomSheetFragmentSelectSchedule extends BottomSheetDialogFragment
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_bottom_sheet_select_schedule, container, false);
         Button btnBack = (Button) view.findViewById(R.id.btnBack);
-        Button btnNext = (Button) view.findViewById(R.id.btnNext);
 
         BottomSheetDialogFragment bottomSheetFragmentSelectBarber = new BottomSheetFragmentSelectBarber();
         BottomSheetDialogFragment bottomSheetFragmentAppointmentDetails = new BottomSheetFragmentAppointmentDetails();
@@ -78,13 +77,7 @@ public class BottomSheetFragmentSelectSchedule extends BottomSheetDialogFragment
             }
         });
 
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-                bottomSheetFragmentAppointmentDetails.show(getActivity().getSupportFragmentManager(), bottomSheetFragmentAppointmentDetails.getTag());
-            }
-        });
+
         return view;
     }
 }
