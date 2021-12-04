@@ -22,7 +22,7 @@
     <style name="Theme.AppointCut.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.AppointCut.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-    
+
     <style name="BottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
     </style>
@@ -62,4 +62,15 @@
         <item name="colorControlActivated">@color/yellow</item>
         <item name="colorControlNormal">@android:color/darker_gray</item>
     </style>
+
+    <style name="NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
 </resources>
