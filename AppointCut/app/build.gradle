@@ -1,6 +1,5 @@
 plugins {
     id 'com.android.application'
-    id 'androidx.navigation.safeargs'
     id 'kotlin-android'
 }
 
@@ -49,8 +48,6 @@ dependencies {
     def nav_version = "2.3.5"
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'
-    implementation 'me.biubiubiu.justifytext:library:1.1'
 
     implementation project(':unityLibrary')
     implementation fileTree(dir: project(':unityLibrary').getProjectDir().toString() + ('/libs'), include: ['*.jar'])
