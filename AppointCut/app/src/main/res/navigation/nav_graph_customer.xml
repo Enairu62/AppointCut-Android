@@ -6,9 +6,9 @@
     app:startDestination="@id/fragmentFindBarberShop">
     <fragment
         android:id="@+id/fragmentFindBarberShop"
-        android:name="online.appointcut.customerfragments.FragmentFindShop"
+        android:name="fragments.FragmentFindBarberShop"
         android:label="fragment_find_barber_shop"
-        tools:layout="@layout/fragment_find_barber_shop">
+        tools:layout="@layout/fragment_find_barber_shop" >
         <action
             android:id="@+id/action_fragmentFindBarberShop_to_fragmentBarberShopMap"
             app:destination="@id/fragmentBarberShopMap" />
@@ -24,15 +24,6 @@
         <action
             android:id="@+id/action_fragmentMessage_to_fragmentChat"
             app:destination="@id/fragmentChat" />
-    </fragment>
-    <fragment
-        android:id="@+id/fragmentCameraAR"
-        android:name="fragments.FragmentCameraAR"
-        android:label="fragment_camera_a_r"
-        tools:layout="@layout/fragment_camera_a_r" >
-        <action
-            android:id="@+id/action_fragmentCameraAR_to_fragmentFindBarberShop"
-            app:destination="@id/fragmentFindBarberShop" />
     </fragment>
     <fragment
         android:id="@+id/fragmentNotifications"
@@ -62,33 +53,27 @@
         android:name="fragments.FragmentBarberShopMap"
         android:label="fragment_barber_shop_map"
         tools:layout="@layout/fragment_barber_shop_map" >
+        <argument
+            android:name="barbershopName"
+            app:argType="string" />
         <action
             android:id="@+id/action_fragmentBarberShopMap_to_fragmentFindBarberShop"
             app:destination="@id/fragmentFindBarberShop" />
         <argument
-            android:name="name"
+            android:name="barbershopAddress"
             app:argType="string" />
         <argument
-            android:name="address"
+            android:name="barbershopContact"
+            app:argType="long" />
+        <argument
+            android:name="barbershopSchedule"
             app:argType="string" />
         <argument
-            android:name="contact"
-            app:argType="string" />
-        <argument
-            android:name="rating"
+            android:name="barbershopRating"
             app:argType="float" />
         <argument
-            android:name="id"
-            app:argType="integer" />
-        <argument
-            android:name="longi"
+            android:name="barbershopDistance"
             app:argType="float" />
-        <argument
-            android:name="lat"
-            app:argType="float" />
-        <action
-            android:id="@+id/action_fragmentBarberShopMap_to_paymentFragment"
-            app:destination="@id/paymentFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentChat"
@@ -99,15 +84,9 @@
             android:id="@+id/action_fragmentChat_to_fragmentMessage"
             app:destination="@id/fragmentMessage" />
     </fragment>
-    <fragment
-        android:id="@+id/paymentFragment"
-        android:name="online.appointcut.customerfragments.PaymentFragment"
-        android:label="payment_fragment"
-        tools:layout="@layout/payment_fragment" >
-        <action
-            android:id="@+id/action_paymentFragment_to_fragmentFindBarberShop"
-            app:destination="@id/fragmentFindBarberShop"
-            app:popUpTo="@id/fragmentFindBarberShop"
-            app:popUpToInclusive="true" />
-    </fragment>
+    <activity
+        android:id="@+id/augmentActivity"
+        android:name="com.example.appointcut.AugmentActivity"
+        android:label="activity_augment"
+        tools:layout="@layout/activity_augment" />
 </navigation>
