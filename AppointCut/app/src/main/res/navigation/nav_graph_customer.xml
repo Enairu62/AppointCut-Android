@@ -10,7 +10,7 @@
         android:label="fragment_find_barber_shop"
         tools:layout="@layout/fragment_find_barber_shop">
         <action
-            android:id="@+id/action_fragmentFUnityindBarberShop_to_fragmentBarberShopMap"
+            android:id="@+id/action_fragmentFindBarberShop_to_fragmentBarberShopMap"
             app:destination="@id/fragmentBarberShopMap" />
     </fragment>
     <fragment
