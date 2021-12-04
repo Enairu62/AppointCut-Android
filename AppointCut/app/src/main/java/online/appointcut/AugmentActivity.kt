@@ -2,15 +2,16 @@ package online.appointcut
 
 import android.content.Intent
 import android.graphics.Point
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Size
+import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LifecycleOwner
+import online.appointcut.MainUnityActivity
 import com.google.common.util.concurrent.ListenableFuture
 import online.appointcut.databinding.ActivityAugmentBinding
 
@@ -30,14 +31,13 @@ class AugmentActivity : AppCompatActivity() {
             bindPreview(cameraProvider)
         }, ContextCompat.getMainExecutor(this))
 
-        val unityIntent = Intent(this,MainUnityActivity::class.java)
+        val unityIntent = Intent(this, MainUnityActivity::class.java)
         startActivity(unityIntent)
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finishAffinity()
-    }
+//    override fun onBackPressed() {
+//        finish()
+//    }
 
     //MOAR camerax stuff
     private fun bindPreview(cameraProvider: ProcessCameraProvider) {

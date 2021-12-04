@@ -71,10 +71,10 @@ public class FragmentCameraAR extends Fragment {
                     drawerLayoutCustomer.closeDrawer(GravityCompat.START);
                 }
                 else {
-                    navController.navigate(R.id.action_fragmentCameraAR_to_fragmentFindBarberShop);
-                    bottomNavCustomer.setVisibility(View.VISIBLE);
-                    bottomNavCustomer.getMenu().setGroupCheckable(0, true, true);
-                    bottomNavCustomer.setSelectedItemId(R.id.fragmentFindBarberShop);
+//                    navController.navigate(R.id.action_fragmentCameraAR_to_fragmentFindBarberShop);
+//                    bottomNavCustomer.setVisibility(View.VISIBLE);
+//                    bottomNavCustomer.getMenu().setGroupCheckable(0, true, true);
+//                    bottomNavCustomer.setSelectedItemId(R.id.fragmentFindBarberShop);
                 }
             }
         };

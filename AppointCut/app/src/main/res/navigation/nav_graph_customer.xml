@@ -10,7 +10,7 @@
         android:label="fragment_find_barber_shop"
         tools:layout="@layout/fragment_find_barber_shop">
         <action
-            android:id="@+id/action_fragmentFindBarberShop_to_fragmentBarberShopMap"
+            android:id="@+id/action_fragmentFUnityindBarberShop_to_fragmentBarberShopMap"
             app:destination="@id/fragmentBarberShopMap" />
     </fragment>
     <fragment
@@ -24,15 +24,6 @@
         <action
             android:id="@+id/action_fragmentMessage_to_fragmentChat"
             app:destination="@id/fragmentChat" />
-    </fragment>
-    <fragment
-        android:id="@+id/fragmentCameraAR"
-        android:name="fragments.FragmentCameraAR"
-        android:label="fragment_camera_a_r"
-        tools:layout="@layout/fragment_camera_a_r" >
-        <action
-            android:id="@+id/action_fragmentCameraAR_to_fragmentFindBarberShop"
-            app:destination="@id/fragmentFindBarberShop" />
     </fragment>
     <fragment
         android:id="@+id/fragmentNotifications"
@@ -50,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentAppointment"
-        android:name="fragments.FragmentAppointment"
+        android:name="online.appointcut.customerfragments.FragmentAppointment"
         android:label="fragment_appointment"
         tools:layout="@layout/fragment_appointment" >
         <action
@@ -110,4 +101,9 @@
             app:popUpTo="@id/fragmentFindBarberShop"
             app:popUpToInclusive="true" />
     </fragment>
+    <activity
+        android:id="@+id/augmentActivity"
+        android:name="online.appointcut.AugmentActivity"
+        android:label="activity_augment"
+        tools:layout="@layout/activity_augment" />
 </navigation>
