@@ -2,6 +2,7 @@ package online.appointcut;
 
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +15,8 @@ import androidx.navigation.ui.NavigationUI;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -44,6 +47,20 @@ public class HomePageCustomer extends AppCompatActivity {
         displayCustomerName();
         openNotif();
 
+    }
+
+    //when user taps on navigation
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Log.d("HomePageCustomer", "Option Item selected: " + item.getItemId());
+        //if user taps on CameraAR tab
+        if (item.getItemId() == R.id.augmentActivity){
+            Intent intent = new Intent();
+            intent.setClass(this,AugmentActivity.class);
+            return true;
+        }
+        //if the user tapped something else
+        return super.onOptionsItemSelected(item);
     }
 
     private void declareViews() {

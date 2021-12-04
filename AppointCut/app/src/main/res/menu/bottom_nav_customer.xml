@@ -3,7 +3,7 @@
 
     <group android:checkableBehavior="single">
     <item
-        android:id="@+id/fragmentCameraAR"
+        android:id="@+id/augmentActivity"
         android:icon="@drawable/ic_cameraicon"
         android:title="" />
     <item
