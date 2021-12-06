@@ -16,7 +16,7 @@ class SignUpViewModel: ViewModel() {
         val response = ApcService.retrofitService.registerUser(this)
         Log.d("SUVM", "Server Response: $response")
 
-        return SUCCESS
+        return response
     }
 
     companion object{

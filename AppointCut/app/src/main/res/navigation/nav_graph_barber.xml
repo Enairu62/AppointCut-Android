@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentIncome"
-        android:name="fragments.FragmentIncome"
+        android:name="online.appointcut.barberfragments.IncomeFragment"
         android:label="fragment_income"
         tools:layout="@layout/fragment_income" >
         <action

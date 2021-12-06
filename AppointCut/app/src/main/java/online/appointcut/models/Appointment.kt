@@ -29,13 +29,15 @@ class Appointment(): ViewModel() {
     @Json(name = "HaircutID") var haircutId: Int? = 0
     @Json(name = "appStatusID")var appStatusId = 1
     @Json(name = "Service") var serviceName: String = ""
+    @Json(name = "ShopName") var shopName = ""
 
     var id = 0
     var serviceDuration: Int = 0
     var amountDue = 0
     var employeeName = ""
     var userToken = ""
-    var shopName = ""
+
+    var list = mutableListOf<Appointment>()
 
     constructor(date: String,timeIn: String, timeOut: String): this(){
         this._rawDate = date
@@ -63,6 +65,18 @@ class Appointment(): ViewModel() {
         }catch (e: Exception) {
             Log.e("Appointment", "Error occurred trying to set appointment", e)
             Toast.makeText(context, "Unknown error", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    suspend fun getCustomerApproved(){
+        list = mutableListOf<Appointment>().apply {
+            addAll(ApcService.retrofitService.getCustomerApprovedAppointments(userToken))
+        }
+    }
+
+    suspend fun getCustomerCompleted(){
+        list = mutableListOf<Appointment>().apply {
+            addAll(ApcService.retrofitService.getCustomerCompletedAppointments(userToken))
         }
     }
 }

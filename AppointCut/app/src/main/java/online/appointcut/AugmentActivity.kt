@@ -3,6 +3,7 @@ package online.appointcut
 import android.content.Intent
 import android.graphics.Point
 import android.os.Bundle
+import android.util.Log
 import android.util.Size
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
@@ -48,6 +49,7 @@ class AugmentActivity : AppCompatActivity() {
         val display = windowManager.defaultDisplay
         val size = Point()
         display.getSize(size)
+        Log.d("Screen Size", "Unity resolution: ${size.toString()}")
         //reduce resolution for use with analyzer
         val resolution: Size = Size((size.x/2).toInt(),(size.y/2).toInt())
 

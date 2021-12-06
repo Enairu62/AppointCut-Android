@@ -48,6 +48,28 @@ class MainUnityActivity : UnityPlayerActivity() {
             modifyScale(-amtLarge)
         }
 
+        val amtSmallPos = .001F
+        val amtMediumPos = .01F
+        val amtLargePos = .1F
+        binding.addSmallPos.setOnClickListener {
+            modifyPosScale(amtSmallPos)
+        }
+        binding.addMediumPos.setOnClickListener {
+            modifyPosScale(amtMediumPos)
+        }
+        binding.addLargePos.setOnClickListener {
+            modifyPosScale(amtLargePos)
+        }
+        binding.subtractSmallPos.setOnClickListener {
+            modifyPosScale(-amtSmallPos)
+        }
+        binding.subtractMediumPos.setOnClickListener {
+            modifyPosScale(-amtMediumPos)
+        }
+        binding.subtractLargePos.setOnClickListener {
+            modifyPosScale(-amtLargePos)
+        }
+
         AppointCutAnalyzer.addOnSuccessListener(faceListener)
     }
 
@@ -63,7 +85,7 @@ class MainUnityActivity : UnityPlayerActivity() {
             //use width to determine distance or scale
             val z: Float = f.boundingBox.width().toFloat()
             binding.boxWidth.text = z.toString()
-            val zInverse = z/sizeScale
+            val zInverse = 350/sizeScale
             //scale the model
             scaleModel(zInverse)
 
@@ -85,7 +107,7 @@ class MainUnityActivity : UnityPlayerActivity() {
                 val xScaled: Float = ((coords.x * -1) + screenCenter.x / 2) * positionScale
                 val yScaled: Float = ((coords.y * -1) + screenCenter.y / 2) * positionScale
                 //move model
-                moveModel(xScaled, yScaled, 0F)
+//                moveModel(xScaled, yScaled, 0F)
                 //position debug tracker
                 binding.point.xPoint = (coords.x * 2 - size.x) * -1
                 binding.point.yPoint = coords.y * 2
@@ -131,6 +153,10 @@ class MainUnityActivity : UnityPlayerActivity() {
 
     private fun modifyScale(f: Float) {
         sizeScale += f
+        binding.scaler.text = sizeScale.toString()
+    }
+    private fun modifyPosScale(f: Float) {
+        positionScale += f
         binding.scaler.text = sizeScale.toString()
     }
 

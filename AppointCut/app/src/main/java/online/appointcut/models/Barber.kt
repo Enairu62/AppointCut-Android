@@ -9,12 +9,15 @@ class Barber(
     @Json(name = "ShopID") val shopId: Int,
     @Json(name = "FullName") val fullName: String
     ){
+
     private var _schedule: MutableList<Schedule>? = null
     val schedule: List<Schedule>
         get(){
             return _schedule?: throw UninitializedPropertyAccessException(
                 "Property has not yet been initialized run fillSchedule first")
         }
+    @Json(name ="SalaryType") lateinit var salaryType: String
+    @Json(name = "SalaryValue") var salaryValue: Float? = null
 
     suspend fun fillSchedule(){
         if (_schedule == null)

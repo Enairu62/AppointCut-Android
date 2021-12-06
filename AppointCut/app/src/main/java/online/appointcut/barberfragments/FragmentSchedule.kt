@@ -17,7 +17,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import online.appointcut.R
-import online.appointcut.adapters.AppointmentAdapter
+import online.appointcut.adapters.BarberAppointmentAdapter
 import online.appointcut.models.Appointment
 import online.appointcut.network.ApcService
 import devs.mulham.horizontalcalendar.HorizontalCalendar
@@ -101,7 +101,7 @@ class FragmentSchedule : Fragment() {
         val recyclerView = view.findViewById<View>(R.id.approvedRecycler) as RecyclerView
         val layoutManager = LinearLayoutManager(activity)
         recyclerView.layoutManager = layoutManager
-        val adapter = AppointmentAdapter(appointments)
+        val adapter = BarberAppointmentAdapter(appointments)
         recyclerView.adapter = adapter
 
         return view
@@ -119,7 +119,7 @@ class FragmentSchedule : Fragment() {
             try {
                 appointments =
                     ApcService.retrofitService.getBarberFullAppointments(token, day, month, year)?:listOf<Appointment>()
-                val adapter = AppointmentAdapter(appointments)
+                val adapter = BarberAppointmentAdapter(appointments)
 
                 view?.findViewById<RecyclerView>(R.id.approvedRecycler)?.adapter = adapter
             }catch(e: ConnectException){

@@ -28,4 +28,9 @@
 
     <!--   Others   -->
     <dimen name="calendar_height">52dp</dimen>
+
+    <!--Customer Appointment-->
+    <dimen name="customer_appointments_recycler_height">150dp</dimen>
+    <dimen name="customer_appointments_progress_size">150dp</dimen>
+
 </resources>

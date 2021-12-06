@@ -94,18 +94,26 @@
         <entry key="app/src/main/res/layout/activity_customer_home_page.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/activity_home_page_customer.xml" value="0.17731481481481481" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.17731481481481481" />
-        <entry key="app/src/main/res/layout/activity_unity.xml" value="0.1793478260869565" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_unity.xml" value="0.33" />
         <entry key="app/src/main/res/layout/barbershop_row_recycler.xml" value="0.21145833333333333" />
-        <entry key="app/src/main/res/layout/fragment_appointment.xml" value="0.21145833333333333" />
+        <entry key="app/src/main/res/layout/fragment_appointment.xml" value="0.5984375" />
+        <entry key="app/src/main/res/layout/fragment_bottom_sheet_select_barber.xml" value="0.9" />
         <entry key="app/src/main/res/layout/fragment_contact_us.xml" value="0.17731481481481481" />
+        <entry key="app/src/main/res/layout/fragment_find_barber_shop.xml" value="0.39121552604698673" />
         <entry key="app/src/main/res/layout/fragment_hair_style.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_hair_trend.xml" value="0.1838768115942029" />
+        <entry key="app/src/main/res/layout/fragment_income.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_message.xml" value="0.1838768115942029" />
         <entry key="app/src/main/res/layout/fragment_schedule.xml" value="0.21145833333333333" />
+        <entry key="app/src/main/res/layout/income_fragment.xml" value="0.17731481481481481" />
         <entry key="app/src/main/res/layout/nav_drawer_barbers.xml" value="0.21145833333333333" />
         <entry key="app/src/main/res/layout/nav_drawer_header_customers.xml" value="0.17731481481481481" />
+        <entry key="app/src/main/res/layout/recycler_row_appointment_list.xml" value="0.75" />
+        <entry key="app/src/main/res/layout/recycler_row_income.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/recycler_row_schedule.xml" value="0.16367521367521368" />
         <entry key="app/src/main/res/layout/toolbar_customer.xml" value="0.17731481481481481" />
+        <entry key="app/src/main/res/menu/bottom_nav_barber.xml" value="0.19947916666666668" />
         <entry key="app/src/main/res/menu/bottom_nav_customer.xml" value="0.17731481481481481" />
       </map>
     </option>

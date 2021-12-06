@@ -23,7 +23,7 @@
         android:layout_height="0dp"
         android:background="@drawable/border_plaintext"
         android:ems="10"
-        android:hint="Username"
+        android:hint="E-Mail"
         android:inputType="textEmailAddress"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"

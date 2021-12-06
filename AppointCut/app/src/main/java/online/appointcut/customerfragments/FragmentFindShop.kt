@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.core.view.GravityCompat
@@ -81,9 +82,18 @@ class FragmentFindShop : Fragment(), MyAdapterBarberShop.ItemClickListener {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.findViewById<Button>(R.id.btnFilterProximity).setOnClickListener(onProximityClick)
+    }
+
     override fun onResume() {
         super.onResume()
         //list.clear()
+    }
+
+    private val onProximityClick = View.OnClickListener{
+
     }
 
     override fun onItemClick(dataModelBarberShop: DataModelBarberShop) {

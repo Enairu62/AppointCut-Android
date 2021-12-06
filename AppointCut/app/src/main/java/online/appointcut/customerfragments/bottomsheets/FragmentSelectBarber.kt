@@ -50,7 +50,7 @@ class FragmentSelectBarber(private val shopService: ShopService) : BottomSheetDi
         btn.text = shopService.name
 
         //set recycler
-        recyclerView = view.findViewById<View>(R.id.approvedRecycler) as RecyclerView
+        recyclerView = view.findViewById<View>(R.id.barberRecycler) as RecyclerView
         val layoutManager = LinearLayoutManager(activity)
         recyclerView!!.layoutManager = layoutManager
         viewLifecycleOwner.lifecycleScope.launch {
@@ -58,9 +58,11 @@ class FragmentSelectBarber(private val shopService: ShopService) : BottomSheetDi
                 val list = getBarbersWithService(shopService)
                 val adapter =
                     BarberAdapter(list, this@FragmentSelectBarber::showSelectScheduleFragment)
+                Log.d("frag bar", "Adapted")
                 recyclerView!!.adapter = adapter
             }catch (e: Exception){
-                Toast.makeText(context,"Unable to load Barbers", Toast.LENGTH_SHORT)
+                Log.e("FragmentBarber", "Errore $e",e)
+                Toast.makeText(context,"Unable to load Barbers", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -73,13 +75,17 @@ class FragmentSelectBarber(private val shopService: ShopService) : BottomSheetDi
      * @return A list of barbers that can perform the service
      */
     private suspend fun getBarbersWithService(shopService: ShopService): List<Barber> {
+        Log.d("","Shop service id: $shopService")
         val employeeSpecialization = ApcService.retrofitService
             .getSpecializationWithService(shopService.id)
         val barbers: MutableList<Barber> = mutableListOf()
 
         for (e in employeeSpecialization) {
-            barbers.add(
-                ApcService.retrofitService.getBarber(e.employeeId)
+
+            Log.d("FragmentSelectBarber","Barber:${e.employeeId}")
+            var b = ApcService.retrofitService.getBarber(e.employeeId)
+            barbers.addAll(
+                b
             )
         }
         return barbers

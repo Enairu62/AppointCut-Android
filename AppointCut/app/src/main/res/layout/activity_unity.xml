@@ -9,7 +9,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/underlay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:visibility="gone">
 
         <com.example.appointcut.PointView
             android:id="@+id/point"
@@ -26,7 +27,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="gone" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/overlay"
@@ -57,6 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,6 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="++"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/addSmall" />
 
@@ -73,6 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+++"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/addMedium" />
 
@@ -81,15 +86,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addLarge" />
 
         <Button
             android:id="@+id/subtractMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="--"
-            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/subtractSmall"
             app:layout_constraintTop_toBottomOf="@id/subtractSmall" />
 
         <Button
@@ -97,8 +104,63 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="---"
-            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/subtractMedium"
             app:layout_constraintTop_toBottomOf="@id/subtractMedium" />
+
+        <Button
+            android:id="@+id/addSmallPos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/addMediumPos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="++"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/addSmallPos"
+            app:layout_constraintTop_toBottomOf="@+id/addSmallPos" />
+
+        <Button
+            android:id="@+id/addLargePos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+++"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/addMediumPos"
+            app:layout_constraintTop_toBottomOf="@+id/addMediumPos" />
+
+        <Button
+            android:id="@+id/subtractSmallPos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addLargePos" />
+
+        <Button
+            android:id="@+id/subtractMediumPos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="--"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/subtractSmallPos"
+            app:layout_constraintTop_toBottomOf="@+id/subtractSmallPos" />
+
+        <Button
+            android:id="@+id/subtractLargePos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="---"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@+id/subtractMediumPos"
+            app:layout_constraintTop_toBottomOf="@+id/subtractMediumPos" />
 
         <TextView
             android:id="@+id/zOutput"

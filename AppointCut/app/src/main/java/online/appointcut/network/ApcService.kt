@@ -39,7 +39,7 @@ interface ApcServiceInterface {
             List<EmployeeSpecialization>
 
     @GET("rest/barbers/{id}")
-    suspend fun getBarber(@Path("id") id: Int): Barber
+    suspend fun getBarber(@Path("id") id: Int): List<Barber>
 
     @GET("rest/barbers/appointments/{id}-{month}-{year}")
     suspend fun getBarberAppointmentsForMonthYear(
@@ -80,6 +80,19 @@ interface ApcServiceInterface {
 
     @POST("rest/register")
     suspend fun registerUser(@Body signUp: SignUpViewModel): Int
+
+    @GET("rest/appointments/customer/completed/{token}")
+    suspend fun getCustomerCompletedAppointments(@Path("token")token: String): List<Appointment>
+
+    @GET("rest/appointments/customer/approved/{token}")
+    suspend fun getCustomerApprovedAppointments(@Path("token")token: String): List<Appointment>
+
+    @GET("rest/barbers/wage/{token}-{year}-{month}")
+    suspend fun getEmployeeWage(
+        @Path("token") token: String,
+        @Path("year") year: Int,
+        @Path("month") monthIndex: Int
+    ): Float
 }
 
 object ApcService {

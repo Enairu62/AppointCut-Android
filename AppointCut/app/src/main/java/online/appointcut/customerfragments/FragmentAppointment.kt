@@ -13,9 +13,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import MyAdapters.MyAdapterAppointmentList
+import android.util.Log
 import android.view.View
+import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
+import kotlinx.coroutines.launch
+import online.appointcut.adapters.CustomerAppointmentAdapter
+import online.appointcut.models.Appointment
+import java.net.ConnectException
 import java.util.ArrayList
 
 /**
@@ -25,14 +34,11 @@ import java.util.ArrayList
  */
 class FragmentAppointment : Fragment() {
     private val listApproved = ArrayList<DataModelAppointmentList>()
-    private val listPending = ArrayList<DataModelAppointmentList>()
     private val listCompleted = ArrayList<DataModelAppointmentList>()
-    var emptyApproved: TextView? = null
-    var emptyPending: TextView? = null
-    var emptyCompleted: TextView? = null
     var approvedRecycler: RecyclerView? = null
-    var recyclerView2: RecyclerView? = null
     var completedRecycler: RecyclerView? = null
+
+    private val sharedViewModel: Appointment by activityViewModels()
 
 
 
@@ -69,127 +75,56 @@ class FragmentAppointment : Fragment() {
         return view
     }
 
-    /**
-     * Called immediately after [.onCreateView]
-     * has returned, but before any saved state has been restored in to the view.
-     * This gives subclasses a chance to initialize themselves once
-     * they know their view hierarchy has been completely created.  The fragment's
-     * view hierarchy is not however attached to its parent at this point.
-     * @param view The View returned by [.onCreateView].
-     * @param savedInstanceState If non-null, this fragment is being re-constructed
-     * from a previous saved state as given here.
-     */
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        declareViews()
-        displayAppointmentMethod()
-    }
 
-
-    override fun onResume() {
-        super.onResume()
-        buildListDataApproved()
-        buildListDataPending()
-        buildListDataCompleted()
-        emptyApprovedLabel()
-        emptyPendingLabel()
-        emptyCompletedLabel()
-    }
-
-    private fun declareViews() {
         val bottomNavCustomer =
             requireActivity().findViewById<View>(R.id.bottomNavCustomer) as BottomNavigationView
         bottomNavCustomer.visibility = View.GONE
         approvedRecycler = requireView().findViewById<View>(R.id.approvedRecycler) as RecyclerView
         completedRecycler = requireView().findViewById<View>(R.id.completedRecycler) as RecyclerView
-    }
 
-    private fun buildListDataApproved() {
-        //example of empty list
-        val profilePic = intArrayOf(R.drawable.cavalry_barbershop)
-        listApproved.add(
-            DataModelAppointmentList(
-                profilePic[0],
-                "28 Cavalry",
-                "Haircut",
-                "November 10, 2021 / 10:00 am - 11:00 am"
-            )
-        )
-    }
 
-    private fun buildListDataPending() {
-        val profilePic = intArrayOf(R.drawable.cavalry_barbershop)
-        //listPending.add(new DataModelAppointmentList(profilePic[0],"28 Cavalry", "Hair Color","November 16, 2021 / 12:00 pm - 01:00 pm"));
-    }
+        approvedRecycler!!.layoutManager = LinearLayoutManager(activity)
+        completedRecycler!!.layoutManager = LinearLayoutManager(activity)
 
-    private fun buildListDataCompleted() {
-        val profilePic = intArrayOf(R.drawable.cavalry_barbershop)
-        listCompleted.add(
-            DataModelAppointmentList(
-                profilePic[0],
-                "28 Cavalry",
-                "Massage",
-                "November 7, 2021 / 03:00 pm - 04:00 pm"
-            )
-        )
-        listCompleted.add(
-            DataModelAppointmentList(
-                profilePic[0],
-                "28 Cavalry",
-                "Haircut",
-                "October 19, 2021 / 9:30 am - 10:30 am"
-            )
-        )
-    }
+        val approved = Appointment().apply { userToken = sharedViewModel.userToken }
+        val completed = Appointment().apply { userToken = sharedViewModel.userToken }
+        approvedRecycler!!.adapter = MyAdapterAppointmentList(listCompleted)
 
-    private fun emptyApprovedLabel() {
-        if (listApproved.isEmpty()) {
-            approvedRecycler!!.visibility = View.GONE
-            emptyApproved!!.visibility = View.VISIBLE
-        } else {
-            approvedRecycler!!.visibility = View.VISIBLE
-            emptyApproved!!.visibility = View.INVISIBLE
+        //Approved appointments
+        lifecycleScope.launch {
+            try{
+                approved.getCustomerApproved()
+                approvedRecycler!!.adapter = CustomerAppointmentAdapter(approved.list)
+            }catch(e: ConnectException){
+                Log.e("FragmentAppointment", "Error: $e", e)
+                Toast.makeText(context,"Server Unreachable", Toast.LENGTH_SHORT)
+                    .show()
+            }catch(e: Exception){
+                Log.e("FragmentAppointment", "Error: $e", e)
+                Toast.makeText(context,"Unkown error", Toast.LENGTH_SHORT)
+                    .show()
+            }
+            view.findViewById<ProgressBar>(R.id.approvedProgBar).visibility = View.GONE
         }
-    }
 
-    private fun emptyPendingLabel() {
-        if (listPending.isEmpty()) {
-            recyclerView2!!.visibility = View.GONE
-            emptyPending!!.visibility = View.VISIBLE
-        } else {
-            recyclerView2!!.visibility = View.VISIBLE
-            emptyPending!!.visibility = View.INVISIBLE
+        //completed appointments
+        lifecycleScope.launch {
+            try{
+                completed.getCustomerCompleted()
+                completedRecycler!!.adapter = CustomerAppointmentAdapter(completed.list)
+            }catch(e: ConnectException){
+                Log.e("FragmentAppointment", "Error: $e", e)
+                Toast.makeText(context,"Server Unreachable", Toast.LENGTH_SHORT)
+                    .show()
+            }catch(e: Exception){
+                Log.e("FragmentAppointment", "Error: $e", e)
+                Toast.makeText(context,"Unkown error", Toast.LENGTH_SHORT)
+                    .show()
+            }
+            view.findViewById<ProgressBar>(R.id.completedProgBar).visibility = View.GONE
         }
-    }
-
-    private fun emptyCompletedLabel() {
-        if (listCompleted.isEmpty()) {
-            completedRecycler!!.visibility = View.GONE
-            emptyCompleted!!.visibility = View.VISIBLE
-        } else {
-            completedRecycler!!.visibility = View.VISIBLE
-            emptyCompleted!!.visibility = View.INVISIBLE
-        }
-    }
-
-    private fun displayAppointmentMethod() {
-        val layoutManager1 = LinearLayoutManager(activity)
-        val layoutManager2 = LinearLayoutManager(activity)
-        val layoutManager3 = LinearLayoutManager(activity)
-        approvedRecycler!!.layoutManager = layoutManager1
-        recyclerView2!!.layoutManager = layoutManager2
-        completedRecycler!!.layoutManager = layoutManager3
-        val adapter1 = MyAdapterAppointmentList(listApproved)
-        val adapter2 = MyAdapterAppointmentList(listPending)
-        val adapter3 = MyAdapterAppointmentList(listCompleted)
-        approvedRecycler!!.adapter = adapter1
-        recyclerView2!!.adapter = adapter2
-        completedRecycler!!.adapter = adapter3
-        buildListDataApproved()
-        buildListDataPending()
-        buildListDataCompleted()
-        emptyApprovedLabel()
-        emptyPendingLabel()
-        emptyCompletedLabel()
     }
 }

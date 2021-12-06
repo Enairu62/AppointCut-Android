@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import online.appointcut.databinding.RecyclerRowScheduleBinding
 import online.appointcut.models.Appointment
 
-class AppointmentAdapter(private val appointments: List<Appointment>): RecyclerView.Adapter<AppointmentAdapter.AppointmentHolder>(){
+class BarberAppointmentAdapter(private val appointments: List<Appointment>): RecyclerView.Adapter<BarberAppointmentAdapter.AppointmentHolder>(){
     class AppointmentHolder(private val binding: RecyclerRowScheduleBinding):
         RecyclerView.ViewHolder(binding.root){
 
