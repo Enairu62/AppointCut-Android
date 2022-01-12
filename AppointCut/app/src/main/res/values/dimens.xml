@@ -33,4 +33,18 @@
     <dimen name="customer_appointments_recycler_height">150dp</dimen>
     <dimen name="customer_appointments_progress_size">150dp</dimen>
 
+    <!--Customer Cancel Appointment-->
+    <dimen name="cancel_appointment_width">300dp</dimen>
+    <dimen name="cancel_appointment_height">250dp</dimen>
+    <dimen name="text_margin">16dp</dimen>
+
+    <!--Dialog-->
+    <dimen name="dialog_height">450dp</dimen>
+    <dimen name="dialog_width">300dp</dimen>
+    <dimen name="dialog_image_size">200dp</dimen>
+
+    <!--List Size -->
+    <dimen name="list_name_size">24dp</dimen>
+    <dimen name="list_image_size">90dp</dimen>
+
 </resources>

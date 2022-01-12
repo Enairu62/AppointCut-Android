@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.SurfaceView
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.Toast
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.mlkit.vision.face.Face
 import com.google.mlkit.vision.face.FaceContour
@@ -21,6 +22,7 @@ class MainUnityActivity : UnityPlayerActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        instance = this;
 
         binding = ActivityUnityBinding.inflate(layoutInflater)
         binding.scaler.text = sizeScale.toString()
@@ -107,7 +109,7 @@ class MainUnityActivity : UnityPlayerActivity() {
                 val xScaled: Float = ((coords.x * -1) + screenCenter.x / 2) * positionScale
                 val yScaled: Float = ((coords.y * -1) + screenCenter.y / 2) * positionScale
                 //move model
-//                moveModel(xScaled, yScaled, 0F)
+                //moveModel(xScaled, yScaled, 0F)
                 //position debug tracker
                 binding.point.xPoint = (coords.x * 2 - size.x) * -1
                 binding.point.yPoint = coords.y * 2
@@ -158,6 +160,13 @@ class MainUnityActivity : UnityPlayerActivity() {
     private fun modifyPosScale(f: Float) {
         positionScale += f
         binding.scaler.text = sizeScale.toString()
+    }
+
+    fun receiveMessage(s: String){
+        Toast.makeText(this,"Message: $s",Toast.LENGTH_SHORT).show()
+    }
+    companion object{
+        var instance: MainUnityActivity? = null;
     }
 
 }

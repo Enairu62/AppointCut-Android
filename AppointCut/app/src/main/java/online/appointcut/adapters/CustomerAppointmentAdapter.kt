@@ -6,13 +6,19 @@ import androidx.recyclerview.widget.RecyclerView
 import online.appointcut.databinding.RecyclerRowAppointmentListBinding
 import online.appointcut.models.Appointment
 
-class CustomerAppointmentAdapter(private val list: List<Appointment>) :
+class CustomerAppointmentAdapter(
+    private val list: List<Appointment>,
+    private val clickHandler: ((Appointment) -> Unit)? = null
+) :
     RecyclerView.Adapter<CustomerAppointmentAdapter.AppointmentHolder>() {
 
-    class AppointmentHolder(private var binding: RecyclerRowAppointmentListBinding) :
+    class AppointmentHolder(private var binding: RecyclerRowAppointmentListBinding,
+    private val cancelHandler: ((Appointment) -> Unit)?) :
         RecyclerView.ViewHolder(binding.root) {
+        lateinit var appointment: Appointment
          fun bind(appointment: Appointment){
-            binding.barberShopName.text = appointment.shopName
+             this.appointment = appointment
+             binding.barberShopName.text = appointment.shopName
              binding.barberShopService.text = appointment.serviceName
              val year = appointment.date.split('-')[0].toInt()
              val month = appointment.date.split('-')[1].toInt()
@@ -22,7 +28,12 @@ class CustomerAppointmentAdapter(private val list: List<Appointment>) :
 
              binding.barberShopSchedule.text =
                  "$year-$month-$date || $hour:${minute.toString().padStart(2,'0')}"
+             binding.root.setOnClickListener { onCancel(this.appointment) }
          }
+
+        private fun onCancel(appointment: Appointment) {
+            cancelHandler?.invoke(appointment)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppointmentHolder {
@@ -31,7 +42,8 @@ class CustomerAppointmentAdapter(private val list: List<Appointment>) :
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ),
+            clickHandler
         )
     }
 

@@ -55,7 +55,9 @@
         tools:layout="@layout/fragment_barber_shop_map" >
         <action
             android:id="@+id/action_fragmentBarberShopMap_to_fragmentFindBarberShop"
-            app:destination="@id/fragmentFindBarberShop" />
+            app:destination="@id/fragmentFindBarberShop"
+            app:popUpTo="@id/fragmentFindBarberShop"
+            app:popUpToInclusive="true" />
         <argument
             android:name="name"
             app:argType="string" />
@@ -106,4 +108,33 @@
         android:name="online.appointcut.AugmentActivity"
         android:label="activity_augment"
         tools:layout="@layout/activity_augment" />
+    <fragment
+        android:id="@+id/hairStyleFragment"
+        android:name="online.appointcut.customerfragments.HairStyleFragment"
+        android:label="hairstyle_list"
+        tools:layout="@layout/fragment_customer_hairstyle" >
+        <action
+            android:id="@+id/action_hairStyleFragment_to_fragmentFindBarberShop"
+            app:destination="@id/fragmentFindBarberShop"
+            app:popUpTo="@id/fragmentBarberShopMap"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentAppointmentDetails"
+        android:name="online.appointcut.customerfragments.bottomsheets.FragmentAppointmentDetails"
+        android:label="FragmentAppointmentDetails" >
+        <action
+            android:id="@+id/action_fragmentAppointmentDetails_to_fragmentFindBarberShop"
+            app:destination="@id/fragmentFindBarberShop"
+            app:popUpTo="@id/fragmentFindBarberShop"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/bottomSheetFragmentAppointmentDetails"
+        android:name="fragments.BottomSheetFragmentAppointmentDetails"
+        android:label="BottomSheetFragmentAppointmentDetails" >
+        <action
+            android:id="@+id/action_bottomSheetFragmentAppointmentDetails_to_fragmentFindBarberShop"
+            app:destination="@id/fragmentFindBarberShop" />
+    </fragment>
 </navigation>

@@ -79,7 +79,7 @@ public class HomePageBarber extends AppCompatActivity {
                 homePage.finishAffinity();
                 //delete saved user data
                 UserFile.INSTANCE.delete(HomePageBarber.this);
-                Intent intent = new Intent(HomePageBarber.this, LoginFragment.class);
+                Intent intent = new Intent(HomePageBarber.this, LoginActivity.class);
                 startActivity(intent);
             }
         });

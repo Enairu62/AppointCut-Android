@@ -3,5 +3,6 @@
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">192.168.1.19</domain>
         <domain includeSubdomains="true">appointcut.online</domain>
+        <domain includeSubdomains="true">worldtimeapi.org</domain>
     </domain-config>
 </network-security-config>

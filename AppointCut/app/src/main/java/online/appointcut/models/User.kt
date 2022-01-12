@@ -18,7 +18,7 @@ data class User (
          * The type of user that logged in
          */
         enum class AuthStatus{
-            DESK,BARBER,CUSTOMER,EMAIL,PASSWORD
+            DESK,BARBER,CUSTOMER,EMAIL,PASSWORD,VERIFY
         }
     }
 }

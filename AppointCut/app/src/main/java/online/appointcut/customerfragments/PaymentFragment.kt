@@ -115,6 +115,7 @@ class PaymentFragment : Fragment() {
             )
         }
         //navigate back home
+        requireActivity().viewModelStore.clear()
         val action = PaymentFragmentDirections.actionPaymentFragmentToFragmentFindBarberShop()
         findNavController().navigate(action)
 

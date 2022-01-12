@@ -2,18 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-    <item
-        android:id="@+id/augmentActivity"
-        android:icon="@drawable/ic_cameraicon"
-        android:title="" />
-    <item
-        android:id="@+id/fragmentFindBarberShop"
-        android:icon="@drawable/ic_searchbarbericon"
-        android:title="" />
+        <item
+            android:id="@+id/augmentActivity"
+            android:icon="@drawable/ic_cameraicon"
+            android:title="" />
 
-    <item
-        android:id="@+id/fragmentMessage"
-        android:icon="@drawable/ic_messageicon"
-        android:title="" />
+        <item
+            android:id="@+id/fragmentFindBarberShop"
+            android:icon="@drawable/ic_searchbarbericon"
+            android:title="" />
+
+        <item
+            android:id="@+id/hairStyleFragment"
+            android:icon="@drawable/scissors"
+            android:title=""/>
+
+        <item
+            android:id="@+id/fragmentMessage"
+            android:icon="@drawable/ic_messageicon"
+            android:title="" />
+
     </group>
 </menu>

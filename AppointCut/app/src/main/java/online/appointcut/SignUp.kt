@@ -43,7 +43,7 @@ class SignUp : AppCompatActivity() {
         binding.linkTerms.text = ss
         binding.btnRegister.setOnClickListener(onRegisterClick)
         binding.imageView.setOnClickListener {
-            val intent = Intent(this@SignUp, LoginFragment::class.java)
+            val intent = Intent(this@SignUp, LoginActivity::class.java)
             startActivity(intent)
         }
     }
@@ -78,7 +78,7 @@ class SignUp : AppCompatActivity() {
                 val serverResponse = viewModel.register()
                 when (serverResponse) {
                     SignUpViewModel.SUCCESS -> {
-                        startActivity(Intent(this@SignUp, LoginFragment::class.java))
+                        startActivity(Intent(this@SignUp, LoginActivity::class.java))
                     }
                     SignUpViewModel.EMAIL -> {
                         //otherwise unblock button

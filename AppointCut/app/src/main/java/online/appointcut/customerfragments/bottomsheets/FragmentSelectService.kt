@@ -42,11 +42,27 @@ class FragmentSelectService(private val shopId: Int) : BottomSheetDialogFragment
 
         viewLifecycleOwner.lifecycleScope.launch {
             try{
-                val adapter = ShopServiceAdapter(
-                    ApcService.retrofitService.getShopServices(shopId),
-                    this@FragmentSelectService::showSelectBarberFragment
-                )
-                recyclerView.adapter = adapter
+                //get the list of shop services
+                val shopServices = ApcService.retrofitService.getShopServices(shopId)
+                //if a hairstyle is set
+                if(sharedViewModel.hairStyle != null){
+                    lateinit var haircutService: ShopService
+                    //get the haircut service
+                    for(service in shopServices) {
+                        if(service.name =="Haircut"){
+                            haircutService = service
+                            break
+                        }
+                    }
+                    //set to the sharedViewModelto next fragment
+                    showSelectBarberFragment(haircutService)
+                }else {//else, make the adapter and give to recycler
+                    val adapter = ShopServiceAdapter(
+                        shopServices,
+                        this@FragmentSelectService::showSelectBarberFragment
+                    )
+                    recyclerView.adapter = adapter
+                }
             }catch(e: Exception){
                 Toast.makeText(context,"Unable to load Services", Toast.LENGTH_SHORT)
                     .show()

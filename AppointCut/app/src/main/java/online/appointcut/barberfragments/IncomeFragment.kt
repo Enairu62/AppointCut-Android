@@ -2,6 +2,7 @@ package online.appointcut.barberfragments
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.launch
+import online.appointcut.LoginActivity
 import online.appointcut.R
 import online.appointcut.barberfragments.viewmodels.IncomeViewModel
 import online.appointcut.databinding.FragmentIncomeBinding
@@ -45,7 +47,7 @@ class IncomeFragment : Fragment() {
             }
         }
 
-        token = activity?.intent?.getStringExtra("userToken") ?: ""
+        token = activity?.intent?.getStringExtra(LoginActivity.USER_TOKEN) ?: ""
     }
 
     override fun onCreateView(
@@ -77,6 +79,7 @@ class IncomeFragment : Fragment() {
     }
     private fun updateDisplayWage(){
         lifecycleScope.launch{
+            Log.d("Income", "$token,${selectMonth.get(Calendar.YEAR)},${selectMonth.get(Calendar.MONTH)}")
             val wage = ApcService.retrofitService.getEmployeeWage(token, selectMonth.get(Calendar.YEAR),selectMonth.get(Calendar.MONTH))
             binding.wageOutput.text = "Php $wage"
         }

@@ -1,7 +1,6 @@
 package online.appointcut.customerfragments.bottomsheets
 
 import android.annotation.SuppressLint
-import android.app.TimePickerDialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -24,6 +23,7 @@ import online.appointcut.adapters.ScheduleWeekViewAdapter
 import online.appointcut.converters.ToWeekViewEventConverter
 import online.appointcut.models.Appointment
 import online.appointcut.models.Barber
+import online.appointcut.models.DateTime
 import online.appointcut.models.WeekViewEvent
 import online.appointcut.network.ApcService
 import java.util.*
@@ -38,6 +38,7 @@ class FragmentSelectSchedule(private val barber: Barber) : BottomSheetDialogFrag
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         val view =
             inflater.inflate(R.layout.fragment_bottom_sheet_select_schedule, container, false)
@@ -211,11 +212,12 @@ class FragmentSelectSchedule(private val barber: Barber) : BottomSheetDialogFrag
     }
 
     //Listener for when the customer selects an empty slot
-    private fun onEmptyClick(it: Calendar) {
-        Log.d("FragmentSelectSchedule", "${it.get(Calendar.DATE)}, ${it.time}")
+    private fun onEmptyClick(selectedDate: Calendar) {
+        Log.d("FragmentSelectSchedule", "${selectedDate.get(Calendar.DATE)}, ${selectedDate.time}")
+
         //round to 15 minute increments
-        var roundedMinute = 15 * (Math.floor(it.get(Calendar.MINUTE).toDouble() / 15))
-        var hour = it.get(Calendar.HOUR_OF_DAY)
+        var roundedMinute = 15 * (Math.floor(selectedDate.get(Calendar.MINUTE).toDouble() / 15))
+        var hour = selectedDate.get(Calendar.HOUR_OF_DAY)
         //Correction for minute of 60
         if (roundedMinute == 60.toDouble()) {
             roundedMinute = 0.toDouble()
@@ -223,24 +225,24 @@ class FragmentSelectSchedule(private val barber: Barber) : BottomSheetDialogFrag
         }
 
         //give time to the calendar with the date
-        it.apply {
+        selectedDate.apply {
             set(Calendar.HOUR_OF_DAY, hour)
             set(Calendar.MINUTE, roundedMinute.toInt())
         }
         //set time in and out
-        var minute = it.get(Calendar.MINUTE).toString()
+        var minute = selectedDate.get(Calendar.MINUTE).toString()
         //add a zero if single digit
         if (minute.length == 1) minute = "0$minute"
         //store to sharedViewModel
         sharedViewModel.date =
-            "${it.get(Calendar.YEAR)}-${it.get(Calendar.MONTH) + 1}-${it.get(Calendar.DATE)}"
-        sharedViewModel.timeIn = "${it.get(Calendar.HOUR_OF_DAY)}:${minute}"
-        it.add(Calendar.MINUTE, sharedViewModel.serviceDuration)
+            "${selectedDate.get(Calendar.YEAR)}-${selectedDate.get(Calendar.MONTH) + 1}-${selectedDate.get(Calendar.DATE)}"
+        sharedViewModel.timeIn = "${selectedDate.get(Calendar.HOUR_OF_DAY)}:${minute}"
+        selectedDate.add(Calendar.MINUTE, sharedViewModel.serviceDuration)
         //add the duration to the time
         //add a zero if single digit
-        minute = it.get(Calendar.MINUTE).toString()
+        minute = selectedDate.get(Calendar.MINUTE).toString()
         if (minute.length == 1) minute = "0$minute"
-        sharedViewModel.timeOut = "${it.get(Calendar.HOUR_OF_DAY)}:${minute}"
+        sharedViewModel.timeOut = "${selectedDate.get(Calendar.HOUR_OF_DAY)}:${minute}"
 
         Log.d(
             "FragmentSelectSchedule", "${sharedViewModel.date} | " +
@@ -281,14 +283,32 @@ class FragmentSelectSchedule(private val barber: Barber) : BottomSheetDialogFrag
 
         //appointments conflict
         lifecycleScope.launch{
+            //check if selected date is 1 day in advance
+            //get server time
+            val today = ApcService.retrofitService.getDateTime()
+            val selected = ("${selectedDate.get(Calendar.YEAR)}" +
+                    (selectedDate.get(Calendar.MONTH)+1).toString().padStart(2,'0') +
+                    selectedDate.get(Calendar.DATE).toString().padStart(2,'0')).toInt()
+            var isADayBefore = true
+            //compare with selected date
+            if("${today.year}${today.month}${today.day}".toInt() >= selected){
+                isADayBefore=false
+            }
+            //set isADayBefore
 
+
+            Log.d("FSSchedule", "Today Date:" + "${today.year}${today.month}${today.day}".toInt())
+            Log.d("FSSchedule", "chosenDate Date: $selected")
             conflicts += ApcService.retrofitService.checkConflict(
                 sharedViewModel.employeeId,"${sharedViewModel.date}",
                 sharedViewModel.timeIn,
                 sharedViewModel.timeOut
             )
 
-            if (conflicts == 0 )nextFragment()
+            if(!isADayBefore){
+                Toast.makeText(requireContext(),"Appointments must be a day prior", Toast.LENGTH_SHORT)
+                    .show()
+            }else if (conflicts == 0 ) nextFragment()
             else
                 Toast.makeText(requireContext(),"Conflicting appointment found", Toast.LENGTH_SHORT)
                     .show()

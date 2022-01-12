@@ -4,11 +4,13 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModelStoreOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import online.appointcut.R
@@ -16,6 +18,7 @@ import online.appointcut.databinding.FragmentBottomSheetAppointmentDetailsBindin
 import online.appointcut.models.Appointment
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import fragments.FragmentBarberShopMapDirections
+import online.appointcut.customerfragments.FragmentAppointmentDirections
 
 
 class FragmentAppointmentDetails : BottomSheetDialogFragment() {
@@ -51,7 +54,19 @@ class FragmentAppointmentDetails : BottomSheetDialogFragment() {
         dialog.window!!.setLayout(width, height)
 
         val btnContinue = dialog.findViewById<View>(R.id.btnContinue) as Button
-        btnContinue.setOnClickListener { dialog.dismiss() }
+        btnContinue.setOnClickListener {
+            Log.d("FADeets", findNavController().currentDestination.toString())
+            if (findNavController().currentDestination!!.label.toString() == "fragment_barber_shop_map")
+                findNavController().navigate(
+                    FragmentBarberShopMapDirections.actionFragmentBarberShopMapToFragmentFindBarberShop()
+                )
+            else if (findNavController().currentDestination!!.label.toString() == "fragment_appointment")
+                findNavController().navigate(
+                    FragmentAppointmentDirections.actionFragmentAppointmentToFragmentFindBarberShop()
+                )
+            requireActivity().viewModelStore.clear()
+            dialog.dismiss()
+        }
 
         dialog.findViewById<Button>(R.id.payNow).setOnClickListener {
             findNavController().navigate(

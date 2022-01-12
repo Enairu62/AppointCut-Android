@@ -23,6 +23,9 @@ import online.appointcut.network.ApcService
 import devs.mulham.horizontalcalendar.HorizontalCalendar
 import devs.mulham.horizontalcalendar.utils.HorizontalCalendarListener
 import kotlinx.coroutines.launch
+import online.appointcut.LoginActivity
+import online.appointcut.databinding.DialogHairstyleBinding
+import online.appointcut.dialog.HairstyleDialog
 import java.net.ConnectException
 import java.util.*
 
@@ -107,10 +110,14 @@ class FragmentSchedule : Fragment() {
         return view
     }
 
+    private val itemClickListener = BarberAppointmentAdapter.ItemClickListener{
+        HairstyleDialog(it.hairStyle!!).show(parentFragmentManager,null)
+    }
+
     private fun updateAppointmentsList() {
         view?.findViewById<RecyclerView>(R.id.approvedRecycler)?.adapter = null
         viewLifecycleOwner.lifecycleScope.launch {
-            val token = activity?.intent?.getStringExtra("userToken") ?: ""
+            val token = activity?.intent?.getStringExtra(LoginActivity.USER_TOKEN) ?: ""
             val day = (selectedDate.get(Calendar.DATE)).toString()
             val month = (selectedDate.get(Calendar.MONTH) + 1).toString()
             val year = selectedDate.get(Calendar.YEAR).toString()
@@ -119,8 +126,12 @@ class FragmentSchedule : Fragment() {
             try {
                 appointments =
                     ApcService.retrofitService.getBarberFullAppointments(token, day, month, year)?:listOf<Appointment>()
+                Log.d("FragmentSchedule","Retrieved appointments")
+                for(apt in appointments){
+                    apt.getHairstyle()
+                }
                 val adapter = BarberAppointmentAdapter(appointments)
-
+                adapter.setOnItemClickListener(itemClickListener)
                 view?.findViewById<RecyclerView>(R.id.approvedRecycler)?.adapter = adapter
             }catch(e: ConnectException){
                 Log.e("FragmentSchedule" , "${e}", e)
@@ -132,35 +143,5 @@ class FragmentSchedule : Fragment() {
                     .show()
             }
         }
-    }
-
-    private fun buildListData() {
-        list.add(
-            DataModelSchedule(
-                "9:00 am - 10:00 am",
-                "Brent Jansen P. Bolima",
-                "Haircut",
-                100.00
-            )
-        )
-        list.add(
-            DataModelSchedule(
-                "10:00 am - 11:00 am",
-                "Arthur Allen Castillo",
-                "Haircut, Hair Color",
-                200.00
-            )
-        )
-        list.add(
-            DataModelSchedule(
-                "2:00 pm - 3:00 pm",
-                "Raymond Miguel Gonzalez",
-                "Hair Color",
-                100.00
-            )
-        )
-        list.add(DataModelSchedule("3:30 pm - 4:00 pm", "Leila Campos", "Haircut", 100.00))
-        list.add(DataModelSchedule("4:00 pm - 4:30 pm", "Carlex Rol Jalmasco", "Haircut", 100.00))
-        list.add(DataModelSchedule("5:00 pm - 6:00 pm", "Jay Rico", "Haircut, Massage", 300.00))
     }
 }

@@ -26,16 +26,17 @@ class Appointment(): ViewModel() {
     @Json(name = "ShopID") var shopId = 0
     @Json(name = "EmployeeID") var employeeId = 0
     @Json(name = "ShopServicesID") var shopServiceId = 0
-    @Json(name = "HaircutID") var haircutId: Int? = 0
+    @Json(name = "HaircutID") var haircutId: Int? = null
     @Json(name = "appStatusID")var appStatusId = 1
     @Json(name = "Service") var serviceName: String = ""
     @Json(name = "ShopName") var shopName = ""
+    @Json(name = "AppointmentID") var id = 0
 
-    var id = 0
     var serviceDuration: Int = 0
     var amountDue = 0
     var employeeName = ""
     var userToken = ""
+    var hairStyle: HairStyle? = null
 
     var list = mutableListOf<Appointment>()
 
@@ -68,15 +69,30 @@ class Appointment(): ViewModel() {
         }
     }
 
-    suspend fun getCustomerApproved(){
+    /**
+     * Gets and sets the associated [HairStyle] with this appointment
+     * @return The [HairStyle]
+     */
+    suspend fun getHairstyle(): HairStyle?{
+        haircutId?.let{
+            hairStyle = ApcService.retrofitService.getHairstyle(it)
+        }
+        return hairStyle
+    }
+
+    suspend fun getCustomerAppointments(type: Int){
         list = mutableListOf<Appointment>().apply {
-            addAll(ApcService.retrofitService.getCustomerApprovedAppointments(userToken))
+            addAll(ApcService.retrofitService.getCustomerAppointments(
+                userToken,
+                type
+            ))
         }
     }
 
-    suspend fun getCustomerCompleted(){
-        list = mutableListOf<Appointment>().apply {
-            addAll(ApcService.retrofitService.getCustomerCompletedAppointments(userToken))
-        }
+    companion object {
+        const val NO_SHOW = 0
+        const val APPROVED = 1
+        const val COMPLETED = 2
+        const val CANCELLED = 3
     }
 }

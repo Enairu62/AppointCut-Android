@@ -10,9 +10,10 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import java.util.*
 
 
-const val BASE_URL = "http://192.168.1.19:3000"
+const val BASE_URL = "http://appointcut.online"
 
 private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
@@ -24,15 +25,22 @@ private val retrofit = Retrofit.Builder()
 
 interface ApcServiceInterface {
     @GET("rest/token/{email}-{pw}-{type}")
-    suspend fun getToken(@Path("email") email: String,
+    suspend fun getToken(
+        @Path("email") email: String,
         @Path("pw") pw: String,
-    @Path("type") type: String): User
+        @Path("type") type: String): User
 
     @GET("rest/shops")
     suspend fun getShops(): List<Shop>
 
     @GET("rest/shops/services/{id}")
     suspend fun getShopServices(@Path("id") id: Int): List<ShopService>
+
+    @GET("rest/shopservices/{id}")
+    suspend fun getShopService(@Path("id") id: Int): ShopService
+
+    @GET("/rest/shopservices/appointment/{id}")
+    suspend fun getAppointmentShopServiceId(@Path("id") id: Int): Int
 
     @GET("rest/barbers/withshopservice/{id}")
     suspend fun  getSpecializationWithService(@Path("id") id: Int):
@@ -81,11 +89,11 @@ interface ApcServiceInterface {
     @POST("rest/register")
     suspend fun registerUser(@Body signUp: SignUpViewModel): Int
 
-    @GET("rest/appointments/customer/completed/{token}")
-    suspend fun getCustomerCompletedAppointments(@Path("token")token: String): List<Appointment>
-
-    @GET("rest/appointments/customer/approved/{token}")
-    suspend fun getCustomerApprovedAppointments(@Path("token")token: String): List<Appointment>
+    @GET("rest/appointments/customer/{token}-{type}")
+    suspend fun getCustomerAppointments(
+        @Path("token") token: String,
+        @Path("type") type: Int
+    ):List<Appointment>
 
     @GET("rest/barbers/wage/{token}-{year}-{month}")
     suspend fun getEmployeeWage(
@@ -93,6 +101,24 @@ interface ApcServiceInterface {
         @Path("year") year: Int,
         @Path("month") monthIndex: Int
     ): Float
+
+    @GET("rest/appointments/cancel/{token}-{id}")
+    suspend fun cancelAppointment(
+        @Path("token") token: String,
+        @Path("id") appointmentId: Int
+    ): String
+
+    @GET("rest/hairstyles")
+    suspend fun getHairstyles(): List<HairStyle>
+
+    @GET("rest/hairstyles/{id}")
+    suspend fun getHairstyle(@Path("id") id: Int): HairStyle
+
+    @GET("hairstyles/descriptions/{name}.json")
+    suspend fun getHairstyleDescription(@Path("name") name: String): String
+
+    @GET("http://worldtimeapi.org/api/timezone/Asia/Manila")
+    suspend fun getDateTime(): DateTime
 }
 
 object ApcService {

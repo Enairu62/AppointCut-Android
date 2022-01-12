@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/dialog_width"
+    android:layout_height="@dimen/dialog_height">
+
+    <ImageView
+        android:id="@+id/hairstyleImage"
+        android:layout_width="@dimen/dialog_image_size"
+        android:layout_height="@dimen/dialog_image_size"
+        android:layout_marginTop="@dimen/margin_big"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@color/light_yellow" />
+
+    <TextView
+        android:id="@+id/hairstyleName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_big"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/hairstyleImage"
+        app:layout_constraintStart_toStartOf="@id/hairstyleImage"
+        app:layout_constraintTop_toBottomOf="@id/hairstyleImage"
+        tools:text="Mohawk"
+        android:layout_marginTop="@dimen/margin_small"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

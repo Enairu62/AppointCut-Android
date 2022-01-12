@@ -1,8 +1,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="customerfragments.FragmentAppointment">
 
     <View
@@ -14,6 +14,49 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <HorizontalScrollView
+        android:id="@+id/scvButtons"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnApproved"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Approved" />
+
+            <Button
+                android:id="@+id/btnCompleted"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Completed" />
+
+            <Button
+                android:id="@+id/btnCancelled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cancelled" />
+
+            <Button
+                android:id="@+id/btnMissed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Missed" />
+        </LinearLayout>
+    </HorizontalScrollView>
 
     <TextView
         android:id="@+id/textView"
@@ -27,92 +70,196 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontalLine" />
 
-    <EditText
-        android:id="@+id/inputSearch"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_big"
-        android:layout_marginEnd="@dimen/margin_big"
-        android:background="@drawable/border_plaintext"
-        android:drawableLeft="@drawable/ic_search_icon"
-        android:ems="10"
-        android:hint="Search"
-        android:inputType="text"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/approvedLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@id/scvButtons">
 
-    <TextView
-        android:id="@+id/textView2"
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="Approved Appointments"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/approvedRecycler"
+            app:layout_constraintStart_toStartOf="@+id/approvedRecycler"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/approvedRecycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <ProgressBar
+            android:id="@+id/approvedProgBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="@dimen/customer_appointments_progress_size"
+            android:layout_height="0dp"
+            android:indeterminateTint="@color/yellow"
+            app:layout_constraintBottom_toBottomOf="@id/approvedRecycler"
+            app:layout_constraintEnd_toEndOf="@id/approvedRecycler"
+            app:layout_constraintStart_toStartOf="@id/approvedRecycler"
+            app:layout_constraintTop_toTopOf="@id/approvedRecycler" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/completedLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_big"
-        android:layout_marginEnd="@dimen/margin_big"
-        android:text="Approved Appointments"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputSearch" />
+        app:layout_constraintTop_toBottomOf="@id/scvButtons">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/completedRecycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/margin_big"
+            android:layout_marginEnd="@dimen/margin_big"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView4" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/approvedRecycler"
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="Completed Appointments"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/completedProgBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="@dimen/customer_appointments_progress_size"
+            android:layout_height="@dimen/customer_appointments_progress_size"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/yellow"
+            app:layout_constraintBottom_toBottomOf="@id/completedRecycler"
+            app:layout_constraintEnd_toEndOf="@id/completedRecycler"
+            app:layout_constraintStart_toStartOf="@id/completedRecycler"
+            app:layout_constraintTop_toTopOf="@id/completedRecycler" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cancelledLayout"
         android:layout_width="0dp"
-        android:layout_height="@dimen/customer_appointments_recycler_height"
-        android:layout_marginStart="@dimen/margin_big"
-        android:layout_marginEnd="@dimen/margin_big"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@id/scvButtons">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_big"
-        android:text="Completed Appointments"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/approvedRecycler" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/cancelledRecycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/margin_big"
+            android:layout_marginEnd="@dimen/margin_big"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_Cancelled" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/completedRecycler"
+        <TextView
+            android:id="@+id/tv_Cancelled"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="Cancelled Appointments"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/cancelledProgBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="@dimen/customer_appointments_progress_size"
+            android:layout_height="@dimen/customer_appointments_progress_size"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/yellow"
+            app:layout_constraintBottom_toBottomOf="@id/cancelledRecycler"
+            app:layout_constraintEnd_toEndOf="@id/cancelledRecycler"
+            app:layout_constraintStart_toStartOf="@id/cancelledRecycler"
+            app:layout_constraintTop_toTopOf="@id/cancelledRecycler" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/missedLayout"
         android:layout_width="0dp"
-        android:layout_height="@dimen/customer_appointments_recycler_height"
-        android:layout_marginStart="@dimen/margin_big"
-        android:layout_marginEnd="@dimen/margin_big"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@id/scvButtons">
 
-    <ProgressBar
-        android:id="@+id/approvedProgBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="@dimen/customer_appointments_progress_size"
-        android:layout_height="@dimen/customer_appointments_progress_size"
-        android:indeterminateTint="@color/yellow"
-        app:layout_constraintBottom_toBottomOf="@+id/approvedRecycler"
-        app:layout_constraintEnd_toEndOf="@+id/approvedRecycler"
-        app:layout_constraintStart_toStartOf="@+id/approvedRecycler"
-        app:layout_constraintTop_toTopOf="@+id/approvedRecycler" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/missedRecycler"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/margin_big"
+            android:layout_marginEnd="@dimen/margin_big"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_Missed" />
 
-    <ProgressBar
-        android:id="@+id/completedProgBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="@dimen/customer_appointments_progress_size"
-        android:layout_height="@dimen/customer_appointments_progress_size"
-        android:indeterminate="true"
-        android:indeterminateTint="@color/yellow"
-        app:layout_constraintBottom_toBottomOf="@+id/completedRecycler"
-        app:layout_constraintEnd_toEndOf="@+id/completedRecycler"
-        app:layout_constraintStart_toStartOf="@+id/completedRecycler"
-        app:layout_constraintTop_toTopOf="@+id/completedRecycler" />
+        <TextView
+            android:id="@+id/tv_Missed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="Missed Appointments"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/missedProgBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="@dimen/customer_appointments_progress_size"
+            android:layout_height="@dimen/customer_appointments_progress_size"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/yellow"
+            app:layout_constraintBottom_toBottomOf="@id/missedRecycler"
+            app:layout_constraintEnd_toEndOf="@id/missedRecycler"
+            app:layout_constraintStart_toStartOf="@id/missedRecycler"
+            app:layout_constraintTop_toTopOf="@id/missedRecycler" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,6 +24,7 @@ import online.appointcut.models.Appointment
 import online.appointcut.network.ApcService
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
+import online.appointcut.LoginActivity
 
 
 class FragmentFindShop : Fragment(), MyAdapterBarberShop.ItemClickListener {
@@ -45,9 +46,14 @@ class FragmentFindShop : Fragment(), MyAdapterBarberShop.ItemClickListener {
                 }
             }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-        sharedViewModel.customerID = requireActivity().intent.getIntExtra("userId",-1)
-        sharedViewModel.customerName = requireActivity().intent.getStringExtra("fullName")?:""
-        sharedViewModel.userToken = requireActivity().intent.getStringExtra("userToken")?:""
+        sharedViewModel.apply {
+            customerID = requireActivity()
+                .intent.getIntExtra(LoginActivity.USER_ID,-1)
+            customerName = requireActivity()
+                .intent.getStringExtra(LoginActivity.FULL_NAME)?:""
+            userToken = requireActivity()
+                .intent.getStringExtra(LoginActivity.USER_TOKEN)?:""
+        }
     }
 
     override fun onCreateView(

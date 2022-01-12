@@ -93,7 +93,7 @@ public class HomePageCustomer extends AppCompatActivity {
                 homePage.finishAffinity();
                 //delete saved user data
                 UserFile.INSTANCE.delete(HomePageCustomer.this);
-                Intent intent = new Intent(HomePageCustomer.this, LoginFragment.class);
+                Intent intent = new Intent(HomePageCustomer.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
@@ -129,7 +129,7 @@ public class HomePageCustomer extends AppCompatActivity {
     }
 
     private void displayCustomerName(){
-        String fullName = getIntent().getStringExtra("fullName");
+        String fullName = getIntent().getStringExtra(LoginActivity.FULL_NAME);
         txtFullName.setText(fullName);
         navFullName.setText(fullName);
     }
